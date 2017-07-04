@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//描述一下js执行步骤
+			//1、预解析：找一些东西（var function），如果找到了var，提前赋一个值undefined给这个变量，如果找到的是函数，找到的就是函数本身的代码。如果函数和变量重名，函数优先。
+			//2、代码逐行执行：赋值，函数调用......
+			/*alert(a);//function (){alert(2)}
+			var a=1;
+			alert(a);//1
+			function a(){
+				alert(2);
+			}
+			alert(a);//1
+			var a=function (){
+				alert(3);
+			}
+			a();//3
+			alert(a);//function (){alert(3);}
+			a();//3*/
+			
+			alert(a);//undefined;
+			var a=5;
+			alert(a);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

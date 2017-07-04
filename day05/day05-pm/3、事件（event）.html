@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//行为：事件+动作（js事件驱动）
+			//鼠标+键盘
+			//onclick=onmousedown(鼠标按下)+onmouseup(鼠标弹起)
+			//ondblclick onmousemove(鼠标移动) onmouseover(鼠标悬停) onmouseout(鼠标移出)
+			//onfocus(得到焦点)   onblur(失去焦点)
+			//window.onload:页面加载完成(页面的DOM结构，内容，图片，视频....)
+			//onkeydown(键盘按下)  onkeyup(键盘弹起)
+			
+			//创建一个普通的函数
+			/*function fn(){
+				alert('我是普通函数');
+			}*/
+			//fn();//普通函数调用
+			
+			//document.onclick=fn();//fn():页面加载时已经触发了函数，无需点击
+			//document.onclick=fn;//fn:事件处理函数-->将一个普通的函数给事件。
+			/*document.onclick=function (){
+				alert('我是普通函数');
+			};*/
+			/*window.onload=function(){//html页面加载完成之后执行。
+				var oInput=document.getElementById('input1');
+				alert(oInput);
+			}*/
+		</script>
+	</head>
+	<body>
+		<!--<input type="text" />
+		<div>我是div元素</div>
+		<a href="#">我是锚标签</a>-->
+		<!--<input type="text" placeholder="请输入用户名" id="input1" />-->
+		<input type="text" id="input1" value="请输入用户名"/>
+		<script type="text/javascript">
+			//var oInput=document.getElementById('input1');
+			//alert(oInput);//[object HTMLInputelement]
+			/*oInput.onfocus=function(){//oInput得到光标。
+				if(oInput.value=='请输入用户名'){
+					oInput.value='';
+				}
+			};
+			oInput.onblur=function(){
+				if(oInput.value==''){
+					oInput.value='请输入用户名';
+				}
+			}*/
+			//oInput.select();//得到光标+选中
+			//oInput.focus();//自动得到光标
+		</script>
+	</body>
+</html>

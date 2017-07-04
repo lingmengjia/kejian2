@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			td{
+				border:1px solid purple;
+				padding: 10px 20px;
+			}
+		</style>
+		<script type="text/javascript">
+			/*var a=-5;
+			while(a>0){//while 前测试型，先测试限制条件，再执行语句块
+				alert('while执行了');
+			}*/
+			
+			
+			/*var c=-5;
+			do{//循环体内的代码至少会被执行一次
+				alert('do...while执行了');
+			}while(c>0);*/
+			
+			//break 和 continue   跳出循环
+			/*var i=1;
+			while(i<=10){
+				if(i==6){
+					break;//跳出整个循环，后续的循环结束了
+				}
+				document.write(i+'<br>');
+				i++;
+			}*/
+			
+			
+			/*var i=0;
+			while(i<10){
+				i++;
+				if(i==6){
+					continue;//跳出本次循环，后续循环继续进行
+				}
+				document.write(i+'<br>');
+			}*/
+			//for循环的嵌套
+			/*for(var i=1;i<=9;i++){
+				for(var j=1;j<=i;j++){
+					document.write(j+'*'+i+'='+i*j+'&nbsp;');
+				}
+				document.write('<br>');
+			}*/
+			
+			//innerHTML
+			
+		</script>
+	</head>
+	<body>
+		<div id="table"></div>
+		<script type="text/javascript">
+			var oTable=document.getElementById('table');//获取一个div元素。
+			//oTable.innerHTML='<strong>基本文字内容</strong>';
+			//将'<strong>基本文字内容</strong>'赋值给div元素。同时里面的strong会被解析
+			//oTable.innerHTML='<table border="1"><tr><td>1111111</td></tr></table>';
+			
+		</script>
+	</body>
+</html>

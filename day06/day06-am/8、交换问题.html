@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		//简单的数据交换
+			/*var a=7;
+			var b=5;
+			var temp=null;
+			if(a>b){
+				temp=a;//temp=7;
+				a=b;//a=5;
+				b=temp;//b=7
+			}
+			alert(a);
+			alert(b);*/
+			
+			
+			//3.使用函数完成任意数字阶乘的计算（传参）
+			//var result=1;
+			/*function jc(n){
+				for(var i=1,result=1;i<=n;i++){
+					result*=i;
+				}
+				return result;//返回值
+			}
+			alert(jc(0));//120*/
+			
+			
+			//阶乘--递归(函数里面调用函数自身)
+			//5！=5*4！  4！=4*3！；3！=3*2！  2！=2*1! 
+			//0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233，377，610，987，1597，2584，4181，6765，10946，17711，28657，46368........
+			//fn(n)=fn(n-1)+fn(n-2);
+			/*function multiply(n){
+				if(n<=1){
+					return 1;
+				}else{
+					return n*multiply(n-1);//递归。
+				}
+			}
+			alert(multiply(6));// Maximum call stack size exceeded    递归报错。*/
+			
+		/*	function fb(n){
+				'use strict';
+				if(n==1){
+					return 0;
+				}
+				if(n==2){
+					return 1;
+				}else{
+					return arguments.callee(n-1)+arguments.callee(n-2);
+					//arguments.callee:等同与函数的名字,严格模式下面不允许使用。
+				}
+			}
+			for(var i=1;i<=30;i++){
+				document.write(fb(i)+'--');
+			}*/
+			
+			/*(function(){
+				return 'abc';
+			})();
+			*/
+			
+			/*alert((function(){
+				return 'abc';
+			})());*/
+			/*function fn(str){
+				alert(str)
+			}
+			fn('hello');*/
+			
+			/*(function(str){
+				alert(str);
+			})('hello');*/
+			
+			
+		/*	window.onload=function(){
+				
+			}*/
+			
+		</script>
+	</head>
+	<body>
+		<div id="box">123456</div>
+		<script type="text/javascript">
+			/*document.onclick=function(){
+				//this：事件处理函数里面的this指向当前你所操作的元素对象。
+				alert(this);//[object HTMLDocument]
+			}*/
+			
+			var oDiv=document.getElementById('box');
+			oDiv.onclick=function(){
+				alert(this);//[object HTMLDivElement]
+			}
+			
+			
+			function fn(){//普通函数里面的this指向window
+				alert(this);//[object Window]
+			}
+			fn();
+		</script>
+	</body>
+</html>

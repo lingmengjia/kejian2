@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*var arr=[3,2,11,11,3,111,444,444,22,2,2,11,22,333,444,5,6,7,8,9,0];
+			var newarr=[];//定义一个新的数组，接收没有重复的项。
+			newarr.push(arr[0]);//将第一项push新数组中
+			for(var i=1;i<arr.length;i++){
+				var bstop=true;//没重复
+				for(var j=0;j<newarr.length;j++){
+					
+					if(arr[i]==newarr[j]){//如果满足此条件，有重复，跳出循环。
+						bstop=false;
+						break;
+					}
+				}
+				if(bstop){//bstop==true  新数组不存在此数据。push进新数组。
+					newarr.push(arr[i]);
+				}
+			}
+			alert(newarr);*/
+			
+			//var arr=[1,2,3,4,5,6,7,8,9];
+			/*arr.every(function(a,b,c){
+				//alert(this);//window
+				//alert(this);
+			},'hehe');*/
+			/*第一个参数：要在每一项上运行的函数
+			此函数会接收三个参数：数组项的值、该项在数组中的位置、数组对象本身。
+			第二个参数：（可选的）运行该函数的作用域对象（影响 this 的值）。*/
+			//对数组中的每一项运行给定函数，返回该函数结果为 true 的项组成的数组。
+			/*var arr=[3,2,11,11,3,111,444,444,22,2,2,11,22,333,444,5,6,7,8,9,0];
+			alert(arr.filter(function(v,i,array){//v数组项的值、i该项在数组中的位置、array数组对象本身
+				return arr.indexOf(arr[i])==i;
+			}));*/
+			
+			/*var arr=[3,2,11,11,3,111,444,444,22,2,2,11,22,333,444,5,6,7,8,9,0];
+			for(var i=0;i<arr.length;i++){
+				for(var j=i+1;j<arr.length;j++){
+					if(arr[i]==arr[j]){
+						arr.splice(j,1);//改变原数组
+						j--;//跳过值。
+					}
+				}
+			}
+			
+			alert(arr);*/
+			
+			/*var arr=[1,4,7,2,5,8,3,6,9];
+			console.log(arr.filter(function(v){
+				return v>3;
+			}));
+			
+			//4．编写函数map(arr) 把数组中的每一位数字都增加30%
+			//对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。返回就是数组，不考虑true或者false；
+			console.log(arr.map(function(v){
+				return v*100;
+			}));*/
+			
+			/*var arr=[1,4,7,2,5,8,3,6,9];
+			console.log(arr.every(function(v){//每一项都满足，输出true; &&
+				return v>0;
+			}));*/
+			
+			
+			/*console.log(arr.some(function(v){//任意一项都满足，输出true;   ||
+				return v>8;
+			}));*/
+			
+			
+			/*var arr=[1,4,7,2,5,8,3,6,9];
+			arr.forEach(function(v,i,a){
+				console.log(v+'---'+i+'---'+a);
+			})*/
+			
+			//迭代是重复反馈过程的活动，其目的通常是为了逼近所需目标或结果。每一次对过程的重复称为一次“迭代”，而每一次迭代得到的结果会作为下一次迭代的初始值。
+			
+			/*var arr=[1,4,7,2,5,8,3,6,9,10];//迭代
+			alert(arr.reduce(function(prev,next,index,array){
+				console.log(prev +'------'+next);
+				return prev+next;
+			},10));//如果存在第二个参数：第二参数给prev，如果不存在第二个参数，数组的第一项给prev，next:数组的下一项。*/
+			var arr=[1,4,7,2,5,8,3,6,9,10];//迭代
+			alert(arr.reduceRight(function(prev,next,index,array){
+				console.log(prev +'------'+next);
+				return prev+next;
+			},10));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width:0px;
+				height:0px;
+				border-left: 10px solid red;
+				border-top: 10px solid transparent;
+				border-right: 10px solid transparent;
+				border-bottom: 10px solid transparent;
+			}
+		</style>
+		<script type="text/javascript">
+			//1．入职薪水10K，每年涨幅5%，50年后薪水是多少？
+			//var num=10000;
+			/*for(var i=1;i<=50;i++){
+				//num=num+num*0.05;
+				num+=num*0.05;
+			}*/
+			//alert('50年后薪水是:'+num);
+			//5．求出1-1/2+1/3-1/4…..1/100的和
+			/*var sum=0;//接收结果
+			var fz=1;
+			var fm=1;
+			while(fm<=100){
+				sum+=fz/fm;
+				fz=-fz;//让符号交替。
+				fm++;//分母累加
+			}
+			alert(sum);*/
+			
+			//6．打印出1000-2000年中所有的闰年，并以每行四个数的形式输出
+			/*var num=0;
+			for(var i=1000;i<=2000;i++){
+				if(i%4==0&&i%100!=0||i%400==0){
+					num++;
+					document.write(i+'&nbsp;');
+					if(num%4==0){
+						document.write('<br>');
+					}
+				}
+			}*/
+			//打印三角形(&nbsp;  <br>   * )
+			/*for(var i=1;i<=5;i++){
+				for(var j=1;j<=i;j++){
+					document.write('*');
+				}
+				document.write('<br>');
+			}*/
+			
+			/*for(var i=1;i<=10;i++){
+				for(var j=1;j<=10+i;j++){
+					document.write('*');
+				}
+				document.write('<br>');
+			}*/
+			
+			//3．求100-999之间的水仙花数。
+			
+			//数学方法：Math.round():四舍五入   Math.pow(2,3)求幂;
+			/*for(var i=100;i<=999;i++){//153
+				//1^3 + 5^3+ 3^3 = 153;
+				var gw=i%10;//个位
+				var sw=parseInt(i%100/10);//十位
+				var bw=parseInt(i/100);//百位
+				
+				
+				if(bw*bw*bw+sw*sw*sw+gw*gw*gw==i){
+					document.write(i+'&nbsp;');
+				}
+			}*/
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<!--<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>
+		<button>按钮</button>-->
+		<script type="text/javascript">
+			//document.getElementById():通过id获取当前的元素
+			//document.getElementsByTagName();通过元素名获取多个元素。
+			//var aBtn=document.getElementsByTagName('button');
+			//alert(aBtn);//标签集合
+			//alert(aBtn.length);//获取元素的个数  10
+			//aBtn[9]:[]获取元素的第几个，从0开始记。
+			/*for(var i=0;i<aBtn.length;i++){
+				aBtn[i].onclick=function(){
+					alert('ok');
+				}
+			}*/
+		</script>
+	</body>
+</html>

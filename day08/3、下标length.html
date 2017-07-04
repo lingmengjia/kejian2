@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var arr=['a',1,'c',4];
+			//arr[100]=100;
+			//alert(arr.length);
+			//alert(arr);
+			
+			//arr.length=2;
+			//alert(arr);//删除后两位
+			//arr.length=100;
+			//alert(arr);
+			//下标和length：可读写
+			
+			
+			/*var	fruit=['apple','banana','orange','pear'];//定义数组
+			
+			for(var i=0;i<fruit.length;i++){//i：数组的下标
+				document.write(i+'----'+fruit[i]+'<br>');
+			}*/
+			
+			//for-in循环  :适合于键值对的遍历
+			
+
+			//定义构造函数定义对象（属性+方法）
+			/*var obj=new Object();//Object():构造函数，用来构建实例对象  obj:空对象。
+			obj.name='zhangsan';//给对象添加属性。
+			obj.showName=function(){//给对象添加方法。
+				alert(obj.name);
+			}
+			obj.showName();//调用方法。*/
+			
+			//字面量的方式定义对象
+			/*var obj={
+				name:'zhangsan',
+				age:100,
+				sex:'男',
+				worker:'student',
+				showName:function(){
+					return '我的名字叫'+obj.name+',我今年'+obj.age+'岁，我是'+obj.sex+'的，我目前是一个'+obj.worker;
+				}
+			};
+			
+			
+			document.write(obj.showName());*/
+			
+			//区分for循环和   for...in...循环(下标不管是默认的还是自定义的，都可以输出)
+			//for  for...in...都能遍历数组。习惯性用for。
+			//for...in...适合于对象的遍历。
+//			var arr=['pengyi','zhangsan','lisi','wangwu','zhaoliu','sunqi','wangba','laoshi'];
+//			window.onload=function(){
+//				var html='<ul>';
+//				
+//				/*for(var i=0;i<arr.length;i++){
+//					html+='<li>'+arr[i]+'</li>';
+//					//document.write(arr[i]);
+//				}*/
+//				
+//				for(var i in arr){//i:下标   arr：遍历的数组本身
+//					html+='<li>'+i+'-----'+arr[i]+'</li>';
+//				}
+//				
+//				html+='</ul>';
+//				
+//				document.body.innerHTML=html;
+//			}
+
+
+//			var obj={
+//				name:'zhangsan',
+//				age:100,
+//				sex:'男',
+//				worker:'student',
+//				name1:'zhangsan',
+//				age1:100,
+//				sex1:'男',
+//				worker1:'student'
+//			}
+//			/*alert(obj.name);//点操作符后面跟的是字符串
+//			alert(obj['name']);*/
+//			for(var i in obj){
+//				document.write(i+'-----'+obj[i]+'<br>');
+//			}
+
+var obj={'list':['a','b'],'piclist':['hi',{'hello':{'name':'zhangsan','age':1000,'score':[50,60,70,80,100]}}]};
+		alert(obj.piclist[1].hello.score[4]);//100
+		
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

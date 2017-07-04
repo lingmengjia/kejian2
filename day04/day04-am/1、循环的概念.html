@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			ul{
+				font-family: "microsoft yahei";
+				list-style: none;
+				width: 1040px;
+				margin: 0 auto;
+			}
+			li{
+				float: left;
+				margin: 10px 10px 0 0;
+			}
+			li img{
+				width: 250px;
+				height:136px;
+			}
+			li p{
+				width: 250px;
+				height: 36px;
+				line-height: 36px;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+//循环结构表示程序反复执行某个或某些操作，直到某条件为假（或为真）时才可终止循环。在循环结构中最主要的是：什么情况下执行循环？哪些操作需要循环执行？
+//就是程序路径的一个回路，可以让一部分代码重复执行
+			/*var sum=0;//结果  1
+			var i=1;//初始值。 2
+			while(i<=100){//循环的限制条件 如果括号里面条件满足的话，执行{}里面的语句块。直到条件为假  3
+				sum+=i;//4
+				i++;//5
+			}
+			alert(sum);//上面循环执行完成，才会执行*/
+			//编号整理：1，2，3，4，5，3，4，5，3，4，5......
+			/*while(true){
+				alert(1);
+			}
+			alert(2);//不会执行，除非上面循环执行完*/
+			//循环的术语：初始值，限制条件，累加(变化的，配合限制条件)
+			//for循环基本控制结构
+			//for(初始值;限制条件;累加){}
+			
+			/*for(var sum=0,i=1;i<=100;i++){
+				sum+=i;
+			}
+			alert(sum);*/
+			//for嵌套：外面循环一次，里面的循环全部完成
+			for(var i=1;i<=10;i++){
+				document.write('我是外面的循环:'+i+'<br>');
+				for(var j=1;j<=10;j++){
+					document.write('&nbsp;&nbsp;&nbsp;&nbsp;我是内部的循环:'+j+'<br>');
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<!--body,title标签：document.body/document.title直接获取-->
+		<!--innerHTML:元素的内容-->
+		<!--未优化的方式创建10000个按钮显示在body区域-->
+
+			<!--
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+			-->
+		
+		<script>
+		
+			//设计一个10*10表格
+			var html='<table border="1">';
+			for(var i=1;i<=10;i++){
+				html+='<tr>';
+					for(var j=1;j<=10;j++){
+						html+='<td>'+j+'</td>';
+					}
+				html+='</tr>';
+			}
+			
+			html+='</table>';
+			document.body.innerHTML=html;
+		
+			/*var i=1;
+			while(i<=10000){
+				document.body.innerHTML+='<input type="button" value="按钮"/>';
+				i++;
+			}*/
+			
+			
+			/*var i=0;
+			var str='';//空字符串
+			while(i<=10){
+				str+='<input type="button" value="按钮"/>';
+				i++;
+			}
+			//alert(str);
+			document.body.innerHTML=str;*/
+			
+			/*var str='<ul>';
+				for(var i=1;i<=10;i++){
+					str+='<li>'+i+'</li>';
+				}
+			str+='</ul>';
+			document.body.innerHTML=str;*/
+			
+			/*var html='<ul>';
+			for(var i=1;i<=10;i++){
+				html+='<li><a href="#"><img src="img/'+i+'.jpg"/></a><p>图片的介绍'+i+'</p></li>';
+			}
+			html+='</ul>';
+			document.body.innerHTML=html;*/
+			
+		</script>
+		
+		
+	</body>
+</html>

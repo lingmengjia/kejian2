@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*var obj='{"name":"zhangsan","age":100,"sex":"男"}';
+			//alert(typeof obj);//string
+			var obj1=JSON.parse(obj);//JSON.parse():将类似对象的json字符串转换成对象。
+			//var obj1={"name":"zhangsan","age":100,"sex":"男"};
+			alert(obj1.name);
+			
+			
+			var arr=[
+				{"url":"http://www.baidu.com"},
+				{"url":"http://www.baidu.com"},
+				{"url":"http://www.baidu.com"},
+				{"url":"http://www.baidu.com"},
+				{"url":"http://www.baidu.com"},
+				{"url":"http://www.baidu.com"},
+				{"url":"http://www.baidu.com"},
+				{"url":"http://www.baidu.com"}
+			];*/
+			//http://127.0.0.1/js1702other/1702mysql/taiji.php
+			
+			var xhr=new XMLHttpRequest();//新建ajax对象
+			xhr.open('get','http://127.0.0.1/js1702other/1702mysql/taiji.php',true);
+			xhr.send();
+			xhr.onreadystatechange=function(){
+				if(xhr.readystate==4 || xhr.status==200){
+					//alert(typeof xhr.responseText);
+					var data=JSON.parse(xhr.responseText);
+					//console.log(data);
+					//alert(data[data.length-1].title)
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

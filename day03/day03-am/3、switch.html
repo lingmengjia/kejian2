@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*switch(表达式){//基本结构
+				case 值:  语句块; //如果表达式的值和case后面的值相同，执行此case后面的语句块。(穿透力)
+				break;//break:终止程序运行，程序结束
+				default 语句块;//如果表达式的结果和任意的case都不相同，执行default下面的语句。(可以省略)
+			}*/
+			
+			//新建日期对象
+			//new Date();//Date():构造函数，必须new实例化对象
+			//var time=new Date();//新建日期对象
+			//alert(time.toLocaleString());//输入日期(本地)
+			//alert(time.getDay());//获取日期下面的星期
+			/*var num=prompt('请输入1-7之间的数字：');
+			switch(Number(num)){//将num转换成对应的数字
+				//将switch的结果和case后面的值进行比较，如果相同，输出对应case里面的语句。
+				case 1: alert('星期一'); break;
+				case 2: alert('星期二'); break;
+				case 3: alert('星期三'); break;//break非常重要(阻止case穿透力)
+				case 4: alert('星期四'); break;
+				case 5: alert('星期五'); break;
+				case 6: alert('星期六'); break;
+				case 7: alert('星期日'); break;
+				default:alert('输入有误');
+			}*/
+			
+			
+			var num=prompt('请输入1-12之间的数字：');
+			switch(Number(num)){//将num转换成对应的数字
+				//将switch的结果和case后面的值进行比较，如果相同，输出对应case里面的语句。
+				case 1: 
+				case 3: 
+				case 7:
+				case 8://利用case穿透力
+				case 5: alert('大月'); break;
+				
+				default:alert('输入有误');
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

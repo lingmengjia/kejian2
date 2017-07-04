@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//快速排序
+			/*function quicksort(array){//定义一个函数
+				if(array.length<=1){//如果数组的长度<=1，直接返回
+					return array;
+				}
+				//获取数组中间的索引，通过索引或者值。
+				var midIndex=Math.floor(array.length/2);//向下取整,获取中间的索引
+				//根据中间的索引获取对应的值。(splice)
+				var midValue=array.splice(midIndex,1);//splice:会改变原数组，midValue会被删除。
+				var left=[];
+				var right=[];
+				for(var i=0;i<array.length;i++){//遍历数组
+					if(array[i]<midValue){
+						left.push(array[i]);//如果当前的值比midValue小，push到left数组里面
+					}else{
+						right.push(array[i]);
+					}
+				}
+				return quicksort(left).concat(midValue,quicksort(right));
+			}
+			
+			alert(quicksort([2,1,56,48,63,25,17,888,14,369,7456]));//调用传参*/
+			//Maximum call stack size exceeded:栈溢出：类似于死循环
+			//alert([2,1,56,48,63,25,17,888,14,369,7456].sort(function (a,b){return a-b}));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

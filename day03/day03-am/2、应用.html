@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		/*//开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适(身高：cm)
+		var height=prompt('请输入身高：');
+		var weight=prompt('请输入你的体重');
+		var max=(height-108)*2+10;//标准下面最大值
+		var min=(height-108)*2-10;//标准下面最小值
+		if(weight>max){
+			alert('偏胖');
+		}else if(weight<=max && weight>=min){
+			alert('标准的高富帅');
+		}else if(weight<min){
+			alert('多吃点');
+		}else{
+			alert('出错了，重新输入');
+		}*/
+		/*要求：
+		1）点击保存按钮时，使用JS判断用户的联系电话是否为纯数字，如果用户输入有错误，使用alert()弹框警告
+		2）判断用户名是否填写，如果空白，使用alert弹框警告*/
+		//var str='helloo';
+		//alert(str.length);//length:长度
+		var num=123456;
+		//alert(String(num).length);
+		</script>
+	</head>
+	<body>
+		<fieldset id="" style="width: 400px;"> 
+			<legend>用户详细信息</legend>
+			<label for="">用户名称</label><input type="text" id="name" /><br />
+			<label for="">用户电话</label><input type="text" id="tel" />
+			<button id="btn">保存</button>
+		</fieldset>
+		<script type="text/javascript">
+			var oBtn=document.getElementById('btn');//获取按钮
+			var oName=document.getElementById('name');//获取用户名称
+			var oTel=document.getElementById('tel');//获取电话
+			oBtn.onclick=function(){
+				/*if(oName.value==''){
+					alert('用户名不能为空');
+				}*/
+				/*if(Number(oTel.value)){//是数字
+					if(String(oTel.value).length!=11){
+						alert('是数字，不是手机号码');
+					}
+				}else{//不是数字
+					alert('输入的不是数字');
+				}*/
+				/*if(oTel.value!=''){//不等于空
+					if(Number(oTel.value)){//是数字
+						if(String(oTel.value).length!=11){//长度是否为11
+							alert('长度必须为11位');
+						}
+					}else{//不是数字
+						alert('输入的不是数字');
+					}
+				}else{
+					alert('请输入电话号码');
+				}*/
+				
+				/*if(oName.value!='' && oTel.value!=''){
+					if(Number(oTel.value) && String(oTel.value).length==11){
+						alert('ok');
+					}else{
+						alert('不是数字或者长度不够');
+					}
+				}else{
+					alert('输入不能为空')
+				}*/
+			};
+		</script>
+	</body>
+</html>

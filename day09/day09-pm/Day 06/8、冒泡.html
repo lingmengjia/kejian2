@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*var arr=[2,1,56,48,63,25,17,14,369,7456];
+			var temp;
+			var time=0;
+			for(var i=0;i<arr.length-1;i++){
+				for(var j=i+1;j<arr.length;j++){
+					if(arr[i]>arr[j]){
+						temp=arr[i];
+						arr[i]=arr[j];
+						arr[j]=temp;
+					}
+					console.log('遍历的次数是:'+ ++time);
+				}
+			}
+			alert(arr);*/
+			
+			/*var arr=[2,1,56,48,63,25,17,14,369,7456];
+			var temp;
+			var time=0;
+			for(var i=0;i<arr.length;i++){//控制下面遍历的次数
+				for(var j=0;j<arr.length-i;j++){
+					if(arr[j]>arr[j+1]){
+						temp=arr[j];
+						arr[j]=arr[j+1];
+						arr[j+1]=temp;
+					}
+					console.log('遍历的次数是:'+ ++time);
+				}
+			}
+			alert(arr);*/
+			
+			//选择排序
+			/*var arr=[2,1,56,48,63,25,17,14,369,7456,14,17,63];
+			var temp;
+			var time=0;
+			for(var i=0;i<arr.length;i++){
+				var minIndex=i;
+				for(var j=i+1;j<arr.length;j++){
+					if(arr[j]<arr[minIndex]){//arr[minInde]:最小值。
+						minIndex=j;
+					}
+				}
+				
+				if(i!=minIndex){
+					temp=arr[i];
+					arr[i]=arr[minIndex];
+					arr[minIndex]=temp;
+				}
+			}
+			
+			alert(arr);*/
+			
+			//var arr=[2,1,56,1,2,48,369,48,63,25,17,14,369,7456,14,17,63];
+			/*var newarr=[];
+			newarr.push(arr[0]);
+			for(var i=1;i<arr.length;i++){
+				if(newarr.indexOf(arr[i])==-1){
+					newarr.push(arr[i]);
+				}
+			}
+			alert(newarr);*/
+			
+			/*var s1=new Set(arr);//不允许重复  //Set数据结构
+			console.log(s1);*/
+			
+			//2．有一个从小到大排好序的数组。现输入一个数，要求按原来的规律将它插入数组中。
+
+			function insert(arr,num){
+				for(var i=0;i<arr.length;i++){
+					if(arr[i]>num){//如果当前值比我插入值大，取代你的位置，循环终止。
+						break;//终止循环
+					}
+				}
+				for(var j=arr.length-1;j>=i;j--){//后面的每一个值都往后移一位。
+					arr[j+1]=arr[j];
+				}
+				arr[i]=num;
+				
+				return arr;
+			}
+			alert(insert([1,3,5,7,9,11,13],0));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

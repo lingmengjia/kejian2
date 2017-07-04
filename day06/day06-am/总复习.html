@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//1、变量:这周开始规范命名。
+			//变量命名：驼峰命名：从第二个单词开始，首字符大写。
+			window.onload=function(){
+				//var aNews=document.getElementsByTagName('li');//一组li元素。
+				//var oNews=document.getElementById('news');//一个对象元素。
+				//通过按钮控制盒子显示与隐藏
+				var oBtn=document.getElementById('btn');
+				var oBox=document.getElementById('box');
+				var bStop=true;//开关。代表盒子是显示的。
+				oBtn.onclick=function(){
+					//oBox.id//获取html元素的属性
+					if(bStop){//盒子显示
+						oBox.style.display='block';//获取css的属性，多一个style
+						bStop=false;
+					}else{//否则盒子隐藏
+						oBox.style.display='none';
+						bStop=true;
+					}
+				}
+			}
+			//2.是否属性：if三种结构   switch...case
+			//3、while循环，for循环，for循环的嵌套，断点调试
+			//4、函数使用(重用，代码冗余)  函数：普通函数、函数表达式(匿名函数，事件处理函数)
+			</script>
+	</head>
+	<body>
+		<!--<ul class="news" id="news">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>-->
+		<button id="btn">显示/隐藏</button>
+		<div id="box" style="width: 200px;height:300px; background: red; display:none;"></div>
+	</body>
+</html>

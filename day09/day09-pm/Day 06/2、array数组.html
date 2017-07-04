@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 500px;height: 500px;background: blue;
+			}
+			
+			#div2{
+				width: 200px; height: 200px; background: red;
+			}
+		</style>
+		<script type="text/javascript">
+			//数组的两种创建方式  构造函数创建   字面量创建(json创建)；
+			//数组：一组类型相同或者不同的数据。
+			//alert(arr.constructor);//function Array() { [native code] }  查看构造函数本身(只有基本框架)
+			
+			//1、构造函数创建arr数组
+			/*var arr=new Array(6);//构造函数创建arr数组
+			//如果数组只有一个数字，代表的是长度，如果有多个值，代表的是数组的每一项。
+			alert(arr);//打印所有的数组里面的数据
+			alert(arr.length);//获取数组的长度*/
+			
+			//var arr=new Array('a',6,null,undefined,7);//null undefined:不输出
+			/*var arr=new Array('a',6,'b','c',7);//a,6,b,c,7
+			alert(arr);//打印所有的数组里面的数据
+			alert(arr.length);//获取数组的长度*/
+			
+			//2、字面量创建数组
+			/*var arr=['a',6,'b','c',7];
+			alert(arr);
+			alert(arr.length);*/
+			
+			
+			//3、获取数组的某一项的值。--通过数组的索引。数组的索引从0开始。
+			/*var arr=['apple','banana','orange','pear'];
+			alert(arr[1]);*/
+			
+			//4、下标==编号
+			//var arr=['apple',function(){alert('hehe')},true,100];
+			//arr[1]();
+			//alert(arr.0);
+			//alert(arr[0]);
+			//alert(arr['3']);//编号
+		</script>
+	</head>
+	<body>
+		<!--<div id="div2" ></div>-->
+		<ul id="btn">
+			<li>a</li>
+			<li>b</li>
+			<li>c</li>
+			<li>d</li>
+			<li>e</li>
+			<li>f</li>
+			<li>g</li>
+		</ul>
+		<ol id="title">
+			<li>a1111111111111111111111111111</li>
+			<li>b2222222222222222222222222222</li>
+			<li>c3333333333333333333333333333</li>
+			<li>d4444444444444444444444444444</li>
+			<li>e5555555555555555555555555555</li>
+			<li>f6666666666666666666666666666</li>
+			<li>g7777777777777777777777777777</li>
+		</ol>
+		<script type="text/javascript">
+			var oBox=document.getElementById('div2');
+			//alert(oBox.id);//获取盒子的id属性
+			//alert(oBox.style.width);//获取盒子css属性
+			//alert(oBox['id']);
+			//alert(oBox['style']['width']);//中括号基本上除了变量其他的都需要添加引号。
+			//对于字符串来说,点操作符和[]操作符相互转换.
+			
+			/*oBox.onclick=function(){
+				oBox.id='div1';//将div1赋值给oBox的id.  对默认的属性进行赋值。
+			}*/
+			//oBox.xxx='yyy';//通过js的方式给元素设置自定义的属性。
+			
+			//alert(oBox.xxx);//获取自定义的属性。
+			var oBtn=document.getElementById('btn');
+			var oTitle=document.getElementById('title');
+			var aBtnLi=oBtn.getElementsByTagName('li');//aLi:类数组(和数组很相似，具有数组的下标以及length属性，不具有数组的方法)
+			var aTitleLi=oTitle.getElementsByTagName('li');//aLi:类数组(和数组很相似，具有数组的下标以及length属性，不具有数组的方法)
+			
+			//alert(aLi[0].innerHTML);
+			//alert(aLi.length);
+			
+			for(var i=0;i<aBtnLi.length;i++){
+				aBtnLi[i].index=i;//给按钮添加自定义属性
+				aBtnLi[i].onclick=function(){//给所有的按钮添加点击事件
+					alert(this.index);
+					//this//当前所操作的元素对象。
+					//aTitleLi[this.index].style.background='red';
+					//this.index:当前点击的按钮的自定义属性的值.
+				}
+			}
+			
+		</script>
+	</body>
+</html>

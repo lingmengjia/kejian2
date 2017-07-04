@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;margin:0px;
+			}
+			#banner{
+				width: 790px;height: 340px; margin: 50px auto;border: 1px solid #000;
+				position: relative;
+			}
+			ul,ol{
+				list-style: none;
+			}
+			#banner ul li{
+				position: absolute;left:0px;top:0px;
+				opacity: 0;
+				transition: all 0.5s;
+			}
+			#banner ol{
+				position: absolute;
+
+				width: 284px;
+				height: 30px;
+				left:50%;
+				margin-left: -142px;
+				bottom: 20px;
+			}
+			#banner ol li{
+				float: left;
+				width: 30px;height: 30px;border-radius: 50%;background: #abcdef;
+				text-indent: -99999px;
+				margin-right: 5px;
+
+			}
+			#left,#right{
+				position: absolute;
+				font-size: 100px;
+				color:#fff;
+				text-decoration: none;
+				top:50%;
+				margin-top: -70px;
+			}
+			#left{
+				left:20px;
+			}
+			#right{
+				right:20px;
+			}
+			#banner ol li.active{
+				background: red;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var oBtn=document.getElementsByTagName('ol')[0];//找到一个ol元素
+				var aBtnList=oBtn.getElementsByTagName('li');//8
+				var oUl=document.getElementsByTagName('ul')[0];//找到一个ul元素。
+				var aPicList=oUl.getElementsByTagName('li');//8
+				var oLeft=document.getElementById('left');
+				var oRight=document.getElementById('right');
+				var num=0;//接收索引
+				var timer=null;
+				
+				function tab(){//切换的过程
+					for(var i=0;i<aBtnList.length;i++){
+						aPicList[i].style.opacity='0';
+						aBtnList[i].className='';
+					}
+					aBtnList[num].className='active';
+					//this.index:当前点击的按钮的索引
+					aPicList[num].style.opacity='1';
+				}
+				
+				for(var i=0;i<aBtnList.length;i++){
+					aBtnList[i].index=i;
+					aBtnList[i].onmouseover=function(){
+						num=this.index;
+						tab();
+					}
+				}
+				
+				
+				//点击右键
+				oRight.onclick=function(){
+					if(num<7){
+						num++;
+					}else{
+						num=0;
+					}
+					tab();
+				}
+				
+				oLeft.onclick=function(){
+					if(num>0){
+						num--
+					}else{
+						num=7;
+					}
+					tab();
+				}
+				
+				timer=setInterval(function(){
+					oRight.onclick();
+				},2000);
+				
+				document.getElementById('banner').onmouseover=function(){
+					clearInterval(timer);
+				}
+				document.getElementById('banner').onmouseout=function(){
+					timer=setInterval(function(){
+						oRight.onclick();
+					},2000);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="banner">
+			<ul>
+				<li style="opacity: 1;"><img src="http://localhost/jd/img/lunbo/lunbo1.jpg"></li>
+				<li><img src="http://localhost/jd/img/lunbo/lunbo2.jpg"></li>
+				<li><img src="http://localhost/jd/img/lunbo/lunbo3.jpg"></li>
+				<li><img src="http://localhost/jd/img/lunbo/lunbo4.jpg"></li>
+				<li><img src="http://localhost/jd/img/lunbo/lunbo5.jpg"></li>
+				<li><img src="http://localhost/jd/img/lunbo/lunbo6.jpg"></li>
+				<li><img src="http://localhost/jd/img/lunbo/lunbo7.jpg"></li>
+				<li><img src="http://localhost/jd/img/lunbo/lunbo8.jpg"></li>
+			</ul>
+			<ol>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+			</ol>
+			<a href="javascript:;" id="left">&lt;</a>
+			<a href="javascript:;" id="right">&gt;</a>
+		</div>
+	</body>
+</html>

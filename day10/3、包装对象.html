@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//var a=5;
+			//alert(a.toFixed(3));
+			
+			//var str='abc';
+			//alert(str.length);
+			//str.hehe=200;
+			//alert(str.hehe);//undefined
+			
+			//alert(5.toFixed(3));//报错
+			
+			/*var arr=[];//object
+			arr.hehe=100;
+			alert(arr.hehe);*/
+			//var str='abc';//分字符串值
+			//var str=new String('abc');//字符串对象
+			//str=new String('abc');//隐式创建
+			//alert(str.length);
+			
+			//alert(str.length);
+			
+			
+			/*alert(function fn(a,b,c){
+				
+			}.length);//参数的个数*/
+			
+			//charAt(num):返回对应字符串索引的内容。num:数字
+			//var str='恨';
+			//var str='abcdaefg';
+			//var arr=[1,2,3,4,5,1,2,3,4,5]
+			//alert(str.charAt(5));
+			
+			//charCodeAt(num):返回对应的字符串索引的内容的unicode编码
+			//alert(str.charCodeAt(0));
+			//String.fromCharCode(unicode编码);将参数中的unicode编码返回成对应的字符串的内容，多个编码用逗号分隔。
+			//alert(String.fromCharCode(24680));
+			
+			//indexOf(‘查找字符’, ’开始位置’)
+			//alert(arr.indexOf(1,3));//5
+			//alert(str.indexOf('a',3))
+			
+			//var text='这件衣服是你妈的还是你妹的还是你爷的，还是你大爷的。';
+			//alert(text.replace('妈','**'));
+			/*alert(text.replace(/妈|妹|爷/g,'**'));*/
+			
+			
+			//split
+			/*var str='cdabcdaefg';
+			alert(typeof str);
+//			alert(str.split(''));
+			alert(str.split('a',2));
+			alert(typeof str.split(''));
+			*/
+			/*substring()：用来截取字符串的内容
+				没有参数全部截取。相当于从第0位开始截取。
+				一个参数代表截取从参数的位置往后的字符串。
+				两个参数代表截取两个参数之间的字符串，包括第一个参数的位置。
+				两个参数的时候，当第二个参数小于第一个参数，自动交换位置。
+				如果是负数，当做0来处理。*/
+			var str='abcdefg';
+			//alert(str.substring(-5,1));
+			/*substr(start, length); 用来截取字符串的内容
+			start：开始的索引，如果为负数，从后往前进行截取，包括开始的索引。
+			length：截取的长度。*/
+			
+			//alert(str.substr(0,6));
+			alert(str.substr(-5,3));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

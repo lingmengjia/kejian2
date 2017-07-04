@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		//1、定义一个普通函数。普通函数其实也可以叫它是window下面的方法。
+			//fname();
+			/*function fname(){
+				alert(1)
+			}*/
+			//fname();//普通的函数调用。自由自在的
+			//window.fname();//fname:方法；不自由
+			//document.write();
+		</script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//fname();
+			//2、函数表达式
+			//alert(fname);//输出函数本身的代码。
+		 /*	function fn(){
+				alert('ok');
+			}
+			fn()
+			* */
+			
+			/*(function(){//自执行的函数表达式(匿名函数)111111
+				alert('ok');
+			})();*/
+			
+			
+			/*function fn(){
+				alert('ok');
+			}*/
+			
+			/*(function fn(){//没有东西能够证明function fn(){alert('ok');就是一个表达式}
+				alert('ok');
+			})();*/
+			
+			/*!function fn(){
+				alert('ok');
+			}();*/
+			
+			/*alert(~alert());*/
+			
+			/*(function(){//最好的匿名函数的写法
+				
+			})()*/
+			
+			//a();
+			/*var a=function (){ alert('函数表达式') };//函数表达式222222
+			
+			a();*/
+			/*a:语句
+			a+b:表达式(结果)*/
+			//a++;
+			//++a;
+			+function(){   //+-!~ [():括号是大家认可的]
+				alert('abc');
+			}();//js一旦看到function，当作函数的定义。
+		</script>
+	</body>
+</html>

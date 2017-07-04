@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*var arr=[1,2,3,4];*/
+			/*alert(typeof arr);//object
+			alert(arr.constructor);//输出构造函数原型。*/
+			//Array.isArray():确定括号中的值到底是不是数组,返回一个布尔值。
+			//var obj={a:5,b:6};
+			/*alert(typeof obj);//object
+			alert(obj.constructor);*/
+			/*alert('arr:'+Array.isArray(arr));//true
+			alert('obj:'+Array.isArray(obj));//false*/
+			
+			//alert(Array.isArray([1,2,3]));//true
+			//var arr=['a'];
+			//1、push() 可以接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后数组的长度。
+			/*alert(arr.push(5,6,7,8));//返回修改后数组的长度
+			alert(arr);*/
+			
+			//1．定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。
+			//2．随机点名程序。
+			//arrnum=[2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60]
+			/*var arrnum=[];//定义一个空数组
+			var arrsvg=[];
+			for(var i=1;i<=30;i++){//30次遍历和数值有关
+				arrnum.push(i*2);
+			}
+			var svg=0;
+			for(var j=0;j<arrnum.length;j++){
+				svg+=arrnum[j];//求出所有数组的和。
+				if((j+1)%5==0){//每5个走一次if语句。
+					arrsvg.push(svg/5);
+					svg=0;
+				}
+			}
+			document.write(arrnum);
+			document.write('<br>');
+			document.write(arrsvg);*/
+			
+			/*var arr=['孙孟成','万翔','张三','李四','王五','赵六','孙飞','郭俊'];
+			var timer=null;
+			var bstop=true;
+			function getrandom(min,max){
+				return parseInt(Math.random()*(max-min+1))+min;
+			}
+			window.onload=function(){
+				function ranname(){
+					document.body.innerHTML='扫地的同学是：'+arr[getrandom(0,arr.length-1)];
+				}
+				ranname();//加载完成就执行。
+				timer=setInterval(ranname,5);//每5ms执行一次函数(函数名);
+				document.onkeyup=function(){
+					if(event.keyCode==32 && bstop){
+						clearInterval(timer);
+						bstop=false;
+					}else{
+						timer=setInterval(ranname,5);
+						bstop=true;
+					}
+				}
+			};*/
+			
+			//2、pop() 从数组末尾移除最后一项，减少数组的length值，然后返回移除的项。
+			/*var arr=[1,2,3,4];
+			alert(arr.pop());
+			arr.pop();
+			arr.pop();
+			alert(arr);*/
+			
+			
+			//3、unshift()方法能够在数组前端添加任意个项并返回新数组的长度。
+			
+			/*var arr=['a','b','c','d'];
+			alert(arr.unshift('e','f'));//e,f,a,b,c,d
+			alert(arr);*/
+			
+			//4、shift() 方法能够移除数组中的第一个项并返回该项，同时将数组长度减 1。
+			/*var arr=['a','b','c','d'];
+			alert(arr.shift());//a
+			alert(arr);//b,c,d*/
+			
+			
+			//var arr=['a','b'];
+			//arr[0]='c';//替换
+			//arr[2]='c';//新增
+			//alert(arr);
+			
+			//编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型，判断数组中是否存在某个值。
+			/*function inArray(arr,str){
+				if(Array.isArray(arr)){
+					for(var i=0;i<arr.length;i++){
+						if(arr[i]===str){
+							return true;
+						}
+					}
+					return false;
+				}
+				
+			}
+			
+			alert(inArray(['a','hello','hi','6',60,100],'hi'));*/
+			
+			
+			/*var a=[1,2,3];
+			var b=a;//引用传递：(地址传递)
+			b.push(4);
+			alert('b:'+b);
+			alert('a:'+a);*/
+			
+			/*var num=5;
+			var num1=num;//基本类型：值传递。
+			num1++;
+			alert(num1);
+			alert(num);*/
+			
+			/*var obj={
+				name:'zhangsan',
+				showName:function(){
+					alert(obj.name);
+				}
+			}*/
+			
+			/*var a1=['a'];
+			var a2=[];
+			alert(a1.length==a2.length);//false;
+			alert(a1.push===a2.push);//true*/
+			/*function Array(){//系统的构造函数。
+				this.length='haha';
+			}
+			var arr=new Array(1,2,3,4);
+			
+			Array.prototype.push=function(){
+				alert('hehe');
+			}
+			alert(arr.length);
+			arr.push(5);*/
+			
+			//var arr=[1,2,3,4];
+			Array.prototype.inArray=function(value){
+				for(var i=0;i<this.length;i++){
+					if(this[i]===value){//this:当前new出来实例对象。
+						return true;
+					}
+				}
+				return false;
+			}
+			
+			
+			
+		/*	var arr1=['a','b','c'];
+			//alert(arr1.inArray('d'));
+			
+			var arr2=['hello','hi'];
+			alert(arr2.inArray('hi1'));*/
+	</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

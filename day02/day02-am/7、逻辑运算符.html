@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//逻辑运算符   && ||  !
+			//1、逻辑与：只有在第一个操作数和第二个操作数都为真的情况下，结果为真。(符号的两边结果都为真，结果为真)
+			//输出结果为真的值。
+			//alert(5>3 && 3>2);//true
+			
+			/*alert(1&&2);
+			alert(2&&3);*/
+			
+			//alert(2&&0);
+			//alert('hello'&&'hi');
+			//alert(false&&true);//两边为真，才为真
+			//alert(5<3 && 3>2);//两边为真，才为真
+			//'' 0 转换成布尔值应该都是false
+			//如果符号左边的值，为false，输出对应的值，如果符号左右两边的值都为真，输出右边的值。
+			/*alert('hello'&&'hi');//hi
+			alert(''&&'hi');//空
+			alert(3&&4);//4
+			alert(0&&3);*/
+			alert(3&&1)
+			//fn&&fn();//如果fn存在的话，调用fn方法。
+			
+			//2、||：符号的两边结果有一个为真，结果为真。
+			//alert(3>2 || 4<3);//true
+			//alert(3>2 || dsfasdfadsfdsafadsfdsaf);//true
+			//alert(6<5 ||4<3 );//false
+			//结果为真的值输出(条件判断、浏览器兼容)；
+			/*alert(1||2);//1
+			alert(0||1);//1
+			alert(2||0);//2*/
+			alert(0||0);
+			
+			//3.!(取反)，具有隐式转换功能
+			//alert(!!!!!3);//数字非0即真，字符串：非空即真'' 
+			
+			
+			//一元运算符：++ --  自己+1
+			/*var a=5;
+			a++;//a=a+1   a+=1
+			alert(a);*/
+			
+			var a=5;
+			/*alert(a++);//5    ++在后面：先赋值(参与运算)后自加
+			alert(a)//6*/
+			alert(++a); //6   ++在前面：先自加再赋值(参与运算)
+			alert(a);//6 
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

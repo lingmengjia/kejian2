@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		//参数：形参、实参
+		//形参：形式上存在的参数
+		//实参：实际内容的参数
+		//局部变量：只对函数内有效（函数内部，es6除外）
+		//全局变量：对整个程序有效
+			/*function fn(a,b){//a,b形参(a,b相当于函数的局部变量)
+				alert(a+b);
+			}
+			
+			fn(1,6);//1，6实参*/
+			
+			/*function  fn(){
+				var a=10;
+				alert(a);
+			}
+			
+			fn();
+			alert(a);//a is not define;局部变量只对函数内有效*/
+			
+			/*function  fn(){
+				'use strict';//严格模式：更严格的一种js的书写方式。
+				a=10;//如果没有var关键字：a变成全局变量。
+				alert(a);
+			}
+			
+			fn();
+			alert(a);//a is not define;局部变量只对函数内有效*/
+			
+			//总结：es5除了函数，没有块作用域。
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

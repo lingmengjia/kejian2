@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//alert(String.fromCharCode());
+			//String.fromCharCode():字符串下面的静态方法，将对应的数字转换成unicode编码
+			//charCodeAt():字符串下面的方法，将对应的字符转换成对应的数字编码。
+			/*var str='我恨你';
+			for(var i=0;i<str.length;i++){
+				document.write(str[i].charCodeAt()+',');
+			}*/
+			//alert(str.charCodeAt());
+			//document.write(String.fromCharCode(25105,24680,20320));
+			
+			/*window.onload=function(){
+				var html='';
+				for(var i=0;i<200;i++){
+					html+=String.fromCharCode(i);
+				}
+				
+				document.body.innerHTML=html;
+			}*/
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 100px;height:100px;background: red;position: absolute;left:300px;top:100px;"></div>
+		<script type="text/javascript">
+			//var oDiv=document.getElementById('box');
+			//alert(oDiv.id);//获取元素的属性
+			//alert(oDiv.style.width);//获取内联css样式
+			//alert(oDiv.style.left);//300px;
+			
+			document.onkeydown=function(){//87  68
+				var oDiv=document.getElementById('box');
+				//keyCode:键盘的键码；
+				//alert(event.keyCode);//获取简码event:事件对象。
+				if(event.keyCode==65){
+					oDiv.style.left=parseInt(oDiv.style.left)-10+'px';
+				}else if(event.keyCode==83){
+					oDiv.style.top=parseInt(oDiv.style.top)+10+'px';
+				}else if(event.keyCode==87){
+					oDiv.style.top=parseInt(oDiv.style.top)-10+'px';
+				}else if(event.keyCode==68){
+					oDiv.style.left=parseInt(oDiv.style.left)+10+'px';
+				}else{
+					alert('按错了');
+				}
+			}
+			
+		</script>
+	</body>
+</html>

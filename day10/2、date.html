@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//日期对象:  new  Date();
+			//获取日期，设置日期。
+			//var date=new Date();
+			//alert(date);//输出默认当前日期。
+			//alert(date.toLocaleString());//本地格式
+			
+			//日期对象的常用的方法：setFullYear / getFullYear()
+			/*date.getFullYear();//四位数的年份
+			date.getMonth();//+1(0-11)  月份
+			date.getDate();//日
+			date.getDay();//获取星期
+			date.getHours();
+			date.getMinutes();
+			date.getSeconds();*/
+			
+			
+			//1970.1.1
+			//输出：2017年5月26日  星期五  17：06：25
+			
+			//倒计时
+			
+			//页面停留事件
+			
+			//图片时间
+			
+			//封装函数：实现输出：2017年5月26日  星期五  17：06：25
+			/*window.onload=function(){
+				function double(num){
+					return num<10? '0'+num :num;
+				}
+				function time(){
+					var date=new Date();
+					var str='';
+					var year=date.getFullYear();
+					var month=date.getMonth()+1;
+					var day=date.getDate();
+					var week='';
+					switch(date.getDay()){
+						case 1:week='星期一';break;
+						case 2:week='星期一';break;
+						case 3:week='星期一';break;
+						case 4:week='星期一';break;
+						case 5:week='星期五';break;
+						case 6:week='星期六';break;
+						case 7:week='星期一';break;
+						default:alert('日期输入有误！');
+					}
+					var hour=date.getHours();
+					var min=date.getMinutes();
+					var sec=date.getSeconds();
+					str='今天是：'+year+'年'+double(month)+'月'+double(day)+'日 &nbsp;'+week+'&nbsp;'+double(hour)+':'+double(min)+':'+double(sec);
+					document.body.innerHTML=str;
+				}
+				
+				time();
+				setInterval(time,1000);
+			}
+			*/
+			
+			//var date=new Date(2017,11,120,12,12,12);//设置日期
+			//var  date=new Date('2018/12/12');
+			//date.setDate(66);//自己运算
+			//var date=new Date('jan aug 26 2017 17:39:52');//设置日期
+			//alert(date);
+			//alert(date.toLocaleString());
+			//倒计时
+			window.onload=function(){
+				function double(num){
+					return num<10? '0'+num :num;
+				}
+				function djs(){
+					var future=new Date(2017,4,27,18,0,0);
+					var nowtime=new Date();
+				    var time=(future-nowtime)/1000;
+				    
+				    var day=Math.floor(time/86400);
+				    var hour=Math.floor(time%86400/3600);
+				    var min=Math.floor(time%86400%3600/60);
+					var sec=Math.floor(time%60);
+					
+					str=double(day)+'天'+double(hour)+'时'+double(min)+'分'+double(sec)+'秒';
+					document.body.innerHTML=str;
+				}
+				
+				djs();
+				setInterval(djs,1000);
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

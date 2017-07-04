@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//1、变量
+			//2、分支语句---if...else   循环语句---for
+			//3、获取元素、操作属性(html标签具有属性、css属性)
+			//函数
+			//function:定义函数的关键字
+			//biaoge:函数的名字(自定义)
+			//函数名后面的括号可以放置一些参数(东西)；
+			//{}：放置就是你要(重发/反复)执行的语句块
+		/*	biaoge();
+			biaoge();
+			biaoge();
+			function biaoge(){//定义了一个函数，此时不会执行，调用才会执行。
+				for(var i=1;i<=9;i++){
+					for(var j=1;j<=i;j++){
+						document.write(j+'*'+i+'='+i*j+'&nbsp;');
+					}
+					document.write('<br>');
+				}
+			}
+			//函数的调用:函数名();
+			
+			biaoge();
+			biaoge();
+			biaoge();*/
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3"></div>
+		<div id="box4"></div>
+		<script type="text/javascript">
+		/*alert(document.getElementById('box'));
+		alert(document.getElementById('box1'));
+		alert(document.getElementById('box2'));
+		alert(document.getElementById('box3'));
+		alert(document.getElementById('box4'));*/
+		
+		function $(id){
+			alert(document.getElementById(id));
+		}
+		$('box');
+		
+			/*function createTable(rows,cols,hehe,content){//定义了一个函数
+				var html='<table border="1" bgcolor="'+hehe+'">';
+				for(var i=1;i<=rows;i++){
+					html+='<tr>';
+					for(var j=1;j<=cols;j++){
+						html+='<td>'+content+'</td>';
+					}
+					html+='</tr>';
+				}
+				html+='</table>';
+				document.body.innerHTML+=html;
+			}
+			createTable(5,6,'red','3333');
+			createTable(5,6,'orange');
+			createTable(5,6,'yellow');
+			createTable(5,6,'green');
+			createTable(5,6,'cyan');
+			createTable(5,6,'blue');
+			createTable(5,6,'purple');*/
+		
+			
+		</script>
+	</body>
+</html>
