@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//同步：（阻塞）
+			//异步：（非阻塞）
+			/*alert('hello');
+			setInterval(function (){//模拟的异步
+				alert('hi');
+			},0)
+			alert('hehe');*/
+			
+			/*alert(1);
+			setTimeout(function(){//延时定时器
+				alert(dsafdasfdsafadsf);
+			},2000);
+			alert(2);*/
+			
+			/*alert(sadfdsafdsaf);//同步
+			alert(1);*/
+			
+			
+			//this：函数
+			//全局函数this--->window（非严格模式）
+			//事件处理函数this-->指向当前的对象。
+			//构造函数--->this(实例化的对象)
+			
+		/*	function fn(){
+				alert(this);//window:定义一个全局函数
+			}*/
+			//fn();//[object Window]
+			
+			
+			//setTimeout(fn,3000);//[object Window]
+			
+			
+			//document.onclick=fn;//[object HTMLDocument]
+			
+			/*document.onclick=function(){
+				var that=this;
+				setTimeout(function(){
+					alert(that);//解决this指向的常用方式。
+				},2000);
+			}*/
+			
+			//es5:函数this指向，按照调用来的。
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

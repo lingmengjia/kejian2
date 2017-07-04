@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="显示隐藏" />
+		<div class="box" style="width: 200px; height: 300px; background: red; display: none;">
+			
+		</div>
+		<script type="text/javascript">
+			var oBtn=document.getElementsByTagName('input')[0];
+			var oDiv=document.getElementsByTagName('div')[0];
+			oBtn.onclick=function(ev){
+				oDiv.style.display='block';
+				//标准浏览器阻止冒泡：ev.stopPropagation() 
+				//非标准浏览器阻止冒泡：ev.cancelBubble=true 
+				var ev=ev||window.event;
+				ev.stopPropagation();//有兼容问题 标准浏览器
+			}
+			
+			document.onclick=function(){
+				/*setTimeout(function(){
+					oDiv.style.display='none';//隐藏
+				},2000);*/
+				oDiv.style.display='none';//隐藏
+			}
+		</script>
+	</body>
+</html>

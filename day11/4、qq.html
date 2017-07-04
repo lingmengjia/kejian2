@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{width: 250px; height: 560px; background: orange; position: absolute;right:200px;top:50px;}
+			.box a{width: 80px;height:80px;background: blue;position: absolute;left:20px;top:20px;display: block;}
+			.box .info{width: 200px;height:300px; background: green; position: absolute;left:-220px;top:0px; display: none;}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var oBtn=document.getElementById('btn');
+				var oInfo=document.getElementById('info');
+				var timer=null;
+				//oBtn添加onmouseover
+				
+				/*oBtn.onmouseover=function(){
+					clearTimeout(timer);
+					oInfo.style.display='block';
+				};
+				
+				oBtn.onmouseout=function(){
+					timer=setTimeout(function(){
+						oInfo.style.display='none';
+					},300)
+					
+				};
+				oInfo.onmouseover=function(){
+					clearTimeout(timer);
+					oInfo.style.display='block';
+				}
+				
+				oInfo.onmouseout=function(){
+					timer=setTimeout(function(){
+						oInfo.style.display='none';
+					},300)
+				}*/
+				
+				oBtn.onmouseover=oInfo.onmouseover=function(){
+					clearTimeout(timer);
+					oInfo.style.display='block';
+				};
+				oBtn.onmouseout=oInfo.onmouseout=function(){
+					timer=setTimeout(function(){
+						oInfo.style.display='none';
+					},300)
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<a href="javascrip:;" id="btn"></a>
+			<div class="info" id="info"></div>
+		</div>
+	</body>
+</html>

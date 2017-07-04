@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#smallpic{
+				width: 400px;
+				height: 400px;
+				border: 1px solid #ff0000;
+				float: left;
+				margin-right: 5px;
+				position: relative;
+			}
+			#smallscale{
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				background: orange;
+				opacity: .5;
+				left:0px;
+				top:0px;
+				border: 1px solid orange;
+				visibility: hidden;
+			}
+			#bigscale{
+				width: 500px;
+				height: 500px;
+				border: 1px solid #ff0000;
+				float: left;
+				overflow: hidden;
+				position: relative;
+				visibility: hidden;
+			}
+			#bigpic{
+				position: absolute;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="smallpic">
+			<img src="1.jpg" alt="" width="400" height="400" />
+			<div id="smallscale"></div>
+		</div>
+		<div id="bigscale">
+			<img src="1.jpg" alt="" id="bigpic"/>
+		</div>
+		<script src="public.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//公式：小放/大放=小图/大图
+			
+			var oSmallpic=$('smallpic');
+			var oSmallscale=$('smallscale');
+			var oBigpic=$('bigpic');
+			var oBigscale=$('bigscale');
+			//1.鼠标进过盒子显示，移除盒子隐藏
+			oSmallpic.onmouseover=function(){
+				oSmallscale.style.visibility='visible';
+				oBigscale.style.visibility='visible';
+				
+				//获取小放大镜的宽高
+				var smwidth=oBigscale.offsetWidth*oSmallpic.offsetWidth/oBigpic.offsetWidth;
+				var smheight=oBigscale.offsetHeight*oSmallpic.offsetHeight/oBigpic.offsetHeight;
+				
+				oSmallscale.style.width=smwidth+'px';
+				oSmallscale.style.height=smheight+'px';
+				//大方/小方
+				var scale=oBigscale.offsetWidth/smwidth;
+				
+				oSmallpic.onmousemove=function(ev){
+					var ev=ev||window.event;
+					var l=ev.clientX-smwidth/2;
+					var t=ev.clientY-smheight/2;
+					if(l<0){
+						l=0;
+					}else if(l>=oSmallpic.offsetWidth-oSmallscale.offsetWidth){
+						l=oSmallpic.offsetWidth-oSmallscale.offsetWidth
+					}
+					if(t<0){
+						t=0;
+					}else if(t>=oSmallpic.offsetHeight-oSmallscale.offsetHeight){
+						t=oSmallpic.offsetHeight-oSmallscale.offsetHeight
+					}
+					
+					oSmallscale.style.left=l+'px';
+					oSmallscale.style.top=t+'px';
+					
+					oBigpic.style.left=-scale*l+'px';
+					oBigpic.style.top=-scale*t+'px';
+				}
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			oSmallpic.onmouseout=function(){
+				oSmallscale.style.visibility='hidden';
+				oBigscale.style.visibility='hidden';
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload=function(){
+				//1、获取事件对象
+				/*document.onclick=function(ev){//事件处理函数
+					//alert(window.event);//ie chrome   事件对象。
+					//alert(ev);//标准浏览器下事件对象就是事件处理函数的第一个参数。
+					var ev=ev||window.event;//兼容的方式获取到事件对象。
+					//alert(ev);
+				}*/
+			
+				//button
+				/*document.onmousedown=function(ev){
+					var ev=ev||window.event;
+					//alert(ev.button)
+				}*/
+				
+				//clientX、pageX、offsetX、screenX
+				/*document.onclick=function(ev){//事件处理函数
+					var ev=ev||window.event;//兼容的方式获取到事件对象。
+					console.log(ev.clientX,ev.clientY);//可视区鼠标的位置。
+					console.log(ev.pageX,ev.pageY);//鼠标在文档的位置
+					console.log(screenX,screenY);//鼠标在显示屏的位置。
+					//console.log(ev.offsetX,ev.offsetY);报错
+				}*/
+				
+				
+					/*var oDiv=document.getElementsByTagName('div');
+					oDiv[0].onclick=function(ev){
+						var ev=ev||window.event;
+						console.log(ev.offsetX,ev.offsetY);//获取鼠标的位置离当前盒子left,top的值。
+					}*/
+					
+					document.onmousemove=function(ev){
+						var ev=ev||window.event;
+						var oDiv=document.getElementsByTagName('div')[0];
+						//运动依赖于定位，将鼠标的位置复制给盒子的位置。
+						oDiv.style.left=ev.clientX-oDiv.offsetWidth/2+'px';
+						oDiv.style.top=ev.clientY-oDiv.offsetHeight/2+'px';
+					}
+				
+			}
+		</script>
+	</head>
+	<body style="height: 2000px;">
+		<div style="width: 200px; height: 200px; background: red; position: absolute;left:0px;top:0px;">11111</div>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="xss.php" method="post">
+			用户名：<input type="text" value="" name="xss"/>
+			<input type="submit" />
+		</form>
+		//"><script>alert(document.cookie)</script><!--
+		//对输入(和URL参数)进行过滤，对输出进行编码
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//JSON.parse()   JSON.stringify()
+		/*var json={//类似于json的对象
+			"name":"zhangsan",
+			"age":100
+		}
+		alert(typeof json);//object
+		alert(typeof JSON.stringify(json));//json转string*/
+
+		var json='{"name":"zhangsan","age":100}';
+		alert(typeof json);//string
+		alert(typeof JSON.parse(json));//object
+	</script>
+</body>
+</html>

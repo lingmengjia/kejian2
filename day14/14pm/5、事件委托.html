@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//事件委托==事件代理   :降低dom操作的次数
+			window.onload=function(){
+				var oUl=document.getElementsByTagName('ul')[0];
+				var aLi=document.getElementsByTagName('li');
+				/*for(var i=0;i<aLi.length;i++){
+					aLi[i].onclick=function(){
+						alert(1);
+					}
+				}*/
+				
+				//事件委托的方式
+				oUl.onclick=function(ev){
+					//alert(1);//此时的操作有一个问题：无法确认当前的元素是点击了li
+					var ev=ev||window.event;
+					var ele=ev.srcElement||ev.target;//li
+					//alert(ele.nodeName);//获取标签的名称
+					//alert(ele.parentNode.nodeName);
+					if(ele.nodeName=='LI'){//判断当前的元素是否是li
+						alert(1);
+					}
+					while(ele.nodeName!="LI"){
+						ele=ele.parentNode
+						if(ele.nodeName=='LI'){//判断当前的元素是否是li
+							alert(1);
+						}
+					}
+					
+					
+					
+				}
+				
+				var aInput=document.getElementsByTagName('input');
+				aInput[1].onclick=function(){
+					var cLi=document.createElement('li');
+					cLi.innerHTML=aInput[0].value;
+					oUl.appendChild(cLi);
+					aInput[0].value='';
+					/*for(var i=0;i<aLi.length;i++){
+						aLi[i].onclick=function(){
+							alert(1);
+						}
+					}*/
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<input type="text" /><input type="button"  value="创建li"/>
+		<ul>
+			<li style="background: red;"><a href="#" style="background: blue;"><span>1111111111</span></a></li>
+			<li>2222222222</li>
+			<li>3333333333</li>
+		</ul>
+	</body>
+</html>

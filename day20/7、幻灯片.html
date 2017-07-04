@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    ol {
+        list-style: none;
+    }
+    
+    ul {
+        list-style: none;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+    
+    .box {
+        width: 520px;
+        height: 280px;
+        border: 3px solid #000;
+        position: relative;
+        margin: 50px auto;
+        overflow: hidden;
+    }
+    
+    .box ul li {
+        float: left;
+        width: 520px;
+    }
+    
+    .box ol {
+        width: 120px;
+        position: absolute;
+        height: 20px;
+        left: 50%;
+        margin-left: -60px;
+        bottom: 10px;
+        text-indent: -99999px;
+    }
+    
+    .box ol li {
+        width: 20px;
+        height: 20px;
+        background: orange;
+        float: left;
+        margin: 0 5px;
+    }
+    
+    .box ol li.active {
+        background: blue;
+    }
+    
+    #left,
+    #right {
+        position: absolute;
+        width: 20px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        top: 50%;
+        margin-top: -20px;
+        opacity: 0;
+    }
+    
+    #left {
+        left: 20px;
+    }
+    
+    #right {
+        right: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <ul>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.webp" alt=""></li>
+            <li><img src="img/4.webp" alt=""></li>
+        </ul>
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ol>
+        <a href="javascript:;" id="left">&lt;</a>
+        <a href="javascript:;" id="right">&gt;</a>
+    </div>
+    <script type="text/javascript">
+    function getStyle(obj, attr) { //获取元素的样式  obj:元素 attr：属性
+        if (obj.currentStyle) {
+            return obj.currentStyle[attr]; //ie8
+        } else {
+            return getComputedStyle(obj)[attr]; //标准
+        }
+    }
+
+    function buffer(obj, json, fn) {
+        clearInterval(obj.timer); //obj.timer:每个元素都有一个自己的定时器
+        obj.timer = setInterval(function() {
+            var bstop = true; //所有的属性都已经到了目标点
+            for (var attr in json) {
+                //取当前值 current
+                var current = 0;
+                if (attr == 'opacity') {
+                    current = Math.round(getStyle(obj, attr) * 100);
+                } else {
+                    current = parseInt(getStyle(obj, attr));
+                }
+                var speed = (json[attr] - current) / 3;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                if (current != json[attr]) {
+                    bstop = false;
+                    if (attr == 'opacity') {
+                        obj.style.opacity = (current + speed) / 100;
+                        obj.style.filter = 'alpha(opacity=' + (current + speed) + ')';
+                    } else {
+                        obj.style[attr] = current + speed + 'px';
+                    }
+                }
+            }
+            if (bstop) {
+                clearInterval(obj.timer);
+                fn && fn();
+            }
+        }, 3);
+    }
+    var oBox = document.getElementById('box');
+    var oLeft = document.getElementById('left');
+    var oRight = document.getElementById('right');
+
+    var oBtn = document.getElementsByTagName('ol')[0];
+    var aBtn = oBtn.getElementsByTagName('li'); //点击的按钮
+    var oUl = document.getElementsByTagName('ul')[0];
+    //2、改变布局
+    var first = oUl.children[0].cloneNode(true);
+    var last = oUl.children[3].cloneNode(true);
+    oUl.insertBefore(last, oUl.children[0]);
+    oUl.appendChild(first);
+    var aLi = oUl.getElementsByTagName('li');
+    var aLiLength = aLi.length;
+    oUl.style.width = aLiLength * aLi[0].offsetWidth + 'px';
+    oUl.style.left = -aLi[0].offsetWidth + 'px';
+    var num = 0;
+    var bstop = true;
+    //2、给每一个按钮添加点击事件
+    for (var i = 0; i < aBtn.length; i++) {
+        aBtn[i].index = i;
+        aBtn[i].onclick = function() {
+            if (bstop) {
+            	bstop=false;
+                num = this.index;
+                for (var i = 0; i < aBtn.length; i++) {
+                    aBtn[i].className = '';
+                }
+                aBtn[num].className = 'active';
+                tab();
+            }
+        }
+    }
+    //1、鼠标进过box显示切换按钮
+    oBox.onmouseover = function() {
+        buffer(oLeft, {
+            opacity: 100
+        });
+        buffer(oRight, {
+            opacity: 100
+        });
+    }
+
+    oBox.onmouseout = function() {
+            buffer(oLeft, {
+                opacity: 0
+            });
+            buffer(oRight, {
+                opacity: 0
+            });
+        }
+        //3、左右无缝切换
+    oRight.onclick = function() {
+        for (var i = 0; i < aBtn.length; i++) { //取消所有的样式。
+            aBtn[i].className = '';
+        }
+        num++;
+        tab();
+        if (num == 4) {
+            aBtn[0].className = 'active';
+        } else {
+            aBtn[num].className = 'active';
+        }
+    }
+
+    oLeft.onclick = function() {
+        for (var i = 0; i < aBtn.length; i++) { //取消所有的样式。
+            aBtn[i].className = '';
+        }
+        num--;
+        tab();
+        if (num == -1) {
+            aBtn[3].className = 'active';
+        } else {
+            aBtn[num].className = 'active';
+        }
+    }
+
+    function tab() {
+        buffer(oUl, {
+            left: -aLi[0].offsetWidth * (num + 1)
+        }, function() {
+            if (oUl.offsetLeft == -aLi[0].offsetWidth * (aBtn.length + 1)) {
+                oUl.style.left = -aLi[0].offsetWidth + 'px'; //恢复
+                num = 0; //回到开始位置。
+            }
+            if (oUl.offsetLeft == 0) {
+                oUl.style.left = -aLi[0].offsetWidth * aBtn.length + 'px';
+                num = 3;
+            }
+            bstop=true;//运动完成结束。
+        });
+    }
+    //oRight.onclick()
+    </script>
+</body>
+
+</html>

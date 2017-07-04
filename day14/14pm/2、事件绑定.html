@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		window.onload=function(){
+			//事件：DOM 0级事件    一个元素只能绑定一个事件。    取消DOM 0级事件：  document.onclick=null;
+			//DOM 2级事件:可以绑定多个事件在一个元素对象上。
+			
+			/*function fn1(){
+				alert(1);
+			}
+			
+			function fn2(){
+				alert(2);
+			}
+			
+			document.onclick=fn1;
+			document.onclick=fn2;//2,  下面的事件把上面覆盖。
+			//结论：一个事件只能操作一个函数。*/
+			
+			function fn1(){
+				alert(1);
+				//alert(this);
+			}
+			
+			function fn2(){
+				alert(2);
+			}
+			
+			
+			//标准浏览器：addEventListener():参数1：事件     参数2：函数名   参数3：是否捕获，false:冒泡  true:捕获
+			/*document.addEventListener('click',fn1,false);
+			document.addEventListener('click',fn2,false);
+			document.addEventListener('click',function(){console.log(3);},false);*/
+			
+			/*document.attachEvent('onclick',fn1);
+			document.attachEvent('onclick',fn2);
+			document.attachEvent('onclick',function(){alert(3);});*/
+			
+			//ie浏览器下面：顺序反向、参数不一样、事件前面+on
+			
+			function addEvent(obj,event,fn){//obj:操作的元素对象   event：事件动作   fn：调用的函数
+				if(obj.addEventListener){
+					obj.addEventListener(event,fn,false);
+				}else{
+					obj.attachEvent('on'+event,function(){
+						fn.call(obj);//通过call方法，将this指向当前操作的元素对象。
+					});
+				}
+			}
+			
+			function removeEvent(obj,event,fn){//obj:操作的元素对象   event：事件动作   fn：调用的函数
+				if(obj.removeEventListener){
+					obj.removeEventListener(event,fn,false);
+				}else{
+					obj.detachEvent('on'+event,function(){
+						fn.call(obj);//通过call方法，将this指向当前操作的元素对象。
+					});
+				}
+			}
+			
+		
+			/*addEvent(document,'click',fn2);
+			removeEvent(document,'click',fn2);*/
+			/*addEvent(document,'click',function(){
+				alert(3);
+			});*/
+		
+		
+		//ie和标准浏览器的事件绑定的区别：
+		//1、执行顺序：标准浏览器整向执行，非标准浏览器反向执行
+		//2、事件非标准浏览器浏览器带有on
+		//3、标准浏览器和非标准浏览器参数个数不一样的
+		//4、this执行不一样，非标准下面指向window.函数下面的call改变this指向。
+		
+		//区别普通事件和事件绑定
+		//1、概念上面普通事件绑定一个函数，事件绑定可以绑定多个事件。
+		//2、取消方式不一样：普通事件直接赋值null，事件绑定通过移除事件的方法完成。
+			
+			//移除事件的封装。
+			
+		//事件对象兼容问题
+		//1.事件对象
+		//2.取消冒泡
+		//3.阻止默认事件==return false
+		//4.添加事件绑定。
+		//5、删除事件绑定
+		//6、获取事件元素（获取目标元素）
+		var oDiv=document.getElementsByTagName('div')[0];
+		oDiv.onclick=function(ev){
+			var ev=ev||window.event;
+			//alert(ev.target);//[object HtmlDivElmeent]   chrome firefox   ie:undefined
+			//alert(ev.srcElement);//[object HtmlDivElmeent]   chrome ie    firefox:undefined 
+			var ele=ev.target||ev.srcElement;
+			alert(ele);//获取目标元素
+		}
+	}
+		</script>
+	</head>
+	<body>
+		<div>1234567</div>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*var date=new Date();
+			for(var i=0;i<1000;i++){
+				var cBtn=document.createElement('button');
+				cBtn.innerHTML=i;
+				document.body.appendChild(cBtn);
+			}
+			console.log(new Date()-date);*/
+			/*var date=new Date();
+			var cFragment=document.createDocumentFragment();
+			for(var i=0;i<1000;i++){
+				var cBtn=document.createElement('button');
+				cBtn.innerHTML=i;
+				cFragment.appendChild(cBtn);//将创建的按钮追加到文档碎片里面
+			}
+			
+			document.body.appendChild(cFragment);//最后一次性提交给body
+			console.log(new Date()-date);*/
+			/*var str='';
+			for(var i=0;i<1000;i++){
+				str='<button>'+i+'</button>';
+				document.body.innerHTML+=str;
+			}*/
+			
+			var str='';
+			for(var i=0;i<10000;i++){
+				str+='<button>'+i+'</button>';
+			}
+			document.body.innerHTML=str;
+		</script>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//添加cookie，一般用来存储字符串。
+			//document.cookie='name=wangwu';//键值对的形式添加  key ---> value
+			//name:cookie名称,自由设置    wangwu:cookie的值
+			//document.cookie='name=lisi';//名称相同会覆盖
+			//document.cookie='sex=男';
+			
+			//如果cookie没有设置有效时间，关闭浏览器后cookie自定消失。
+			//alert(document.cookie);//获取页面的所有的cookie
+			
+			//给cookie添加过期时间
+			/*var date=new Date();
+			date.setDate(date.getDate()+10);//当前的日期+10天
+			document.cookie='username=张三;expires='+date;//date:修改的日期（年月日时分秒日期）*/
+			//expires:过期时间
+			//alert(document.cookie);
+			
+			//封装一个存储cookie函数
+			function addCookie(key,value,day){//name:cookie名字    value:cookie值   day:过期时间
+				var date=new Date();
+				date.setDate(date.getDate()+day);//当前的日期+10天
+				document.cookie=key+'='+value+';expires='+date;//date:修改的日期（年月日时分秒日期）
+			}
+			
+			/*addCookie('username','zhangsan',7);
+			addCookie('password','123456',7);*/
+			
+			//addCookie('hehe','hellocookie',30);//将字符串写入到cookie
+			/*var obj={
+				name:'pengshaohua',
+				age:33,
+				sex:'男'
+			}
+			
+			var arr=['a','b','c','d'];
+			
+			var json={
+				"name":"pengshaohua",
+				"age":33,
+				"sex":"男"
+			}*/
+			/*//toString():将对象转换成字符串的方法，没有toString()也可以存储。
+			addCookie('info',obj.toString(),1);//存对象
+			addCookie('arrinfo',arr.toString(),1);//存数组
+			addCookie('jsoninfo',json.toString(),1);//存对象*/
+			
+			//console.log(document.cookie);//获取全部
+			//username=zhangsan; password=123456
+			//封装一个获取cookie值得函数
+			//console.log(document.cookie.split('; '));//["username=zhangsan","password=123456"];
+			/*var arr=document.cookie.split('; ');
+			for(var i=0;i<arr.length;i++){
+				var newarr=arr[i].split('=');//['username','zhangsan'] ['password','123456']
+				if(newarr[0]=="username"){
+					alert(newarr[1]);
+				}
+			}*/
+			
+			
+			function getCookie(key){
+				var arr=document.cookie.split('; ');//数组的每一项都是一个键值对。
+				for(var i=0;i<arr.length;i++){
+					var newarr=arr[i].split('=');//将arr数组再次拆分成一个新的数组newarr
+					if(newarr[0]==key){//比较每个新数组的key值，输出value;
+						return newarr[1];
+					}
+				}
+			}
+			
+			//alert(getCookie('password'));
+			//console.log(getCookie('arrinfo'));//a,b,c,d  字符串
+			//console.log(getCookie('arrinfo').split(','));
+			/*var json={
+				"name":"pengshaohua",
+				"age":33,
+				"sex":"男"
+			}
+			var strjson=JSON.stringify(json);
+			//addCookie('jsoninfo',strjson,1);
+			
+			var obj1=JSON.parse(getCookie('jsoninfo'));
+			alert(obj1.name);
+			//取出的cookie都是字符串，进行转换调用*/
+			
+			
+			
+			//封装删除cookie
+			//addCookie('username','*****',-1);
+			function delCookie(name){
+				addCookie(name,'value',-1);
+			}
+			
+			delCookie('password');
+			delCookie('arrinfo');
+			delCookie('jsoninfo');
+			
+			
+		</script>
+	</body>
+</html>

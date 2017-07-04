@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		div{width: 100px;height:100px;background: red;position: absolute;left:0px;top:0px; border-radius: 50%;}
+	</style>
+</head>
+<body>
+	<div>
+		
+	</div>
+	<script type="text/javascript">
+		var oDiv=document.getElementsByTagName('div')[0];
+		var speedx=4;
+		var speedy=8;
+		var timer=setInterval(function(){
+			speedy+=4;
+			var l=oDiv.offsetLeft+speedx;
+			var t=oDiv.offsetTop+speedy;
+			if(t>=document.documentElement.clientHeight-oDiv.offsetHeight){
+				t=document.documentElement.clientHeight-oDiv.offsetHeight;
+				speedy*=-0.9;
+				speedx*=0.9;
+			}else if(t<0){
+				t=0;
+				speedy*=-1;
+			}
+
+			if(l>=document.documentElement.clientWidth-oDiv.offsetWidth){
+				l=document.documentElement.clientWidth-oDiv.offsetWidth;
+				speedx*=-1;
+			}else if(l<0){
+				l=0;
+				speedx*=-1;
+			}
+			if(Math.abs(speedx)<1){
+				clearInterval(timer);
+				speedx=0;
+				speedy=0;
+			}
+			oDiv.style.left=l+'px';
+			oDiv.style.top=t+'px';
+		},30);
+	</script>
+</body>
+</html>

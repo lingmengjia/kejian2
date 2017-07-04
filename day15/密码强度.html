@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			fieldset{
+				width: 800px;
+			}
+		</style>
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body>
+		<fieldset id="">
+			<legend>用户注册</legend>
+			<form action="reg.php" method="post">
+				<p>
+					<label for="">用户名：</label>
+					<input type="text" name="" id="username" />
+					<span>(请输入字母，数字，下划线.....)</span>
+				</p>
+				<p>
+					<label>密　码：</label>
+					<input type="text" name="" id="password" />
+					<span>(长度大于6-20位)</span>
+				</p>
+				<p>
+					<label>邮　箱：</label>
+					<input type="text" name="" id="email" />
+					<span>(必填)</span>
+				</p>
+				<p><input type="submit" id="submit" /></p>
+			</form>
+			
+		</fieldset>
+		<script src="public.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var username=$('username');
+			var password=$('password');
+			var aSpan=document.getElementsByTagName('span');
+			var oForm=document.getElementsByTagName('form')[0];
+			var bstop=true;
+			username.onblur=function(){
+				if(this.value!=''){
+					aSpan[0].innerHTML='√';
+					aSpan[0].style.color='green';
+				}else{
+					aSpan[0].innerHTML='用户名不能为空';
+					aSpan[0].style.color='red';
+					bstop=false;
+				}
+			}
+			password.onkeyup=function(){
+				var pass=this.value;//abc124
+				if(this.value.length>=6 && this.value.length<=20){
+					var numbstop=true;//检查数字的开关
+						var strbstop=true;//检查字母的开关
+						var otherstop=true;//检查其他字符的开关
+						var strcount=0;//计算字符有几种类型
+						for(var i=0;i<pass.length;i++){
+							
+							if(pass.charCodeAt(i)>=48 && pass.charCodeAt(i)<=57){//数字
+								if(numbstop){
+									strcount++;//累加一次
+									numbstop=false;
+								}
+							}
+							
+							else if((pass.charCodeAt(i)>=65 && pass.charCodeAt(i)<=90) ||(pass.charCodeAt(i)>=97 && pass.charCodeAt(i)<=122)){//字母
+								if(strbstop){
+									strcount++;//累加一次
+									strbstop=false;
+								}
+							}
+							
+							else{
+								if(otherstop){//其他字符
+									strcount++;
+									otherstop=false;
+								}
+							}
+							switch(strcount){//根据字符串的类型决定密码安全级别
+								case 1: aSpan[1].innerHTML='弱';bstop=false;break;
+								case 2: aSpan[1].innerHTML='中';break;
+								case 3: aSpan[1].innerHTML='强';break;
+							}
+					}
+				}
+				else{
+					aSpan[1].innerHTML='密码长度不正确';
+					aSpan[1].style.color='red';
+					bstop=false;
+				}
+			}
+			password.onblur=function(){
+				if(this.value==''){//失去焦点判断当前的值为空
+					aSpan[1].innerHTML='密码不能为空';//返回的内容
+					aSpan[1].style.color='red';//颜色
+					bstop=false;//限制不能提交
+				}
+			}
+			
+			oForm.onsubmit=function(){
+				
+				if(!bstop){
+					return false;
+				}
+			}
+			//indexOf('@')!=-1 && indexOf('.')!=-1   //简单的检测。
+			//字符串：substring/split/indexOf/substr/slice
+			//字符串：replace/match/search
+			//字符串：charAt charCodeAt  String.formCharCode
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text" /><br />
+		密码：<input type="password"><br />
+		<input type="checkbox" />记住用户名<br>
+		<input type="button" value="登录" />
+		<script src="public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="md5.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var aInput=document.getElementsByTagName('input');
+			//页面加载判断cookie是否存在，如果存在，取cookie赋值。
+			if(jscookie.getCookie('name') && jscookie.getCookie('pass') ){
+				aInput[0].value=jscookie.getCookie('name');
+				aInput[1].value=jscookie.getCookie('pass');
+				aInput[2].checked=true;
+			}
+			aInput[3].onclick=function(){
+				if(aInput[2].checked){
+					jscookie.addCookie('name',aInput[0].value,7);
+					jscookie.addCookie('pass',hex_md5(aInput[1].value),7);
+				}else{
+					jscookie.delCookie('name');
+					jscookie.delCookie('pass');
+				}
+			}
+			
+		</script>
+	</body>
+</html>

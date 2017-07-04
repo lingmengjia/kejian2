@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div style="width: 400px;height:400px;background: url(1.jpg);position: absolute;">
+		
+	</div>
+	<script src="public.js" type="text/javascript" ></script>
+	<script>
+		var oDiv=document.getElementsByTagName('div')[0];
+		var shortx=shorty=0;
+		var l=0;
+		var t=0;
+
+		if(jscookie.getCookie('left')){
+			oDiv.style.left=jscookie.getCookie('left')+'px';
+			oDiv.style.top=jscookie.getCookie('top')+'px';
+		}
+
+		oDiv.onmousedown=function(ev){
+			var ev=ev||window.event;
+			shortx=ev.offsetX;
+			shorty=ev.offsetY;
+			document.onmousemove=function(ev){
+				var ev=ev||window.event;
+				l=ev.clientX-shortx;
+				t=ev.clientY-shorty;
+				oDiv.style.left=l+'px';
+				oDiv.style.top=t+'px';
+			}
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+				jscookie.addCookie('left',l,7);
+				jscookie.addCookie('top',t,7);
+			}
+		}
+	</script>
+</body>
+</html>

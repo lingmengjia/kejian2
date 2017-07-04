@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html id="html1">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				padding: 100px 0 0 200px;
+			}
+			#small{
+				width: 100px;height:100px;background: red;border-radius: 50%;
+			}
+			#center{
+				width: 100px;height:100px;padding:100px;background: blue;border-radius: 50%;
+			}
+			#big{
+				width: 300px;height:300px;padding:100px;background: green;border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body id="body1">
+		<div id="big">
+			<div id="center">
+				<div id="small"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function fn(){
+				alert(this.id);
+			}
+			
+			var oBig=document.getElementById('big');
+			var oCenter=document.getElementById('center');
+			var oSmall=document.getElementById('small');
+			//oSmall.onclick=fn;
+			oCenter.onclick=fn;
+			oBig.onclick=fn;
+			body1.onclick=fn;
+			html1.onclick=fn;
+		</script>
+	</body>
+</html>

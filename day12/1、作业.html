@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href=""  id="link1"/>
+		<script type="text/javascript">
+			window.onload=function(){
+				var aLink=document.getElementById('link');
+				//outerHTML/innerHTML/innerText
+				var oDiv=document.getElementsByTagName('div')[0];
+				//alert(oDiv.innerHTML);//获取和设置元素节点里的内容，从元素对象的起始位置到终止位置的全部内容
+				//alert(oDiv.outerHTML);//innerHTML+元素自身
+				//alert(oDiv.innerText);//获取文本内容
+				
+				//一定是节点进行操作。
+				/*var cDiv=document.createElement('div');//创建一个div元素节点
+				var cUl=document.createElement('ul');//创建一个ul元素节点
+				var cLi=document.createElement('li');
+				var cLiText=document.createTextNode('333333333333333333');
+				cDiv.className='box';
+				cLi.appendChild(cLiText);
+				cUl.appendChild(cLi);
+				cDiv.appendChild(cUl);
+				document.body.appendChild(cDiv);//将创建的div子元素追加到父body内部的下面。*/
+				/*var cUl=document.createElement('ul');//创建一个ul元素节点
+				oDiv.appendChild(cUl);*/
+				var date=new Date();
+				var oFrag=document.createDocumentFragment()
+				var ctable=document.createElement('table');
+				for(var i=0;i<10;i++){
+					var ctr=document.createElement('tr');
+					for(var j=0;j<10;j++){
+						var ctd=document.createElement('td');
+						var ca=document.createElement('a');
+						ca.href='javascript:;';
+						if(j==9){
+							var clinktext=document.createTextNode('删除'+i);
+						}else{
+							var clinktext=document.createTextNode(j);
+						}
+						ca.appendChild(clinktext);
+						ctd.style.cssText='width:100px;height:30px;border:1px solid orange;';
+						ctd.appendChild(ca);
+						ctr.appendChild(ctd);
+					}
+					oFrag.appendChild(ctr);//先追加到文档碎片
+				}
+				
+				
+				document.body.appendChild(oFrag);
+				
+				
+				var aTr=document.getElementsByTagName('tr');
+				for(var i=0;i<aTr.length;i++){
+					aTr[i].lastChild.firstChild.onclick=function(){
+						this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
+					}
+				}
+				
+				var newDate=new Date();
+				console.log(newDate-date);
+				
+			}
+		</script>
+	</head>
+	<body>
+		<!--<div class="box">
+			<ul>
+				<li>1111111111111111</li>
+			</ul>
+		</div>-->
+	
+	</body>
+</html>

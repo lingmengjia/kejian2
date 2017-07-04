@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*function fn(){//普通函数
+				alert('ok');
+			}*/
+			
+			/*document.onclick=fn;//此时fn可以叫成事件出来函数。*/
+			document.onclick=function (){
+				console.log(arguments[0]);//在触发DOM上某个事件时，会产生一个事件对象event,这个对象包含着所有事件相	关的信息，包含导致事件的元素，事件的类型以及其他的与特定事件相关的信息。
+			};
+			
+			document.onkeyup=function (){
+				console.log(arguments[0]);
+			};
+			//arguments[0]:mouseevent  keyboard event
+			
+			
+			
+		</script>
+	</body>
+</html>

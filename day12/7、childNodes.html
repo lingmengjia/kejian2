@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li id="li1">1111111<a href="#">删除</a></li>
+			<li>2222222<a href="#">删除</a></li>
+			<p>ppppppppppppp</p>
+			<li>3333333<a href="#">删除</a></li>
+			<h1>h1h1h1h1h1h1</h1>
+			<li>4444444<a href="#">删除</a></li>
+			<li>5555555<a href="#">删除</a></li>
+			<li>6666666<a href="#">删除</a></li>
+			<h2>2h2h2h2h2h2h2h2h2h</h2>
+			<li>7777777<a href="#">删除</a></li>
+		</ul>
+		<script type="text/javascript">
+			var oUl=document.getElementsByTagName('ul')[0];//一个元素
+			//alert(oUl.childNodes.length);//获取ul下面所有的子节点。  [object Nodelist]
+			//alert(oUl.childNodes[0].nodeType);//3
+			//alert(oUl.childNodes[0].nodeValue);//空
+			//alert(oUl.childNodes[0].nodeName);//#text
+			//alert(oUl.childNodes[1].nodeType);//1:元素节点
+			//alert(oUl.childNodes[1].nodeValue);//null
+			//alert(oUl.childNodes[1].childNodes[0].nodeValue);//内容也是节点,如果内容都是文本，算一个节点，节点的空隙包含。
+			//oUl.childNodes[1]  ==》  li
+			//alert(oUl.childNodes[1].nodeName);//LI
+			
+			
+			//alert(oUl.children.length);//7  不包括空白节点。
+			
+			/*for(var i=0;i<oUl.childNodes.length;i++){
+				if(oUl.childNodes[i].nodeType==1){
+					oUl.childNodes[i].style.background='red';
+				}
+			}*/
+			
+			/*for(var i=0;i<oUl.children.length;i++){
+				oUl.children[i].style.background='red';
+			}*/
+			
+			//alert(oUl.lastChild);
+			//alert(document.documentElement);//html
+			//alert(document.documentElement.ownerDocument);//获取该节点的文档根节点
+			
+			/*var aA=oUl.getElementsByTagName('a');
+			var aLi=oUl.children;
+			for(var i=0;i<aA.length;i++){
+				//aA[i].index=i;
+				aA[i].onclick=function(){
+					//aLi[this.index].style.display='none';
+					this.parentNode.style.display='none';
+				}
+			}*/
+			
+			//var aLi=oUl.children;//长度为7；
+			//alert(aLi.length);//9
+			//alert(aLi[2].previousSibling.nodeValue);
+			//aLi[2].previousElementSibling.style.background='red';
+			//var prev=aLi[3].previousSibling||aLi[3].previousElementSibling;
+			//alert(prev);
+			//prev.style.background='red';
+			//aLi[3].nextElementSibling.style.background='red';
+			//aLi[3].previousElementSibling.style.background='blue';
+			//var oH2=document.getElementsByTagName('h2')[0];
+			//oH2.previousElementSibling.previousElementSibling.style.background='orange';
+			//var oLi1=document.getElementById('li1');
+			/*var aA=document.getElementsByTagName('a');
+			for(var i=0;i<aA.length;i++){
+				aA[i].onclick=function(){
+					this.parentNode.parentNode.removeChild(this.parentNode);
+				}
+			}*/
+			
+			
+			
+			//oUl.lastElementChild.previousElementSibling.style.background='red';
+			
+			//oUl.lastElementChild.previousSibling.style.background='red';
+			
+			
+			/*function getElement(eleobj,direction){
+				if(direction=='last'){
+					return lastchild=eleobj.lastElementChild || eleobj.lastChild;	
+				}else if(direction=='first'){
+					return firstchild=eleobj.firstElementChild || eleobj.firstChild;
+				}
+			}
+			
+			getElement(oUl,'last').style.background='red';*/
+			
+			
+		</script>
+	</body>
+</html>

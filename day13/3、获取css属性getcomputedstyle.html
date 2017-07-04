@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		.box{
+			width: 200px;
+			height:300px;
+			border: 10px solid #000; 
+			padding: 20px; 
+			margin: 100px;
+			position: absolute;
+			left:0px;
+			top:0px;
+			font-size:14px;	
+		}
+		</style>
+	</head>
+	<body>
+		<div class="box">内容</div>
+		<script type="text/javascript">
+			var oDiv=document.getElementsByTagName('div')[0];
+			//getComputedStyle()  currentStyle()
+			//alert(oDiv.currentStyle['borderColor']);//ie
+			//font-size==>  fontSize(js里面的写法)
+			//alert(getComputedStyle(oDiv)['border']);//chrome  ff
+			//alert(oDiv.currentStyle);
+			//alert(window.getComputedStyle);
+			
+			
+			/*function getStyle(obj,attr){//火狐浏览器的边框会出现问题
+				if(obj.currentStyle){//属性做判断是最好的，ie下 currentstyle存在的，ff chrome 返回undefined
+					//alert(obj.currentStyle[attr]);
+					return obj.currentStyle[attr];
+				}else{
+					return getComputedStyle(obj)[attr];
+				}
+			}
+			alert(getStyle(oDiv,'fontSize'));*/
+			
+			
+			function getStyle(obj,attr){//火狐浏览器的边框会出现问题
+				if(window.getComputedStyle){//让某个方法或者属性在window下面。
+					return getComputedStyle(obj)[attr];
+				}else{
+					return obj.currentStyle[attr];
+				}
+			}
+			alert(getStyle(oDiv,'borderLeftWidth'));//解决火狐的边框问题。
+			
+		</script>
+	</body>
+</html>

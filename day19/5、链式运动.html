@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		#box{
+			width: 20px;
+			height: 20px;
+			background: red;
+			opacity: 1;
+			filter:alpha(opacity=100); 
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="box">
+	</div>
+	<script type="text/javascript">
+
+		function getstyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj)[attr];
+			}
+		}
+		function uniform(obj,attr,target,speed,fn){//fn:函数
+			clearInterval(obj.timer);
+			var cur=0;
+			obj.timer=setInterval(function(){
+				//获取对应属性的值
+				if(attr=='opacity'){
+					cur=Math.round(getstyle(obj,attr)*100);
+				}else{
+					cur=parseInt(getstyle(obj,attr));
+				}
+				//判断速度
+				if(cur>target){
+					speed=-Math.abs(speed);
+				}else{
+					speed=speed;
+				}
+				//判断属性运动和停止
+				if(cur==target){
+					clearInterval(obj.timer);//运动停止下来
+					/*if(fn){//fn存在调用fn，不存在，无视
+						fn()
+					}*/
+					fn&&fn();//上一次的运动停止，触发下一次的运动
+				}else{
+					if(attr=='opacity'){//判断兼容
+						obj.style.opacity=(cur+speed)/100;
+						obj.style.filter='alpha(opacity='+(cur+speed)+')';
+					}else{
+						obj.style[attr]=(cur+speed)+'px';
+					}
+					
+				}
+
+			},30);
+		}
+		
+		var oDiv=document.getElementById('box');
+		oDiv.onmouseover=function(){
+			uniform(oDiv,'width',600,10,function(){
+				uniform(oDiv,'height',600,10,function(){
+					alert('ok');
+				});
+			});
+			
+		}
+		oDiv.onmouseout=function(){
+			uniform(oDiv,'height',20,10,function(){
+				uniform(oDiv,'width',20,10);
+			});
+			
+			
+		}
+	</script>
+</body>
+</html>

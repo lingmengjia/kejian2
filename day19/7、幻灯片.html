@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		*{
+			padding: 0px;margin:0px;
+		}
+		ol{
+			list-style: none;
+		}
+		ul{list-style: none; width: 2080px; position: absolute;left:0px;top:0px;}
+		.box{
+			width: 520px;height:280px;border: 3px solid #000; position: relative;margin:50px auto;overflow: hidden;
+		}
+		.box ul li{float:left;}
+		.box ol{
+			width: 120px;
+			position: absolute;
+			height: 20px;
+			left:50%;
+			margin-left: -60px;
+			bottom: 10px;
+			text-indent: -99999px;
+		}
+		.box ol li{width: 20px;height:20px; background: orange;float: left;margin: 0 5px;}
+		.box ol li.active{
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.webp" alt=""></li>
+			<li><img src="img/4.webp" alt=""></li>
+		</ul>
+		<ol>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ol>
+	</div>
+	<script type="text/javascript">
+		var timer=null;
+		function getstyle(obj,attr){//获取元素的样式  obj:元素 attr：属性
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];//ie8
+			}else{
+				return getComputedStyle(obj)[attr];//标准
+			}
+		}
+		function buffer(obj,attr,target){
+			clearInterval(timer);
+			var cur=null;
+			timer=setInterval(function(){
+				//求速度
+				cur=parseInt(getstyle(obj,attr));
+				speed=(target-cur)/3;
+				speed=speed>0?Math.ceil(speed):Math.floor(speed);
+				//运动以及停止
+				if(cur==target){
+					clearInterval(timer);
+				}else{
+					obj.style[attr]=(cur+speed)+'px';
+				}
+			},5);
+		}
+
+		var oBtn=document.getElementsByTagName('ol')[0];
+		var piclist=document.getElementsByTagName('ul')[0];
+		var aLi=piclist.getElementsByTagName('li');
+		var aBtn=oBtn.getElementsByTagName('li');
+		var num=0;
+		for(var i=0;i<aBtn.length;i++){
+			aBtn[i].index=i;
+			aBtn[i].onclick=function(){
+				num=this.index;//当前点击的按钮的索引。
+				for(var i=0;i<aBtn.length;i++){
+					aBtn[i].className='';
+				}
+				this.className='active';
+				buffer(piclist,'left',-num*aLi[0].offsetWidth);
+			};
+		}
+	</script>
+</body>
+</html>

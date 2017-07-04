@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				border: 1px solid #000;
+				height: 400px;
+				float: left;
+				margin-right: 5px;
+				font-size: 12px;
+				font-family: "微软雅黑";
+				overflow: hidden;
+				position: relative;
+			}
+			#content{
+				position: absolute;
+			}
+			#scroll{
+				float: left;
+				width: 50px;
+				height: 400px;
+				border: 1px solid #000;
+				position: relative;
+				
+			}
+			#dragbox{
+				cursor: move;
+				width: 50px;
+				height: 80px;
+				background: #000;
+				position: absolute;
+			}
+		</style>
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<div id="content">
+				当李克强总理经过10小时长途飞行抵达德国首都柏林的时候，《德国之声》电台网站提出了一个问题：中国总理的来访，是否会为德国、为欧洲带来“旭日阳光”?
+这一提问的背景显而易见：当前国际形势不确定因素依然较多，逆全球化声音上升，贸易保护主义抬头。中德两国作为世界第二、第四大经济体，释放什么样的信号，对于欧洲乃至世界经济都有非同寻常的意义。
+而李克强总理短短25小时的“旋风”访德，无疑是给全球经济吃下了一颗“定心丸”。在异常紧凑的行程中，李克强与默克尔共同力倡贸易投资自由化便利化，承诺要用中德关系的稳定性、成熟性为世界注入稳定、合作、发展的积极力量。
+与此同时，李总理还说服默克尔公开表态支持欧盟履行中国入世议定书15条义务，推动“中国制造2025”对接德国“工业4.0”，力促中德“创新合作”。
+短短25小时，总理用争分夺秒的“克强节奏”，换来了为国家争利，为百姓谋福的4大“成果”。成果1：力倡贸易投资自由化便利化，为全球经济注入积极力量
+当地时间5月31日下午，李克强总理刚刚抵达柏林，就马不停蹄赶往德国总理府，与默克尔举行中德总理年度会晤。他在会晤中强调：中德两国共同促进贸易投资自由化、便利化，为地区和世界注入稳定、合作、发展的积极信号。
+自由贸易有多重要?两位总理在共见记者时分别列举了一组数字。默克尔说，去年中德贸易额达到1700亿欧元，中国已经成为德国在全球最重要的贸易伙伴。
+李克强总理进一步表示，去年中国已经超过日本，成为德国在全球最大的贸易伙伴。去年德国对中国投资增长74%，今年一季度，中德贸易在世界贸易低迷的情况下仍然实现了两位数增长。
+“当前世界不确定因素在增加，但中德关系的稳定性、成熟性将为世界注入稳定、合作、发展的积极力量。”李总理说，“中方愿同德方共同发出维护贸易投资自由化、便利化的积极信号，积极推进经济全球化，妥善解决遇到的问题，携手为人类进步作出贡献。”
+他强调，我们必须顺应全球化潮流，同时对一些国家应对全球化中出现的问题妥善加以解决。
+“昨天我和默克尔总理会谈的时候看到窗外阳光明媚，今天依然如此，我相信，明天、后天也会是如此。”李克强意味深长地说。“人类应当向前走，不能绕弯，更不能后退。我们对世界前景充满乐观。”成果1：力倡贸易投资自由化便利化，为全球经济注入积极力量
+当地时间5月31日下午，李克强总理刚刚抵达柏林，就马不停蹄赶往德国总理府，与默克尔举行中德总理年度会晤。他在会晤中强调：中德两国共同促进贸易投资自由化、便利化，为地区和世界注入稳定、合作、发展的积极信号。
+自由贸易有多重要?两位总理在共见记者时分别列举了一组数字。默克尔说，去年中德贸易额达到1700亿欧元，中国已经成为德国在全球最重要的贸易伙伴。
+李克强总理进一步表示，去年中国已经超过日本，成为德国在全球最大的贸易伙伴。去年德国对中国投资增长74%，今年一季度，中德贸易在世界贸易低迷的情况下仍然实现了两位数增长。
+“当前世界不确定因素在增加，但中德关系的稳定性、成熟性将为世界注入稳定、合作、发展的积极力量。”李总理说，“中方愿同德方共同发出维护贸易投资自由化、便利化的积极信号，积极推进经济全球化，妥善解决遇到的问题，携手为人类进步作出贡献。”
+他强调，我们必须顺应全球化潮流，同时对一些国家应对全球化中出现的问题妥善加以解决。
+“昨天我和默克尔总理会谈的时候看到窗外阳光明媚，今天依然如此，我相信，明天、后天也会是如此。”李克强意味深长地说。“人类应当向前走，不能绕弯，更不能后退。我们对世界前景充满乐观。”
+			</div>
+		</div>
+		<div id="scroll">
+			<div id="dragbox"></div>
+		</div>
+		<script src="public.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oDrag=$('dragbox');
+			var oScroll=$('scroll');
+			var oBox=$('box');
+			var oContent=$('content');
+			var disx=disy=0;
+			oDrag.onmousedown=function(ev){
+				var ev=ev||window.event;
+				disy=ev.offsetY;
+				document.onmousemove=function(ev){
+					var ev=ev||window.event;
+					var t=ev.clientY-disy;
+					if(t<0){
+						t=0;
+					}else if(t>=oScroll.offsetHeight-oDrag.offsetHeight){
+						t=oScroll.offsetHeight-oDrag.offsetHeight;
+					}
+					
+					
+					//0-1
+					var scale=t/(oScroll.offsetHeight-oDrag.offsetHeight);
+					//假设：scale=0.5  滚轮移动 一半
+					
+					oDrag.style.top=t+'px';
+					
+					oContent.style.top=-scale*(oContent.offsetHeight-oBox.offsetHeight)+'px';
+					//(oContent.offsetHeight-oBox.offsetHeight)左边盒子能移动的最大的范围
+				}
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				}
+				return false;
+			}
+		</script>
+	</body>
+</html>

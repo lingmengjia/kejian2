@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>聊天对话框</title>
+<style type="text/css">
+*{font-size: 14px; padding:0; margin:0;}
+.main{
+	position: relative;
+	margin: 20px auto;
+	border: 1px solid steelblue;
+	width: 430px;
+	height: 400px;
+}
+.msgInput{
+	display: block;
+	width: 406px;
+	height: 60px;
+	margin: 10px auto;
+	
+}
+.sendbtn{
+	position: absolute;
+	width: 100px;
+	height: 29px;
+	bottom: 5px;
+	right: 10px;
+}
+.content{
+	list-style: none;
+	width: 410px;
+	height: 280px;
+	margin: 5px auto;
+	border: 1px dotted #D1D3D6;
+	overflow-y: scroll;
+}
+.msgContent{
+	width:100%;
+	max-width: 250px;
+	height: auto;
+	word-break: break-all;
+	margin: 5px;
+	padding: 3px;
+	border-radius: 5px;
+}
+
+.content .left{
+	float: left;
+	text-align: left;
+	background-color: lightgrey;
+}
+.content .right{
+	float: right;
+	text-align: left;
+	background-color: yellowgreen;
+}
+
+li{width: 100%;text-align: right; background: green;}
+</style>
+
+
+</head>
+
+<body>
+	<div id="main" class="main">
+		<ul id="content" class="content">
+		
+		</ul>
+		<textarea id="msg_input" class="msgInput"></textarea>
+		<span>张三</span>
+		<button id="sendbtn" class="sendbtn">发送</button>
+	</div>
+	<script type="text/javascript">
+		var oBtn=document.getElementById('sendbtn');
+		var oText=document.getElementById('msg_input');
+		var oUl=document.getElementById('content');
+		var oSpan=document.getElementsByTagName('span')[0];
+		oSpan.onclick=function(){
+			if(oSpan.innerHTML=='张三'){
+				oSpan.innerHTML='李四';
+			}else{
+				oSpan.innerHTML='张三';
+			}
+		}
+		function speak(){//函数封装。
+			var cLi=document.createElement('li');
+			cLi.innerHTML=oSpan.innerHTML+':'+oText.value;//oText:表单
+			if(oSpan.innerHTML=='张三'){
+				cLi.className='msgContent left';
+			}else{
+				cLi.className='msgContent right';
+			}
+			
+			oUl.appendChild(cLi);
+			oText.value='';//清空输入框的值
+			oText.focus();//让输入框得到光标
+			cLi.scrollIntoView();//跳转到可视的位置。
+		}
+		oBtn.onclick=function(){
+			speak();
+		}
+		
+		oText.onkeydown=function(ev){
+			var ev=ev||window.event;
+			if(ev.keyCode==13 && ev.ctrlKey){
+				speak();
+			}
+		}
+		
+	</script>
+	<!--<p contenteditable="true">这是一段可编辑的段落。请试着编辑该文本。</p>-->
+</body>
+</html>

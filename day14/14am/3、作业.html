@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 200px;
+				height: auto;
+				border: 2px solid #ccc;
+				padding: 10px;
+				position: absolute;
+				left:0px;
+				top:0px;
+				display: none;
+				background: #fff;
+			}
+			li{
+				height: 32px;
+				line-height: 32px;
+			}
+		</style>
+	</head>
+	<body>
+		<ol>
+			<li><a href="#" tips="中国嫦娥飞天的一些梦想中国嫦娥飞天的一些梦想中国嫦娥飞天的一些梦想">中国嫦娥飞天的一些梦想</a></li>
+			<li><a href="#" tips="中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一">中国是世界上最强大的国家，没有之一</a></li>
+			<li><a href="#" tips="中国是世界上最强大的国家，没有之一中国是世界上最强大的国家">中国是世界上最强大的国家，没有之一</a></li>
+		</ol>
+		
+		<!--<ol>
+			<li><a href="#" tips="中国嫦娥飞天的一些梦想中国嫦娥飞天的一些梦想中国嫦娥飞天的一些梦想">中国嫦娥飞天的一些梦想</a></li>
+			<li><a href="#" tips="中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一">中国是世界上最强大的国家，没有之一</a></li>
+			<li><a href="#" tips="中国是世界上最强大的国家，没有之一中国是世界上最强大的国家">中国是世界上最强大的国家，没有之一</a></li>
+		</ol>-->
+		<div></div>
+		
+		<script type="text/javascript">
+			var arr=['中国嫦娥飞天的一些梦想中国嫦娥飞天的一些梦想中国嫦娥飞天的一些梦想','中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一中国是世界上最强大的国家，没有之一','中国是世界上最强大的国家，没有之一中国是世界上最强大的国家'];
+			/*var aA=document.getElementsByTagName('a');
+			var oDiv=document.getElementsByTagName('div')[0];
+			for(var i=0;i<aA.length;i++){
+				//i==0,1,2
+				(function(i){//i:形参  自执行的函数表达式
+					aA[i].onmouseover=function(){
+						oDiv.style.display='block';
+						this.onmousemove=function(ev){
+							var ev=ev||window.event;
+							oDiv.style.left=ev.clientX+10+'px';
+							oDiv.style.top=ev.clientY+10+'px';
+							oDiv.innerHTML=arr[i];
+						};
+					};
+				})(i)//i:实参
+				aA[i].onmouseout=function(){//鼠标离开隐藏
+					oDiv.style.display='none';
+				};
+			}*/
+			
+			/*var aA=document.getElementsByTagName('a');
+			var oDiv=document.getElementsByTagName('div')[0];
+			for(var i=0;i<aA.length;i++){
+					aA[i].index=i;
+					aA[i].onmouseover=function(){
+						oDiv.style.display='block';
+						this.onmousemove=function(ev){
+							var ev=ev||window.event;
+							oDiv.style.left=ev.clientX+10+'px';
+							oDiv.style.top=ev.clientY+10+'px';
+							oDiv.innerHTML=arr[this.index];//this.index:当前操作的a元素里面index的值
+						};
+					};
+				aA[i].onmouseout=function(){//鼠标离开隐藏
+					oDiv.style.display='none';
+				};
+			}*/
+			
+			
+		</script>
+	</body>
+</html>

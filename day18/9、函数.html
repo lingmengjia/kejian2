@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*function sum(a,b){//函数赋初始值
+			var a=a||5;
+			var b=b||6;
+			alert(a+b);
+		}
+		sum();//7*/
+
+		/*function sum(a=5,b=6){//函数赋初始值
+			alert(a+b);
+		}
+		sum(7,7);*/
+
+		/*var sum=function(a,b){
+			alert(a+b);
+		}*/
+
+		/*var sum=(a,b)=>alert(a+b);
+		sum(3,4);*/
+		/*alert([3,5,2,3,7,89,12,3,5,89,12].sort(function(a,b){return a-b;}));
+		alert([3,5,2,3,7,89,12,3,5,89,12].sort((a,b)=>a-b));*/
+
+		/*var fn=(str)=>{var str1='hello'; return str+=str1;};
+		alert(fn('world'));*/
+
+
+
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+	<script type="text/javascript">
+		/*document.onclick=function(){
+			var that=this;
+			setTimeout(function(){
+				alert(that);//document
+			},2000)
+		}*/
+
+
+		/*document.onclick=function(){
+			//this:document
+			setTimeout(()=>alert(this),2000);//this:没有改变
+		}*/
+
+		/*document.onclick=()=>{
+			alert(this);
+			setTimeout(()=>alert(this),2000);//this:没有改变
+		}
+		//*/
+
+		/*var fn=()=>{//定义时的this
+			alert(this);
+			setTimeout(()=>alert(this),2000);//this:没有改变
+		}
+		document.onclick=function(){
+			//this:document
+			setTimeout(()=>alert(this),2000);
+		}*/
+		//document.onclick=fn;//window
+		//使用时所在的对象
+		
+		/*function fn(){//普通函数：给谁用this指向谁
+			alert(this);//window
+		}
+		window.fn();*/
+
+
+		/*alert([1,2,3,4,5,6].map((x)=>x*x));
+		alert([1,2,3,4,5,6].filter((x)=>x>3));*/
+
+		/*function getclass(sclass,sparent){
+			var parent=sparent||document;//如果有父框，用父框，没有document
+			var arr=[];//存放获取到的元素。
+			var aEle=parent.getElementsByTagName('*');//*父元素下面的所有元素。
+			for(var i=0;i<aEle.length;i++){
+				if(aEle[i].className==sclass){//如果当前元素的类名和传入类名一致，将元素追加到数组里面。
+					arr.push(aEle[i]);
+				}
+			}
+			return arr;//所有类名匹配上的元素组成的数组。
+		}*/
+
+		/*var getclass=(sclass,sparent)=>{
+			var parent=sparent||document;//如果有父框，用父框，没有document
+			var arr=[];//存放获取到的元素。
+			var aEle=parent.getElementsByTagName('*');//*父元素下面的所有元素。
+			for(var i=0;i<aEle.length;i++){
+				if(aEle[i].className==sclass){//如果当前元素的类名和传入类名一致，将元素追加到数组里面。
+					arr.push(aEle[i]);
+				}
+			}
+			return arr;//所有类名匹配上的元素组成的数组。
+		}*/
+
+		/*var obj={
+			age:100,
+			showage(){
+				alert(this.age);
+			}
+		}
+
+		obj.showage();*/
+		/*function $(id){
+			return document.getElementById(id);
+		}*/
+
+		/*var $=(id)=>document.getElementById(id);
+		alert($('box'));*/
+
+		/*var fn=({a=5,b=6}={})=>{};
+		alert(fn({}));*/
+
+
+		/*function fn(){
+			return {
+				x:1,
+				y:2
+			}
+		}
+
+		var a=fn();
+		console.log(a);*/
+		//如果函数的返回值是一个对象，考虑()的使用
+		/*var fn=()=>({x:1,y:2});
+		var a=fn();
+		console.log(a);*/
+
+
+		/*var fn=()=>{//未来核心的函数的写法。
+			var a=10;
+			var fn1=()=>{
+				alert(a);
+			}
+			fn1();
+		}
+		fn();*/
+
+		
+	</script>
+</body>
+</html>

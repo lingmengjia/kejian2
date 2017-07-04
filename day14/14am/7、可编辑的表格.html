@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table border="1">
+			<tr>
+				<td>1111111111</td>
+				<td>1111111111</td>
+				<td>1111111111</td>
+				<td>1111111111</td>
+			</tr>
+			<tr>
+				<td>1111111111</td>
+				<td>1111111111</td>
+				<td>1111111111</td>
+				<td>1111111111</td>
+			</tr>
+			<tr>
+				<td>1111111111</td>
+				<td>1111111111</td>
+				<td>1111111111</td>
+				<td>1111111111</td>
+			</tr>
+		</table>
+		<script type="text/javascript">
+			var aTd=document.getElementsByTagName('td');
+			for(var i=0;i<aTd.length;i++){
+				aTd[i].onclick=function(){
+					//delinput(this)-->this:当前的input元素。
+					this.innerHTML='<input type="text" onblur="delinput(this)" onclick="cancel()" value="'+this.innerHTML+'">';
+					this.getElementsByTagName('input')[0].select();//点击内容选中状态
+				}
+			}
+			function cancel(ev){
+				var ev=ev||window.event;
+				if(ev.cancelBubble){
+					return ev.cancelBubble=true;
+				}else{
+					return ev.stopPropagation();//取消冒泡
+				}
+			}
+			
+			function delinput(input){//input:形参，假设input代表表单
+				input.outerHTML=input.value;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//变量注意事项：命名专业，驼峰命名
+			//var关键字：加与不加（函数里面）   严格模式
+			/*var a=5;
+			function fn(){
+				a=10;//没有var，全局变量，此种写法在严格模式下会报错。
+			}
+			fn();
+			alert(a);*/
+			
+			//变量类型--typeof
+			
+			
+			//+(连接字符串)  一元运算符(++,--)
+			//var a=5;
+			/*alert(a++);//5
+			alert(a);//6*/
+			
+			//alert(++a);//6
+			
+			
+			//逻辑运算符：|| 初始化、 做兼容       
+			//&&：and 多条件
+			//三目运算符
+			/*function fn(a,b){
+				var a=a||5;//用来对参数进行初始化。
+				var b=b||6;
+				alert(a+b);
+			}
+			fn();*/
+			
+			function sum(str,fn){
+				//alert(str);
+				fn&&fn();//如果fn存在，执行fn();
+				/*if(fn){//fn&&fn();
+					fn();
+				}*/
+			}
+			
+			sum('abc',function(){
+				//alert('fn');
+			});
+			
+			
+			//for  for...in
+			//for循环：限制条件  下标是固定的。
+			//for...in...  自动识别下标或者属性。[自定义下标]
+			//setInterval():反复执行(带有事件的)  异步
+			//break continue终止循环
+			/*var arr=[[1,2],[2,3,4,5],[5,6,7,8,9]];//for   for...in
+			var obj={//对象:自定义下标   for...in
+				a:5,
+				b:6,
+				c:7,
+				d:8
+			}
+			for(var i in obj){//i:自定义的下标（默认下标）
+				alert(i);
+			}*/
+			//var num=[3,6,9,11,13];
+			/*for(var i=0;i<num.length;i++){
+				alert(i);//0,1,2,3
+			}*/
+			
+			/*for(var j in num){//j:下标，属性
+				alert(j);
+			}*/
+			
+			
+			/*for(var i=0;i<10;i++){
+				if(i==5){//0-9
+					setInterval(fn,2000);//2000之后再执行。
+					function fn(){
+						alert(i);//10：最后一次的值
+					}
+				}
+			}
+			var num=0;
+			for(var i=0;i<10;i++){
+				if(i==5){//0-9
+					num=i;
+					setInterval(fn,2000);//2000之后再执行。
+					function fn(){
+						alert(num);//5
+					}
+				}
+			}*/
+			
+			
+			/*setInterval(function(){
+				alert(1);
+			},2000);
+			
+			alert(6);*/
+			//alert(hehe);//报错：同步
+			
+			/*setInterval(function(){//异步
+				alert(hehe);
+			},2000);
+			alert(3);*/
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

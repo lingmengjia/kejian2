@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="md5.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//封装一个存储cookie函数
+			function addCookie(key,value,day){//name:cookie名字    value:cookie值   day:过期时间
+				var date=new Date();
+				date.setDate(date.getDate()+day);//当前的日期+10天
+				document.cookie=key+'='+encodeURI(value)+';expires='+date;//date:修改的日期（年月日时分秒日期）
+				//encodeURI():编码   可解的   decodeURI()解码
+			}
+			
+			
+			function getCookie(key){
+				var arr=decodeURI(document.cookie).split('; ');//数组的每一项都是一个键值对。
+				for(var i=0;i<arr.length;i++){
+					var newarr=arr[i].split('=');//将arr数组再次拆分成一个新的数组newarr
+					if(newarr[0]==key){//比较每个新数组的key值，输出value;
+						return newarr[1];
+					}
+				}
+			}
+			/*addCookie('username','张三',7);
+			addCookie('password',123456,7)*/
+			
+			//alert(getCookie('username'));
+			//加密程序：md5   base64  sha1
+			
+			addCookie('pass',hex_md5(123456),7);
+			addCookie('pass1',hex_md5(123456),7);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

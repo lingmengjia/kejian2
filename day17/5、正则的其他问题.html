@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//g m i 
+		/*var reg=/\w/g;
+		var str='abc';
+		alert(reg.test(str));
+		alert(reg.test(str));
+		alert(reg.test(str));
+		alert(reg.test(str));*/
+		//lastIndex:当前匹配结果的后面的值的索引,当索引不存在的时候从新再来。
+
+		/*while(reg.test(str)){
+			console.log(reg.lastIndex);//1,2,3
+		}*/
+		/*var str='a';
+		alert(/\w/g.test(str));
+		alert(/\w/g.test(str));
+		alert(/\w/g.test(str));
+		alert(/\w/g.test(str));*/
+
+		//var str='whatis\nyourname';//\n换行  后面的就是新一行的开始。
+		//var reg=/is$/m;
+		//var reg=/^your/;
+		//alert(reg.test(str));
+		
+//		var reg=/(a)(b)(c)\1\2/;//\1：第一个分组，依次类推。
+//		var str='abcab';
+//		alert(reg.test(str));
+
+
+		/*var str='aabccdddeeeeefghijk';
+		var reg=/(\w)\1+/g;//match：字符串的方法，输出匹配的结果
+		alert(str.match(reg));*/
+
+		//匹配中文:[\u4e00-\uf9a5];
+		
+		/*var reg=/[\u4e00-\uf9a5]+/g;
+		var str='好a不b好c还d是e坏f不g坏';
+		alert(str.match(reg));*/
+
+
+
+		/*var reg=/([\u4e00-\uf9a5])[\u4e00-\uf9a5]\1/g;
+		var str='好不好还是坏不坏';
+		alert(str.match(reg));*/
+
+
+		/*var reg=/(a)(b)(c)\1\3/;//\1：第一个分组，依次类推。
+		var str='abcac';
+		reg.test(str);//执行。
+		alert(RegExp.$3);*///获取匹配的值（和分组匹配上的）；
+		// var reg=/(\w)\1*/g;
+		// var str='abffcccrreffaaadddaaaeebbbccchhiabjklcmn';
+		// str=str.split('').sort().join('');
+		// str.replace(reg,function(result,group,index,input){//每一个字符都要执行一次函数。
+		// 	console.log(group+':'+result.length+string);
+		// })
+		//result:匹配的结果
+		//group：第一个分组
+		//index:索引
+		//input：字符串本身
+		
+		//贪婪  非贪婪
+		
+		//var str='abcdefghijklmn';
+		//var reg=/[\w]+/;//所有的替换成一个*  ，正则贪心的。
+		//var reg=/[\w]+?/;//非贪婪
+		//alert(str.replace(reg,'*'));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

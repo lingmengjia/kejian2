@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//let s1=Symbol();
+		//let s2=Symbol();
+		//alert(s1==s2);//false;
+		
+		/*var s3=Symbol('hello');
+		var s4=Symbol('hello');
+		console.log(s3==s4);//false*/
+
+		//object属性冲突
+		/*var s2=Symbol('hehe');
+		var s3=Symbol('name');
+		var s4=Symbol('age');
+
+		var obj={
+			xingming:'zhangsan',
+			[s3]:'wangwu',
+			s3:'zhaosi',
+			age:100,
+			[s4]:'男',
+			[s2]:'haha'
+		}
+		//alert(obj.s3);
+		//alert(obj[s3]);
+		for(var i in obj){
+			console.log(i+'----'+obj[i]);
+		}
+
+		//alert(Object.getOwnPropertySymbols(obj).length);
+		for(var i=0;i<Object.getOwnPropertySymbols(obj).length;i++){
+			console.log(obj[Object.getOwnPropertySymbols(obj)[i]]);//类数组
+		}*/
+
+		//基础性的内容
+		let a=Symbol();
+		//alert(typeof a);//symbol
+
+		//let b=String(a);//转换字符串
+		//let b=a.toString();
+		let b=Boolean(a);
+		//alert(typeof b);//boolen
+		//alert(b);//true
+
+		//不能转换成数字，不能参与运算。
+		//alert('我们做朋友吧'+a);
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

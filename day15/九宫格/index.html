@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+    
+    #box {
+        margin: auto;
+        width: 490px;
+        height: 340px;
+        border: 1px solid #000000;
+        position: relative;
+    }
+    
+    div.item {
+        width: 150px;
+        height: 100px;
+        margin: 5px;
+        float: left;
+        border: 1px solid lightgray;
+        z-index: 1;
+    }    
+    div.draging {
+        width: 150px;
+        height: 100px;
+        border: 1px solid lightgray;
+        position: absolute;
+        z-index: 500;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var oBox = document.getElementById('box');
+        var aDiv = oBox.getElementsByTagName('div');
+        var bstop=true;
+        for (var i = 0; i < aDiv.length; i++) {
+            aDiv[i].index = i;
+                aDiv[i].onmousedown = function(ev) {
+                if(bstop){
+                    bstop=false;
+                    var ev = ev || window.event;
+                    var disx = ev.offsetX;
+                    var disy = ev.offsetY;
+                    var that = this;
+                    var cloneDiv = this.cloneNode(true);
+                    cloneDiv.className = 'draging';
+                    cloneDiv.style.left = this.offsetLeft + 'px';
+                    cloneDiv.style.top = this.offsetTop + 'px';
+                    oBox.appendChild(cloneDiv);
+                    this.innerHTML = '';
+                    this.style.border = '1px dashed gray';
+                    this.zIndex = 1;
+                    oBox.onmousemove = function(ev) {
+                        var ev = ev || window.event;
+                        var l=ev.clientX - this.offsetLeft - disx;
+                        var t=ev.clientY - this.offsetTop - disy;
+                        cloneDiv.style.left =l  + 'px';
+                        cloneDiv.style.top =t  + 'px';
+                    }
+                    cloneDiv.onmouseup = function() {
+                        oBox.onmousemove = null;
+                        var minIndex = that.index;
+                        var minValue = 1000;
+                        for (var j = 0; j < aDiv.length-1; j++) {
+                            var smalldistance = Math.sqrt(Math.pow(cloneDiv.offsetLeft - aDiv[j].offsetLeft, 2) + Math.pow(cloneDiv.offsetTop - aDiv[j].offsetTop, 2));
+                            if (smalldistance < minValue) { //比较
+                                minValue = smalldistance; //获取最小值
+                                minIndex =j; //获取最小值对应的索引
+                            }
+                        }
+                        if (minIndex == that.index) { //如果当前最小距离的那个盒子和拖拽的盒子索引相等的话，归位。
+                            this.style.left=that.offsetLeft+'px';
+                            this.style.top=that.offsetTop+'px';
+                            that.innerHTML=cloneDiv.innerHTML;
+                            oBox.removeChild(cloneDiv);
+                            that.style.border='1px solid lightgray';
+                            bstop=true;
+                        } else {
+                            var cloneDiv2=aDiv[minIndex].cloneNode(true);
+                            cloneDiv2.className = 'draging';
+                            cloneDiv2.style.left = aDiv[minIndex].offsetLeft + 'px';
+                            cloneDiv2.style.top =aDiv[minIndex].offsetTop + 'px';
+                            cloneDiv2.style.zIndex=1;
+                            oBox.appendChild(cloneDiv2);
+
+                            aDiv[minIndex].innerHTML = '';
+                            aDiv[minIndex].style.border = '1px dashed gray';
+                            cloneDiv.style.left=aDiv[minIndex].offsetLeft + 'px';
+                            cloneDiv.style.top =aDiv[minIndex].offsetTop + 'px';
+                            aDiv[minIndex].innerHTML=cloneDiv.innerHTML;
+                            oBox.removeChild(cloneDiv);
+                            aDiv[minIndex].style.border='1px solid lightgray';
+
+
+                            cloneDiv2.style.left=that.offsetLeft + 'px';
+                            cloneDiv2.style.top=that.offsetTop + 'px';
+                            that.innerHTML=cloneDiv2.innerHTML;
+                            that.style.border='1px solid lightgray';
+                            oBox.removeChild(cloneDiv2);
+                            bstop=true;
+                        }
+                    }
+                }
+            }
+        }
+        document.body.onmousedown=function(){
+            return false;
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <div class="item"><img src="img/0.jpg" width="150" height="100"></div>
+        <div class="item"><img src="img/1.jpg" width="150" height="100"></div>
+        <div class="item"><img src="img/2.jpg" width="150" height="100"></div>
+        <div class="item"><img src="img/3.jpg" width="150" height="100"></div>
+        <div class="item"><img src="img/4.jpg" width="150" height="100"></div>
+        <div class="item"><img src="img/5.jpg" width="150" height="100"></div>
+        <div class="item"><img src="img/6.jpg" width="150" height="100"></div>
+        <div class="item"><img src="img/7.jpg" width="150" height="100"></div>
+        <div class="item"><img src="img/8.jpg" width="150" height="100"></div>
+    </div>
+    <script type="text/javascript">
+       /* window.onload=function(){
+            var oBox=document.getElementById('box');
+            var aDiv=oBox.getElementsByTagName('div');
+            for(var i=0;i<aDiv.length;i++){
+                aDiv[i].index=i;
+                aDiv[i].onmousedown=function(){
+                    var cloneDiv = this.cloneNode(true);
+                    oBox.appendChild(cloneDiv);
+                }
+            }
+        }*/
+    </script>
+</body>
+
+</html>

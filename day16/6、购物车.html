@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0; padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		li{float:left; margin: 10px;}
+		li img{
+			border: 1px solid #ccc;
+			padding: 5px;
+			width: 160px;height:160px;
+		}
+		td{
+			border: 1px solid red;
+		}
+		td{padding: 20px 30px;}
+	</style>
+
+</head>
+<body>
+	<table>
+		<!-- <tr>
+			<td><img src="img/1.jpg" alt=""></td>
+			<td>11000</td>
+			<td>1</td>
+		</tr> -->
+	</table>
+	<ul>
+		<li>
+			<img src="img/1.jpg" alt="">
+			<p>11000.00</p>
+			<button>加入购物车</button>
+		</li>
+		<li>
+			<img src="img/2.jpg" alt="">
+			<p>9000.00</p>
+			<button>加入购物车</button>
+		</li>
+		<li>
+			<img src="img/3.jpg" alt="">
+			<p>8000.00</p>
+			<button>加入购物车</button>
+		</li>
+		<li>
+			<img src="img/4.jpg" alt="">
+			<p>7000.00</p>
+			<button>加入购物车</button>
+		</li>
+	</ul>
+	<script src="public.js"></script>
+	<script>
+		//假设cookie存储的编号和数量
+		//如果当前点击的”加入购物车“的按钮的编号存在cookie里面，无需创建，直接数量+1，否则创建对应的商品列表。
+		
+
+		//1、新建两个数组存放商品的编号和数量
+		var arrsid=[];//编号
+		var arrnum=[];//数量
+
+
+		function cookietoarr(){//取cookie转数组的函数
+			if(jscookie.getCookie('cookiesid')){
+				arrsid=jscookie.getCookie('cookiesid').split(',');//将cookie取出转换数组
+			}else{
+				arrsid=[];
+			}
+			if(jscookie.getCookie('cookienum')){
+				arrnum=jscookie.getCookie('cookienum').split(',');//将cookie取出转换数组
+			}else{
+				arrnum=[];
+			}
+		}
+
+		//判断某个值是否在数组里面。
+		function inArray(value,array){
+			for(var i=0;i<array.length;i++){
+				if(array[i]==value){
+					return true;//存在
+				}
+			}
+			return false;//不存在
+		}
+
+
+		var aBtn=document.getElementsByTagName('button');
+		var num=0;
+		for(var i=0;i<aBtn.length;i++){
+			aBtn[i].index=i+1;//按钮添加索引
+			cookietoarr();//arrsid:存编号的数组。
+			aBtn[i].onclick=function(){
+				num=this.index;//编号
+				if(inArray(num,arrsid)){//满足条件：数量累加
+					var aTr=document.getElementsByTagName('tr');
+					for(var j=0;j<aTr.length;j++){
+						var cindex=aTr[j].getAttribute('xxx');
+						if(cindex==num){
+							var cnum=aTr[cindex-1].getElementsByTagName('td')[2].innerHTML;
+							cnum++;
+							aTr[cindex-1].getElementsByTagName('td')[2].innerHTML=cnum;
+							//添加cookie里面的只有数量。
+							arrnum[cindex-1]=cnum;
+							jscookie.addCookie('cookienum',arrnum.toString(),7);
+						}
+					}
+				}else{//创建商品
+					arrsid.push(num);//将编号添加到数组中，将整个数组存储到cookie
+					jscookie.addCookie('cookiesid',arrsid.toString(),7);
+					arrnum.push(1);//创建商品：数量都是1.
+					jscookie.addCookie('cookienum',arrnum.toString(),7);
+					createtable(num,1)//调用函数。num:加入购物车按钮的编号。数量：1
+				}
+			};
+		}
+
+		var arr=[
+			["img/1.jpg",11000.00,1],
+			["img/2.jpg",9000.00,1],
+			["img/3.jpg",8000.00,1],
+			["img/4.jpg",7000.00,1]
+		];
+		var oTable=document.getElementsByTagName('table')[0];
+		function createtable(sid,count){//创建商品的函数。
+			var str='';
+			for(var i=0;i<arr.length;i++){
+				if(sid==(i+1)){
+					str+='<tr xxx='+sid+'>';
+					str+='<td><img src="'+arr[i][0]+'" alt=""></td>';
+					str+='<td>'+arr[i][1]+'</td>';
+					str+='<td>'+count+'</td>';
+					str+='</tr>';
+				}
+			}
+			oTable.innerHTML+=str;
+		}
+
+		if(jscookie.getCookie('cookiesid')){//判断是否存在有cookie，如果有的话创建出来
+			var s=jscookie.getCookie('cookiesid').split(',')//cookie里面购物车的编号。  数组
+			var n=jscookie.getCookie('cookienum').split(',')//cookie里面购物车的数量。  数组
+			for(var i=0;i<s.length;i++){
+				createtable(s[i],n[i]);
+			}
+		}
+	</script>
+</body>
+</html>

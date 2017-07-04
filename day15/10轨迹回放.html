@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:0px;top:0px;
+				overflow: hidden;
+				cursor: move;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1"></div>
+		<script type="text/javascript">
+			var oDiv=document.getElementsByTagName('div')[0];
+			var shortx=0;
+			var shorty=0;
+			var position=[{
+				x:oDiv.offsetLeft,
+				y:oDiv.offsetTop
+			}];
+			//必须对oDiv进行鼠标按下。
+			oDiv.onmousedown=function(ev){
+				var ev=ev||window.event;
+				//1、求短线
+				shortx=ev.offsetX;
+				shorty=ev.offsetY;
+				 position.push({
+				 	x:oDiv.offsetLeft,
+				 	y:oDiv.offsetTop
+				 });
+				//2、鼠标移动
+				document.onmousemove=function(ev){
+					var ev=ev||window.event;
+					var l=ev.clientX-shortx
+					var t=ev.clientY-shorty
+					if(l<0){
+						l=0;
+					}else if(l>=document.documentElement.clientWidth-oDiv.offsetWidth){
+						l=document.documentElement.clientWidth-oDiv.offsetWidth;
+					}
+					
+					if(t<0){
+						t=0;
+					}else if(t>=document.documentElement.clientHeight-oDiv.offsetHeight){
+						t=document.documentElement.clientHeight-oDiv.offsetHeight;
+					}
+					oDiv.style.left=l+'px';
+					oDiv.style.top=t+'px';
+					 position.push({
+					 	x:l,
+					 	y:t
+					 });
+				}
+				//3、释放move事件，同时拖拽结束。
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+					var timer=setInterval(function(){
+						if(position.length==0){
+							clearInterval(timer);
+							return false;
+						}
+						var obj=position.pop();
+						oDiv.style.left=obj.x+'px';
+						oDiv.style.top=obj.y+'px';
+					},30)
+				}
+				return false;//取消浏览器的默认事件
+			}
+		</script>
+	</body>
+</html>

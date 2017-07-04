@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		#div1{width: 50px;height:50px;background: red;position: absolute;left:200px;top:600px; border-radius: 50%;}
+		#div2{width: 50px;height:50px;background: blue;position: absolute;left:1000px;top:200px; border-radius: 50%;}
+	</style>
+</head>
+<body>
+	<div id="div1"><img src="2.jpg" alt=""></div>
+	<div id="div2"></div>
+	<script type="text/javascript">
+		var oDiv1=document.getElementById('div1');
+		var oDiv2=document.getElementById('div2');
+		//抛物线的公式：y=A*x*x+B*x+C  (A,B,C:常数)
+		//x,y:盒子的left、top值。
+		
+		//第一步：通过盒子距离求b
+		//假设坐标原点(0,0)  y=a*x*x+b*x;   求x,y  目的求b  a可以约定
+		
+		var current={//oDiv1的位置
+			x:oDiv1.offsetLeft,
+			y:oDiv1.offsetTop
+		}
+
+
+		var target={//盒子之间的距离
+			x:oDiv2.offsetLeft-current.x,
+			y:oDiv2.offsetTop-current.y
+		}
+
+		var a=0.002;//自己约定。y=a*x*x+b*x==>b=(y-a*x*x)/x;
+
+		var b=(target.y-a*target.x*target.x)/target.x;//目标
+
+
+
+
+
+
+
+		//第二步：上面求b，后面利用a,b的值+x的位移，求y的位移
+		//y=a*x*x+b*x;   a,b(第一步求a,b),x(x的位移，自由设置)   求y
+		var timer=null;
+		var x=0;//水平的速度。
+		timer=setInterval(function(){
+			x+=15;
+			oDiv1.style.left=current.x+x+'px';
+			oDiv1.style.top=current.y+(a*x*x+b*x)+'px';//x:设置的水平的速度
+			//y=a*x*x+b*x;
+			if(x>=target.x){
+				clearInterval(timer);
+			}
+		},30)
+	</script>
+</body>
+</html>

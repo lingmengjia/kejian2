@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			var arr= [{
+		        "title": "Apple MacBook Pro 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/256GB SSD闪存/Retina屏 MF840CH/A)",
+		        "price": "10788.00",
+		        "img": "images/5631d31eN50010b03.jpg"
+		
+		    }, {
+		
+		        "title": "Apple iPad Air 2 平板电脑 9.7英寸（64G WLAN版/A8X 芯片/Retina显示屏/Touch ID技术 MH182CH）金色",
+		        "price": "3299.00",
+		        "img": "images/5440d612Nb61beccf.jpg"
+		    }, {
+		
+		        "title": "Apple iPad Air 平板电脑 9.7英寸（16G WLAN版/A7芯片/Retina显示屏 MD788CH）银色",
+		        "price": "2099.00",
+		        "img": "images/rBEhVVJ3VY8IAAAAAAG_9yE_xEwAAFBZQCT4x0AAcAP271.jpg"
+		    }, {
+		
+		        "title": "Apple Mac mini台式电脑 (Core i5 处理器/8GB内存/1TB 存储 MGEN2CH/A)",
+		        "price": "4988.00",
+		        "img": "images/5440f42eN5b4677a6.jpg"
+		 }];
+			/*function ctable(rows,cols){
+				var str='<table border="1">';
+				for(var i=0;i<rows;i++){
+					str+='<tr>';
+					for(var j in arr[i]){
+						str+='<td>'+arr[i][j]+'</td>';
+					}
+					str+='</tr>';
+				}
+				str+='</table>';
+				document.body.innerHTML=str;
+			}
+			
+			ctable(4,3)*/
+			
+			function ctable(rows,cols){
+				var str='<table border="1">';
+				for(var i=0;i<rows;i++){
+					str+='<tr>';
+					for(var j=0;j<cols;j++){
+						if(j==cols-1){
+							str+='<td><a href="#">删除</a></td>';
+						}else{
+							str+='<td>111111</td>';
+						}
+						
+					}
+					str+='</tr>';
+				}
+				str+='</table>';
+				document.body.innerHTML=str;
+			}
+			
+			ctable(40,18)
+		</script>
+	</body>
+<!--	<table>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>-->
+</html>

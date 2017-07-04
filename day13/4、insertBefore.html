@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" /> <input type="button" value="发布" />
+		<ul id="ul1">
+			<li>111111111</li>
+		</ul>
+		<script type="text/javascript">
+		//box.insertBefore(newNode, existNode)  把newNode节点插入到exsitNode的前面
+			var aInput=document.getElementsByTagName('input');
+			var oUl=document.getElementById('ul1');
+			aInput[1].onclick=function(){
+				var cLi=document.createElement('li');
+				cLi.innerHTML=aInput[0].value;
+				if(oUl.children.length>0){
+					oUl.insertBefore(cLi,oUl.children[0]);//oUl.children[0]第一个子节点。
+				}else{
+					oUl.appendChild(cLi);//第一次追加
+				}
+				aInput[0].value='';//清空内容
+				aInput[0].focus();//得到焦点
+			}
+			
+		//obj.cloneNode(） 复制节点,复制obj元素标签，可以传一个布尔值为参数，如果参数为true，连同obj子元素一起复制。如果参数为空（false）复制obj节点。
+		//document.body.appendChild(oUl.cloneNode(true));
+		//obj.replaceChild(新添加的节点（替换）,被替换的节点);
+		
+		/*var cDiv=document.createElement('div');
+		document.body.replaceChild(cDiv,oUl);*/
+		</script>
+	</body>
+</html>

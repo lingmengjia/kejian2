@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css" media="screen">
+		body{
+			font-family: 'microsoft yahei';font-size: 14px;
+		}
+		span{
+			padding: 0 5px;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name=""><span></span><br>
+	<input type="button" value="注册">
+	<script type="text/javascript">
+		//oninput:内容发生改变时触发html5新增的  ie8
+		//onpropertychange ie
+		var aInput=document.getElementsByTagName('input');
+		var oSpan=document.getElementsByTagName('span')[0];
+		var bstop=true;
+		aInput[0].onfocus=function(){//密码框为空时输出提示文字
+			if(aInput[0].value==''){
+				oSpan.innerHTML='请输入6-20位数字字母或者其他字符的组成的密码';
+				oSpan.style.color='#aaa';
+			}
+		}
+
+		aInput[0].onblur=function(){//失去光标检查密码是否为空
+			if(aInput[0].value==''){
+				oSpan.innerHTML='密码不能为空';
+				oSpan.style.color='red';
+				bstop=false;
+			}
+			if(bstop){//输入正确的提示
+				oSpan.innerHTML='√';
+				oSpan.style.color='green';
+			}
+		}
+
+		
+		aInput[0].oninput=function(){
+			var regnum=/\d+/;
+			var regchar=/[a-zA-Z]+/;
+			var regother=/[\W\_]+/;
+			var count=0;
+			var pass=aInput[0].value;
+			if(pass.length>=6&&pass.length<=20){
+				if(regnum.test(pass)){
+					count++;
+				}
+				if(regchar.test(pass)){
+					count++;
+				}
+				if(regother.test(pass)){
+					count++
+				}
+				switch(count){
+					case 1:oSpan.innerHTML='弱';bstop=true;break;
+					case 2:oSpan.innerHTML='中';bstop=true;break;
+					case 3:oSpan.innerHTML='强';bstop=true;break;
+				}
+			}else{
+				oSpan.innerHTML='密码长度有误';
+				oSpan.style.color='red';
+				bstop=false;
+			}
+			if(aInput[0].value==''){
+				oSpan.innerHTML='密码不能为空';
+				oSpan.style.color='red';
+				bstop=false;
+			}
+
+		}
+
+		aInput[1].onclick=function(){
+			if(aInput[0].value==''){
+				oSpan.innerHTML='密码不能为空';
+				oSpan.style.color='red';
+				bstop=false;
+			}
+			if(bstop){
+				location.href='http://www.baidu.com';
+			}
+		}
+
+	</script>
+</body>
+</html>

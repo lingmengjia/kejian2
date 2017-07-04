@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	//split():字符串转数组;
+	//var str='a,b,c,d,e,f';
+	//console.log(str.split(','));
+	//var str='#a1%2b&22c#32d4%2e52f%1';
+	//console.log(str.split(/\d\d/g));
+	//console.log(str.split(/\w+/g));
+	//匹配身份证号码
+//	var str='36233019840626327';
+//	var reg=/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d{1}|3[01])\d{3}(\d|X)?$/;
+//	alert(reg.test(str));
+
+	//手机号码
+	//var reg=/^1[3|4|5|6|7|8|]\d{9}$/;
+	
+	//电子邮箱
+	//123456@qq.com
+	//var reg=/^(\w+)[\w\-\.\+]\@(\w+)[\w\-\.\+]\.(\w+)[\w\-\.\+]$/;
+
+	//日期
+	//2017-10-1  2017/1/10  2017.1.5  2017年10月1号   
+//	var reg=/^(\d{2}|\d{4})[\-\.\/\年]\d{1,2}[\-\.\/\月]\d{1,2}[\号]?$/;
+//	var str='2017-9-9';
+//	alert(reg.test(str));
+
+	/*var str='这件衣服是你妈的还是你爸，我猜是你妹的，其实是你大爷的';
+	var reg=/妈|爸|妹|爷/g;
+	alert(str.replace(reg,'*'));*/
+
+
+	//var reg=/^1[345678]\d{9}$/;
+	//1．掌握正则的封装
+	/*function checkTelphone(str){
+		return /^1[345678]\d{9}$/.test(str);
+	}
+
+	alert(checkTelphone('12567891234'));*/
+
+	//qq   [1-9]\d{4,11}
+</script>
+</body>
+</html>

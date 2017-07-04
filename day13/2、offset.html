@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bootstrap飞机跑道进度条动画特效 - 站长素材</title>
+<!--<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">-->
+<style type="text/css">
+*{
+	padding: 0px; margin: 0px;
+}
+	
+.wrap{
+	width: 300px;
+	height:400px;
+	margin-left: 200px;
+	background: #ccc;
+	/*position: relative;*/
+}
+
+.box{
+		width: 200px;height:300px;border: 10px solid #000; padding: 20px; margin: 100px;position: absolute;
+left:0px;top:0px;	}
+</style>
+</head>
+<body>
+
+<!--<div class="container">
+	<div class="progress">
+		<div class="progress-bar" style="width: 0%; background:orange;" id="loading">
+			<span id="span1">0%</span>
+		</div>
+	</div>
+</div>-->
+<div class="wrap">
+	<div class="box">内容</div>
+</div>
+
+<script type="text/javascript">
+	/*var oDiv=document.getElementById('loading');
+	var oSpan=document.getElementsByTagName('span')[0];
+	var timer=null;
+			//parseInt(oDiv.style.width)//获取css属性
+			//oDiv.style.width='100px';//设置css的属性。
+			//alert(oDiv.className);//获取元素属性
+			//oDiv.className='hehe';//设置
+	timer=setInterval(function(){
+		if(parseInt(oDiv.style.width)<100){
+			oDiv.style.width=parseInt(oDiv.style.width)+1+'%';
+			//oSpan.innerHTML=parseInt(oDiv.style.width)+'%';
+			oSpan.innerHTML=parseInt(oSpan.innerHTML)+1+'%';
+		}
+	},50)*/
+	
+	
+	
+	
+	
+	
+	
+	//获取属性问题：obj.style.attr:一般情况下用来接收属性的值.仅仅只能获取行间样式。(内联样式)
+	//var oDiv=document.getElementsByTagName('div')[1];
+	//alert(oDiv.style.width);//无法获取选择器里面的样式。
+	
+	
+	
+	
+	//属性词：offsetLeft/offsetTop/offsetWidth/offsetHeight/offsetParent(定位父级)
+	//alert(oDiv.offsetWidth);//200px+20px+40px  盒模型的尺寸(width+padding+border);//没有单位的
+	//alert(oDiv.offsetLeft);//如果有定位父级，离定位父级的距离，否则盒子离body的距离。
+	
+	//var oDiv=document.getElementsByTagName('div')[1];
+	
+	//console.log(oDiv.offsetParent);//如果oDiv存在定位父级，输出元素。   <div class="wrap">  否则输出body
+	//alert(document.body.offsetParent);//body不存在定位父级
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#baidu{
+				width: 400px;
+				height: 300px;
+				background: orange;
+				position: absolute;
+				left:0px;
+				top:0px;
+				display: none;
+			}
+			span{
+				color: #fff;
+				position: absolute;
+				right:5px;
+				top:5px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body style="height: 2000px;">
+		<!--<iframe src="http://www.baidu.com" width="400" height="400"></iframe>-->
+		
+		<div id="baidu"><span>X</span></div>
+		<a href="javascript:;" id="login">登录</a>
+		<script type="text/javascript">
+			//location
+			//setInterval:反复调用
+			//setTimeout:延时调用。
+			/*document.onclick=function(){
+				
+				location.href='http://www.baidu.com';
+			}*/
+			/*setTimeout(function(){
+				location.href='http://www.baidu.com';
+			},3000)*/
+			
+			
+			/*alert('页面从我这里开始执行');
+			setInterval(function(){
+				location.reload();//允许带一个参数：true,和缓存有关。
+			},2000);*/
+			
+			
+			
+			
+			//获取可视区的宽高
+			//document.body=>body   document.title==>title  document.documentElement==>html
+			/*document.onclick=function(){
+				console.log(document.documentElement.clientWidth);//可视区的宽
+				console.log(document.documentElement.clientHeight);//可视区的高
+			}*/
+			
+			//滚动条的距离：
+			//document.documentElement.scrollTop  ie  ff
+			//document.body.scrollTop  chrome
+			
+			window.onload=function(){
+				var oLogin=document.getElementById('login');
+				var oBaidu=document.getElementById('baidu');
+				oLogin.onclick=function(){
+					oBaidu.style.display='block';
+					oBaidu.style.left=(document.documentElement.clientWidth-400)/2+'px';
+					oBaidu.style.top=(document.documentElement.clientHeight-300)/2+'px';
+				}
+				
+				window.onresize=function(){
+					oBaidu.style.left=(document.documentElement.clientWidth-400)/2+'px';
+					oBaidu.style.top=(document.documentElement.clientHeight-300)/2+'px';
+				}
+				window.onscroll=function(){
+					var scrolltop=document.documentElement.scrollTop || document.body.scrollTop;//兼容
+					oBaidu.style.left=(document.documentElement.clientWidth-400)/2+'px';
+					oBaidu.style.top=(document.documentElement.clientHeight-300)/2+scrolltop+'px';
+				}
+				
+				document.getElementsByTagName('span')[0].onclick=function(){
+					var bool=confirm('你确定要关闭吗？');
+					if(bool){
+						oBaidu.style.display='none';
+					}
+					
+				}
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

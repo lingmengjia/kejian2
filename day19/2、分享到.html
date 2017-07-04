@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    .wrap {
+        width: 200px;
+        height: 300px;
+        background: red;
+        position: absolute;
+        left: -200px;
+        top: 200px;
+    }
+    
+    .wrap span {
+        width: 20px;
+        height: 60px;
+        background: blue;
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        margin-top: -30px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <span>分享到</span>
+    </div>
+    <script type="text/javascript">
+    var timer = null;
+
+    function getstyle(obj, attr) { //获取元素的样式  obj:元素 attr：属性
+        if (obj.currentStyle) {
+            return obj.currentStyle[attr]; //ie8
+        } else {
+            return getComputedStyle(obj)[attr]; //标准
+        }
+    }
+
+    function uniform(obj, attr, target, speed) {
+        //obj:元素  attr：属性  target:目标  speed:速度
+        clearInterval(timer);
+        timer = setInterval(function() {
+            if (parseInt(getstyle(obj, attr)) > target) { //getstyle带单位的，parseInt去单位
+                speed = -Math.abs(speed); //负值
+            } else {
+                speed = speed;
+            }
+            if (parseInt(getstyle(obj, attr)) == target) {
+                clearInterval(timer);
+            } else {
+                obj.style[attr] = parseInt(getstyle(obj, attr)) + speed + 'px';
+            }
+
+        }, 30);
+    }
+    var oWrap = document.getElementsByTagName('div')[0];
+    oWrap.onmouseover = function() {
+        uniform(oWrap, 'left', 0, 10);
+    }
+    oWrap.onmouseout = function() {
+        uniform(oWrap, 'left', -200, 10);
+    }
+    </script>
+</body>
+
+</html>

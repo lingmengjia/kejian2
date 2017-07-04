@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<script type="text/javascript">
+		//1、模板字符串（artTemplate）
+		/*var name='这是个好东西';
+		var bstop=true;
+		var html=`<div class="box">
+					<ul>
+						<li>${name}</li>
+						<li class="${bstop?'hehe':'haha'}">111111111111</li>
+						<li>111111111111</li>
+						<li>111111111111</li>
+						<li>111111111111</li>
+						<li>111111111111</li>
+					</ul>
+				</div>`;
+				document.body.innerHTML=html;*/
+
+			//var str='hello';
+			//console.log(str.repeat(3));
+			//console.log(str.includes('xel'));//false
+			//console.log(str.startsWith('xhe'));//false
+			//console.log(str.endsWith('xo'));//false
+			
+
+			/*var aLi=document.getElementsByTagName('li');
+			var arraLi=Array.from(aLi);
+			arraLi.push(123);
+			alert(arraLi);*/
+
+			//Array.of()方法用于将一组值，转换为数组。
+			//var arr=new Array(3);//3长度
+
+			//console.log(Array.of(3));//[3]
+			
+			//console.log([1,2,3,4,5,6].fill('a',3,4));//a代表替换的参数  3 ：起始位置  4：结束位置(不包括)
+			
+			/*
+			 var a=5;
+			 var obj={
+				a:a,
+				fn:function(){
+					alert(1);
+				}
+			}*/
+			/*var a=5;
+			var obj={
+				a,
+				fn(){//去掉function
+					alert(1);
+				}
+			}
+			console.log(obj);*/
+
+			/*var obj={
+				a:5
+			}
+			var obj1={
+				a:50,
+				b:6
+			}
+
+			var obj2={
+				c:100
+			}
+			Object.assign(obj,obj1,obj2);//合并到obj
+			console.log(obj);//Object {a: 50, b: 6, c: 100}*/
+//我是用throw new Error()方法，这样可以停止js执行，但浏览器会显示有错误
+				throw new Error('你写的有问题');//throw:浏览器会显示有错误
+	
+	</script>
+</body>
+</html>

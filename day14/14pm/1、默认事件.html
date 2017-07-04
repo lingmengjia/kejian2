@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul{
+				width: 200px;
+				height: 300px;
+				border: 1px solid #000;
+				background: #ccc;
+				display: none;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><a href="http://www.baidu.com">百度</a></li>
+		</ul>
+		<script type="text/javascript">
+		window.onload=function(){
+			//oncontextmenu 在用户使用鼠标右键单击客户区打开上下文菜单时触发。 
+			//ie8下面一般情况下将 （document事件 ）代码放到onload里面
+			var oUl=document.getElementsByTagName('ul')[0];
+			var oA=document.getElementsByTagName('a')[0];
+			document.oncontextmenu=function(ev){//鼠标右键事件
+				var ev=ev||window.event;
+				oUl.style.display='block';
+				oUl.style.left=ev.clientX+'px';
+				oUl.style.top=ev.clientY+'px';
+				return false;//阻止默认事件
+			}
+			document.onclick=function(){
+				oUl.style.display='none';
+			}
+			
+			oA.onclick=function(ev){
+				//return false;//阻止默认事件
+				var ev=ev||window.event;
+				prevent(ev);
+			}
+			//通过封装解决默认事件
+			//获取事件对象
+			//var ev=ev||window.event;//？？？
+			//ie8下面有事件对象:window.event(默认的);
+			//标准浏览器：事件对象就是事件处理函数的第一个参数。
+			
+			function prevent(ev){
+				//alert(a.clientX);
+				//alert(event.clientX);
+				/*var x=a||event;
+				alert(x.clientX);*/
+				
+				//var ev=ev||event;//标准浏览器和ie浏览器下面都能获取事件对象。
+				
+				if(window.event){//满足条件：ie8浏览器
+					return event.returnValue=false;//ie8阻止默认事件
+				}else{
+					return ev.preventDefault();//标准浏览器
+				}
+				
+			}
+			
+		}
+			
+			
+		</script>
+	</body>
+</html>

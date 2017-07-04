@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{padding: 0px;margin: 0;
+				width:450px;
+			}
+			li{
+				list-style: none;
+				float: left;
+				width:100px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				margin-right: 8px;
+				border: 1px solid red;
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+			.box div{
+				clear: both;
+				width: 450px;
+				height: 200px;
+				margin-top: 10px;
+				border: 1px solid orange;
+				display: none;
+			}
+			li.active{
+				background: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<a href="##" title="链接的解释" target="_blank" aaa='bbb'></a>-->
+		<div class="box">
+			<ul>
+				<li class="active" index=0>社会</li>
+				<li index=1>军事</li>
+				<li index=2>娱乐</li>
+				<li index=3>体育</li>
+			</ul>
+			<div style="display: block;">社会1111111111111111111111111111111111111111111111111</div>
+			<div>军事2222222222222222222222222222222222222222222222222</div>
+			<div>娱乐3333333333333333333333333333333333333333333333333</div>
+			<div>体育4444444444444444444444444444444444444444444444444</div>
+		</div>
+		<script type="text/javascript">
+			var oUl=document.getElementsByTagName('ul')[0];
+			var aLi=oUl.children;
+			var aDiv=document.getElementsByTagName('div')[0].getElementsByTagName('div');
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].onclick=function(){
+					for(var i=0;i<aLi.length;i++){
+						aLi[i].className='';//清除所有li上面的类
+						aDiv[i].style.display='none';//隐藏所有的盒子
+					}
+					this.className='active';
+					aDiv[this.getAttribute('index')].style.display='block';
+				}
+			}
+		</script>
+		<script type="text/javascript">
+			//var oA=document.getElementsByTagName('a')[0];
+			//oA.title='我是新的内容';//设置默认的元素属性
+			//alert(oA.title);//获取默认的属性
+			//oA.hehe='abcdefg';//js代码设置自定义的属性。
+			//alert(oA.hehe);//获取通过js的点操作符设置的属性。低版本的le浏览器可以查看这个属性。
+			
+			//alert(oA.aaa)
+			
+			//alert(oA.getAttribute('aaa'));//获取自定义的属性
+			/*oA.setAttribute('xxx','yyy');//设置自定义的属性。
+			alert(oA.getAttribute('xxx'));//获取自定义的属性
+			oA.removeAttribute('xxx');//移除自定义属性。
+			alert(oA.getAttribute('xxx'));*/
+		</script>
+	</body>
+</html>

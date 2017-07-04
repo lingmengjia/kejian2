@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		#box{
+			/* width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			left:0px;
+			top:0px;
+			font-size:10px;
+			border: 1px solid red;
+			opacity: 0.3;
+			filter:alpha(opacity=30); */
+		}
+		li{
+			width: 200px;height:100px;background: red;margin-bottom: 5px;
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="box">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</div>
+	<script type="text/javascript">
+
+		function getstyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj)[attr];
+			}
+		}
+
+		
+		/*var oDiv=document.getElementById('box');
+		oDiv.onmouseover=function(){
+			uniform(oDiv,'opacity',100,5);
+		}
+
+		oDiv.onmouseout=function(){
+			uniform(oDiv,'opacity',30,5);
+		}*/
+		var aLi=document.getElementsByTagName('li');
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].onmouseover=function(){
+				uniform(this,'width',800,10)
+			}
+			aLi[i].onmouseout=function(){
+				uniform(this,'width',200,10)
+			}
+		}
+		function uniform(obj,attr,target,speed){
+			clearInterval(obj.timer);
+			var cur=0;
+			obj.timer=setInterval(function(){
+				if(attr=='opacity'){
+					cur=Math.round(getstyle(obj,attr)*100);
+				}else{
+					cur=parseInt(getstyle(obj,attr));
+				}
+				if(cur>target){
+					speed=-Math.abs(speed);
+				}else{
+					speed=speed;
+				}
+				if(cur==target){
+					clearInterval(obj.timer);
+				}else{
+					if(attr=='opacity'){
+						obj.style.opacity=(cur+speed)/100;
+						obj.style.filter='alpha(opacity='+(cur+speed)+')';
+					}else{
+						obj.style[attr]=(cur+speed)+'px';
+					}
+					
+				}
+
+			},30);
+		}
+
+
+
+	</script>
+</body>
+</html>

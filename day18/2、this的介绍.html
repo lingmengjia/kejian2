@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<div id="box">
+		<!-- <ul>
+			<li>111111111111</li>
+			<li>111111111111</li>
+			<li>111111111111</li>
+			<li>111111111111</li>
+		</ul> -->
+		11111111111
+	</div>
+	<script type="text/javascript">
+		/*document.onclick=function(){
+			//alert(this);//document
+			setTimeout(function(){
+				alert(this);//window
+			},1000)
+		}*/
+
+		/*box.onclick=function(){
+			var that=this;//this指向box  
+			setTimeout(function(){
+				that.innerHTML='222222222';//此方法常用来修改this指向。
+			},1000)
+		};*/
+
+		//修改this指向。  函数下面的三个方法：call()  apply()  bind();
+		//apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；第一个参数都是this要指	向的对象，也就是想指定的上下文；从第二个参数开始，就是函数的本身的参数；
+		var obj={
+			name:'zhangsan',
+			showinfo:function(age,grade){
+				return '我的名字是'+this.name+',我的年龄是：'+age+',我是'+grade+'的';
+			}
+		}
+
+		//alert(obj.showinfo(12,'1704'));
+		var obj1={
+			name:'wangwu'
+		}
+
+		var obj2={
+			name:'zhaoliu'
+		}
+
+		/*alert(obj.showinfo.call(obj1,188,1706));
+		alert(obj.showinfo.apply(obj2,[188,1706]));
+		alert(obj.showinfo.bind(obj2)(200,1707));*/
+		//bind 是返回对应函数，便于稍后调用；
+		//apply 、call 则是立即调用 ,apply第二个参数必须是一个数组。
+		//var aLi=document.getElementsByTagName('li');//类数组
+		//var arrayLi=[].slice.call(aLi);//将数组的this指向指到aLi.aLi由类数组变成真正的数组。
+		//var arrayLi=Array.prototype.slice.call(aLi);
+		/*arrayLi.push('hehe');
+		alert(Array.isArray(arrayLi));//false
+		alert(arrayLi);//false*/
+
+		//alert(Math.min(1,2,3,45,0,6));//找一堆数字最小值。
+		//var arr=[9,4,7,34,78,20,780];
+		//alert(Math.min.apply(this,arr));//特殊情况,第二个参数就是数组
+		
+
+
+		/*var box=document.getElementById('box');
+		box.onclick=function(){
+			setTimeout(function(){
+				this.innerHTML='222222222';//此方法常用来修改this指向。
+			}.bind(box),2000)
+		};*/
+		/*function fn(){
+			alert(1);
+		}*/
+
+
+
+		//document.onclick=fn;
+		//setTimeout(fn,2000);//fn():函数调用
+	</script>
+</body>
+</html>

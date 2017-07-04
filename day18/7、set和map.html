@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*var arr=[3,5,2,3,7,89,12,3,5,89,12];
+		var s=new Set(arr);
+		console.log(s);*/
+		/*var s=new Set([3,5,7]);//参数是数组
+		s.add('hello').add('hi').add('hehe');//add:添加数据
+		s.delete('hehe');*/
+		//s.clear();//清空所有
+		/*console.log(s.has('hello'));//true
+		console.log(s);
+		console.log(s.size);
+		console.log(s.keys());
+		console.log(s.values());
+		console.log(s.entries());*/
+		/*s.forEach(function(values,keys,set){//set:set结构本身。
+			console.log(values,keys,set);
+		})*/
+
+
+		/*var obj={
+			name:'zhangsan'//toString()
+		}*/
+		/*var obj={};
+		obj.name='zhangsan';*/
+
+		/*alert(obj.name);
+		alert(obj['name']);*/
+
+		/*var obj={};
+		var obj1={
+			sex:'women'
+		}
+		alert(obj1);//[object Object]
+		obj.name='lisi';
+		obj[obj1]='wangwu';
+		console.log(obj);//Object {name: "lisi", [object Object]: "wangwu"}
+		console.log(obj['[object Object]']);*/
+
+		var m=new Map([
+			['a',5],
+			['b',7],
+			['c',20]
+		]);
+
+		//m.set('d',44).set('e',44).set('f',44);
+		
+		console.log(m.get('a'));
+		console.log(m);
+		console.log(m.keys());
+		console.log(m.values());
+		console.log(m.entries());
+
+	</script>
+</body>
+</html>

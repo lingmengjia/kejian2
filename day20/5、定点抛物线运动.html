@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+    #div1 {
+        width: 50px;
+        height: 50px;
+        background: red;
+        position: absolute;
+        left: 200px;
+        top: 600px;
+    }
+    
+    #div2 {
+        width: 20px;
+        height: 60px;
+        background: blue;
+        position: absolute;
+        right:0px;
+        top: 200px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="div1"><img src="2.jpg" alt="白马汽车" width="200"></div>
+    <div id="div2">购物车</div>
+    <script type="text/javascript">
+    var oDiv1 = document.getElementById('div1');
+    var oDiv2 = document.getElementById('div2');
+    var num=0;
+    oDiv1.onclick = function() {
+            var clonediv = oDiv1.cloneNode(true);
+            clonediv.style.width = '50px';
+            clonediv.style.height = '50px';
+            clonediv.style.overflow="hidden";
+            clonediv.style.opacity=0.3;
+            document.body.appendChild(clonediv);
+
+            var current = { //oDiv1的位置
+                x: clonediv.offsetLeft,
+                y: clonediv.offsetTop
+            }
+ console.log(current.x,current.y);
+
+            var target = { //盒子之间的距离
+                x: oDiv2.offsetLeft - current.x,
+                y: oDiv2.offsetTop - current.y
+            }
+            
+             console.log(target.x,target.y);
+
+            var a = 0.001; //自己约定。y=a*x*x+b*x==>b=(y-a*x*x)/x;
+            var b = (target.y - a * target.x * target.x) / target.x; //目标
+
+            var timer = null;
+            var x=0;
+            timer=setInterval(function(){
+            	x+=55;
+            	clonediv.style.left=current.x+x+'px';
+            	clonediv.style.top=current.y+(a*x*x+b*x)+'px';
+            	if(x>=target.x){
+            		clearInterval(timer);
+            		document.title=clonediv.getElementsByTagName('img')[0].alt+':'+ ++num;
+            		document.body.removeChild(clonediv);
+            		
+            	}
+            },30)
+        }
+        //抛物线的公式：y=A*x*x+B*x+C  (A,B,C:常数)
+        //x,y:盒子的left、top值。
+
+    //第一步：通过盒子距离求b
+    //假设坐标原点(0,0)  y=a*x*x+b*x;   求x,y  目的求b  a可以约定
+
+    // var current={//oDiv1的位置
+    // 	x:oDiv1.offsetLeft,
+    // 	y:oDiv1.offsetTop
+    // }
+
+
+    // var target={//盒子之间的距离
+    // 	x:oDiv2.offsetLeft-current.x,
+    // 	y:oDiv2.offsetTop-current.y
+    // }
+
+    // var a=0.002;//自己约定。y=a*x*x+b*x==>b=(y-a*x*x)/x;
+
+    // var b=(target.y-a*target.x*target.x)/target.x;//目标
+
+
+
+
+
+
+
+    // //第二步：上面求b，后面利用a,b的值+x的位移，求y的位移
+    // //y=a*x*x+b*x;   a,b(第一步求a,b),x(x的位移，自由设置)   求y
+    // var timer=null;
+    // var x=0;//水平的速度。
+    // timer=setInterval(function(){
+    // 	x+=15;
+    // 	oDiv1.style.left=current.x+x+'px';
+    // 	oDiv1.style.top=current.y+(a*x*x+b*x)+'px';//x:设置的水平的速度
+    // 	//y=a*x*x+b*x;
+    // 	if(x>=target.x){
+    // 		clearInterval(timer);
+    // 	}
+    // },30)
+    </script>
+</body>
+
+</html>

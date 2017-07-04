@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		.box{
+			width: 100px;height:100px;background: red;position: absolute;left:1200px;top:0px;
+		}
+	</style>
+	
+</head>
+<body>
+	<div class="box">
+		
+	</div>
+	<div style="width: 1px;height:200px;background: black;position: absolute;left:600px;top:0px;">
+		
+	</div>
+	<script type="text/javascript">
+		var oDiv=document.getElementsByTagName('div')[0];
+		var speed=0;
+		var timer=null;
+		oDiv.onclick=function(){
+			clearInterval(timer);
+			timer=setInterval(function(){
+				speed=Math.ceil((1000-oDiv.offsetLeft)/10);
+				speed=Math.floor((600-oDiv.offsetLeft)/10);//负值
+				//正值速度接近0；但不等于0，而是一个小数，小数和最小的px单位冲突。变成整数。
+				//停止条件
+				if(oDiv.offsetLeft==1000){
+					clearInterval(timer);
+				}else{
+					oDiv.style.left=oDiv.offsetLeft+speed+'px';
+				}
+			
+
+				if(oDiv.offsetLeft==600){
+					clearInterval(timer);
+				}else{
+					oDiv.style.left=oDiv.offsetLeft+speed+'px';
+				}
+
+				
+				
+			},30);
+			
+		}
+	</script>
+</body>
+</html>

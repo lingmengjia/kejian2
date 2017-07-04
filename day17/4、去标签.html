@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea name="" cols="30" rows="10">2222</textarea>
+	<input type="button" name="" value="转换"> 
+	<textarea name="" cols="30" rows="10"></textarea>
+	<script type="text/javascript">
+		var aTextarea=document.getElementsByTagName('textarea');
+		var oBtn=document.getElementsByTagName('input')[0];
+		oBtn.onclick=function(){
+			var reg=/^<.+>$/g;
+			aTextarea[1].value=aTextarea[0].value.replace(reg,'');
+		}
+	</script>
+</body>
+</html>

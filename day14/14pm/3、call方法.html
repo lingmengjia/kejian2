@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function fn(a,b){
+				alert(this);//window
+				alert(a+b);
+			}
+			
+			//fn();//window
+			//fn.call('hehe',4,5);//call:改变上下文语境，改变this指向。  第一个参数代表this指向值，从第二个参数开始，就是函数的自己参数。
+			document.onclick=function(){
+				fn(3,4);
+			};
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

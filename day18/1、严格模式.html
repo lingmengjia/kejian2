@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+			"use strict";//整个js代码都是严格模式下执行。
+		// 1.全局变量显式声明：严格模式下，变量都必须先用var命令声明，然后再使用。非严格模式没有var默认就是全局变量。
+			// var a=10;
+			// b=10;
+			// alert(a);
+			// alert(b);// b is not defined
+
+
+		// 2.禁止使用with语句：因为该语句无法在编译时就确定，属性到底归属哪个对象。
+		// var obj={
+		// 	a:5,
+		// 	b:7,
+		// 	c:20
+		// }
+		// //obj.a  obj.b   obj.c
+		// with(obj){//共有的对象整合with参数。
+		// 	alert(a);
+		// 	alert(b);
+		// 	alert(c);
+		// }
+
+
+		/*with(document){
+			write('hello,with');
+			alert(getElementsByTagName('title'));
+		}*/
+
+
+
+		// 3.禁止this关键字指向全局对象
+//		function fn(){
+//			alert(this);//undefined
+//		}
+//		fn();
+
+		// 4.函数不能有重名的参数
+		/*function sum(a,a,b){
+			alert(a+a+b);//7
+		}*/
+		//sum(1,2,3);
+
+		// 5.禁止八进制表示法
+		
+		//var num=073;
+		//alert(num);//59十进制(非严格模式)
+
+		// 6.禁止使用arguments.callee 
+		/*function jc(n){
+			if(n==1){
+				return 1;
+			}else{
+				return n*arguments.callee(n-1);
+			}
+		}
+		alert(jc(5));*/
+
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

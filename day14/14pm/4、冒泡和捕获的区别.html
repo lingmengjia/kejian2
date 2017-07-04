@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html id="html1">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				padding: 100px 0 0 200px;
+			}
+			#small{
+				width: 100px;height:100px;background: red;border-radius: 50%;
+			}
+			#center{
+				width: 100px;height:100px;padding:100px;background: blue;border-radius: 50%;
+			}
+			#big{
+				width: 300px;height:300px;padding:100px;background: green;border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body id="body1">
+		<div id="big">
+			<div id="center">
+				<div id="small"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function fn(){
+				alert(this.id);
+			}
+			
+			var oBig=document.getElementById('big');
+			var oCenter=document.getElementById('center');
+			var oSmall=document.getElementById('small');
+			var oBody1=document.getElementById('body1');
+			var html1=document.getElementById('html1');
+			function addEvent(obj,event,fn,bool){//obj:操作的元素对象   event：事件动作   fn：调用的函数  bool:是否捕获
+				if(obj.addEventListener){
+					obj.addEventListener(event,fn,bool);
+				}else{
+					obj.attachEvent('on'+event,function(){
+						fn.call(obj);//通过call方法，将this指向当前操作的元素对象。
+					});
+				}
+			}
+			
+			addEvent(oBig,'click',fn,true);
+			addEvent(oCenter,'click',fn,false);
+			addEvent(oSmall,'click',fn,true);
+			addEvent(body1,'click',fn,false);
+			addEvent(html1,'click',fn,true);
+			//冒泡：small-->center-->bigt-->body-->html   捕获：反向
+			//先捕获(外-内)后冒泡（内-外）
+			//html->big-->small->center-->body
+		</script>
+	</body>
+</html>

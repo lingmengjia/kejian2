@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		#div1{width: 1px;height: 1px;background: red;position: absolute;left:500px;top:400px;}
+		.div2{width: 5px;height:5px;background: red;position: absolute;left:0px;top:0px;}
+	</style>
+
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/javascript">
+		//y=a+Math.sin(anger*Math.PI/180)*r;
+		//x=b+Math.cos(anger*Math.PI/180)*r;
+		//a,b：圆的坐标
+		var oDiv=document.getElementsByTagName('div')[0];
+		var anger=0;
+		var timer=setInterval(function(){
+			anger++;
+			if(anger>=360){
+				clearInterval(timer);
+			}
+			var y=400+Math.sin(anger*Math.PI/180)*200;
+			var x=400+Math.cos(anger*Math.PI/180)*200;
+
+			oDiv.style.left=x+'px';
+			oDiv.style.top=y+'px';
+			var cdiv=document.createElement('div');
+			cdiv.className='div2';
+			cdiv.style.left=x+'px';
+			cdiv.style.top=y+'px';
+			document.body.appendChild(cdiv);
+
+		},30)
+
+	</script>
+</body>
+</html>

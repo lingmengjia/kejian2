@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html{
+				height: 100%;
+			}
+			body{
+				position: relative;
+			}
+			a{
+				position: absolute;
+				right: 0px;
+				bottom: 0px;
+			}
+		</style>
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body style="height: 3000px;">
+		<a href="javascript:;">回到顶部</a>
+		<script type="text/javascript">
+			var oA=document.getElementsByTagName('a')[0];
+			var speed=0;
+			var timer=null;
+			var bstop=true;
+			oA.onclick=function(){//触发滚轮事件
+				//获取滚动距离
+				timer=setInterval(function(){//每隔30毫秒触发一次。顺序执行
+					var scrolltop=document.documentElement.scrollTop || document.body.scrollTop;//获取
+					speed=scrolltop/10;
+					document.documentElement.scrollTop = document.body.scrollTop=scrolltop-speed;//设置
+					if(scrolltop<=0){
+						clearInterval(timer);
+						return false;
+					}
+					bstop=true;
+				},30)
+			}
+			window.onscroll=function(){
+				console.log(1);
+				if(!bstop){
+					clearInterval(timer);
+				}
+				bstop=false;//让程序执行到这里立马执行上面的if语句。
+			}
+		</script>
+	</body>
+</html>
