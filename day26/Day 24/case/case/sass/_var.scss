@@ -1,0 +1,37 @@
+$zero:0px;
+$no:none;
+$gray:#f5f5f5;
+$b:block;
+$center:0 auto;
+$h:58px;
+$mid:center;
+$fs:10px;
+$width:150px;
+$font:'Microsoft Yahei';
+$fw:200;
+$ib:inline-block;
+$fl:left;
+$fr:right;
+$cwidth:234px;
+$cgray:#ff6700;
+
+@mixin ell{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@mixin bd($direction:left,$bw:1px,$bs:solid,$bc:#ccc){
+	border-#{$direction}:$bw $bs $bc;
+}
+
+@mixin mg($t,$r,$b,$l){
+	margin:$t $r $b $l;
+}
+
+@mixin pg($t,$r,$b,$l){
+	padding:$t $r $b $l;
+}
+@mixin colorvalue($color){
+	color:$color;
+}

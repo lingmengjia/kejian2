@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0px;padding:0px;
+		}
+		body{
+			padding: 100px;
+		}
+	</style>
+	<script src="jquery.js"></script>
+</head>
+<body style="height: 2000px;">
+	<ul>
+		<li>11111</li>
+		<li>22222</li>
+		<li><strong>33333</strong></li>
+		<li><strong><em><i>44444</i></em></strong></li>
+		<li><em>55555</em></li>
+		<li><strong><em>66666</em></strong></li>
+	</ul>
+	<div style="width: 200px;height:200px;background: red; padding: 10px; position: relative;">
+		<div style="width: 100px;height:100px;background: blue;"></div>
+	</div>
+	<script>
+		$(function(){
+			//循环
+			/*$('li').each(function(index,element){
+				//console.log(index,element);
+				//console.log(this);
+				console.log($(this));
+				return false;
+			});*/
+			//var Q=jQuery.noConflict();//$释放
+			//jQuery.noConflict();//$释放
+
+			//alert(jQuery('li').eq(0).html());
+
+
+			//css方法
+			/*$('li').css().css();
+			$('li').css({
+
+			})*/
+
+			// offset([coordinates]) :偏移值(对象)
+			// position() : 偏移值,定位父级为基准。
+			//offset和position:在父级没有定位的时候是一样的结果
+			// scrollTop([val]) scrollLeft([val]) :滚动条的距离
+
+			$(window).scroll(function(){
+				console.log($(document).scrollTop());
+			})
+
+			/*console.log($('div').offset());
+			console.log($('div').offset().left);
+			console.log($('div').offset().top);*/
+
+			/*console.log($('div').eq(1).position());
+			console.log($('div').eq(1).offset());*/
+
+			//find()：查找
+			//$('li').find('strong').find('em').find('i').css('color','red');
+			//$('li').find('i').css('color','red');
+
+			//siblings([expr]):除了自身之外的其他的兄弟元素。
+
+			$('li').eq(0).css('background','red').siblings('li').css('background','blue');
+		});
+	</script>
+</body>
+</html>

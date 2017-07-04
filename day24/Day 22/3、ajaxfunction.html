@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    //obj:对象
+    function tostring(obj) {
+        var arr = [];
+        for (var i in obj) {
+            arr.push(i + '=' + obj[i]);
+        }
+
+        return arr.join('&');
+    }
+
+    ajax({
+    	type:'post',
+        url: 'php.php',
+        data: 'name=zhangsan',
+        success: function(d) { //成功
+            alert(d);
+        },
+        error: function(e) { //失败
+            console.log(e);
+        }
+    });
+
+    function ajax(obj) {
+        obj.type = obj.type || 'get'; //默认的请求方式
+        if (typeof obj.data != 'string') { //判断传入的数据是否是对象
+            obj.data = tostring(obj.data) || ''; //如果传入的数据是对象，将数据转换成字符串。
+        } else {
+            obj.data = obj.data || ''; //传入的数据就字符串。
+        }
+
+        //获取ajax对象
+        var ajax=null;
+        try {
+            ajax = new XMLHttpRequest();
+        } catch (e) {
+            ajax = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+
+
+        //判断请求的方式是get，数据放到url后面
+        if (obj.type == 'get') {
+            obj.url += '?' + obj.data;
+        }
+        ajax.open(obj.type, obj.url, true); //类型、地址、是否异步
+
+
+        //post数据必设置请求头，然后放置到send里面
+        if (obj.type == 'get') {
+            ajax.send();
+        } else {
+            ajax.setRequestHeader('content-type', 'application/x-www-form-urlencoded'); //post请求设置请求头
+            ajax.send(obj.data);
+        }
+
+        //事件
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState == 4) {
+                if (ajax.status == 200) { //请求成功
+                    obj.success && obj.success(ajax.responseText); //将获取到的数据当做实参传入。
+             
+                } else { //请求失败
+                    obj.error && obj.error(ajax.status);
+                }
+            }
+        }
+
+
+    }
+
+    var obj1 = {
+        name: 'zhangsan',
+        age: 200,
+        sex: '男'
+    };
+    ajax({
+        url: 'php.php',
+        data: 'name=zhangsan',
+        success: function(d) { //成功
+            alert(d);
+        },
+        error: function(e) { //失败
+            console.log(e);
+        }
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	请输入城市名称：<input type="text" name="">
+	<p></p>
+	<script type="text/javascript" src="public.js"></script>
+	<!-- <script src='https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=17321230753'></script> -->
+	<!-- <script src="https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=13333333333"></script> -->
+	<script type="text/javascript">
+	/*var oInput=document.getElementsByTagName('input')[0];
+	function hehe(num){
+		alert(num.province);
+	}
+
+	oInput.onblur=function(){
+		var os=document.createElement('script');
+		os.src='https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel='+oInput.value+'&callback=hehe';
+		document.body.appendChild(os);
+	}*/
+	var oInput=document.getElementsByTagName('input')[0];
+	function hehe(num){
+		
+			console.log('城市：'+num.city);
+			console.log('天气：'+num.weather);
+			console.log('最高温度：'+num.temp1);
+			console.log('最低温度：'+num.temp2);
+		
+	}
+
+	oInput.onblur=function(){
+		var os=document.createElement('script');
+		os.src='http://127.0.0.1:8088/js1704/Day%2023/tel.php?send='+oInput.value+'&callback=hehe';
+		document.body.appendChild(os);
+	}
+	/*__GetZoneResult_ = {
+	    mts:'1732123',
+	    province:'上海',
+	    catName:'中国电信',
+	    telString:'17321230753',
+		areaVid:'29423',
+		ispVid:'138238560',
+		carrier:'上海电信'
+	}*/
+	/*console.log(__GetZoneResult_.province);*/
+	
+	</script>
+	<script type="text/javascript">
+	
+	/*var oP=document.getElementsByTagName('p')[0];
+	oP.innerHTML='此号码的归属地为：'+__GetZoneResult_.province+',运营商为：'+ __GetZoneResult_.catName;*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+    	.active{
+    		background: red;
+    	}
+    	div{
+    		width: 200px;height:300px;border:1px solid red; background: red;
+    	}
+    </style>
+    <script src="jquery-1.11.3.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <script>
+    	$(function(){//$(document).ready()==$();   $==jQuery
+    		//alert($);
+    		//$('#div1');
+    		//$('.div2');
+    		//$('div p');
+    		//alert($('div').size());
+    		//$('div').click(function(){
+    			//$(this).css('background','red');
+    			//alert(this.innerHTML);
+    		//});
+
+    		//1.
+    		//原生和jquery对象的转换问题。
+    		//原生转jquery对象-->$()将原生包裹起来。
+    		//反之：1、加索引转换  2、get(索引);
+
+    		//alert($('.div2').get(0).innerHTML);
+
+    		//2.jquery的写法。(链式，注释)；
+    		//$('div').css('width','200px').css('height','200px').css('background','red');
+    		/*$('div').css({
+    			width:200,
+    			height:200,
+    			background:'blue'
+    		});*/
+    		//$('div').css('width','400px');
+    		//$('div').html('<strong>333333333333</strong>');
+    		/*$('div').click(function(){
+    			$('div').hide(1000);
+    		});*/
+
+
+
+    	});
+
+    	/*jQuery(function(){
+    		alert($);
+    	});*/
+
+
+    </script>
+</head>
+
+<body>
+	<div>1</div>
+    <!-- <div id="div1" class="div2">
+    	<p>wenzi</p>
+    </div>
+    <div class="div2">1</div>
+    <div>2</div>
+    <div>3</div> -->
+    <!-- <input type="button" name="" value="11111" class="active">
+    <input type="button" name="" value="22222">
+    <input type="button" name="" value="33333">
+    <div style="display: block;">11111111111111111</div>
+    <div>22222222222222222</div>
+    <div>33333333333333333</div> -->
+    
+    <script type="text/javascript">
+    	/*var aInput=document.getElementsByTagName('input');
+    	var aDiv=document.getElementsByTagName('div');
+    	for(var i=0;i<aInput.length;i++){
+    		aInput[i].index=i;
+    		aInput[i].onclick=function(){
+    			for(var i=0;i<aInput.length;i++){
+    				aInput[i].className='';
+    				aDiv[i].style.display='none';
+    			}
+
+    			this.className='active';
+    			aDiv[this.index].style.display='block';
+    		}
+    	}*/
+
+    	$('input').click(function(){
+    		$(this).addClass('active').siblings('input').removeClass('active');
+    		$('div').eq($(this).index()).css('display','block').siblings('div').css('display','none');
+    	});
+
+    </script>
+</body>
+</html>

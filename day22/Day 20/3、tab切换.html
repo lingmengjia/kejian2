@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+    #box div,
+    #box1 div ,#box2 div{
+        width: 200px;
+        height: 300px;
+        border: 1px solid red;
+        display: none;
+    }
+    
+    .active {
+        background: red;
+    }
+    </style>
+    <script type="text/javascript">
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <input type="button" name="" value="语文" class="active">
+        <input type="button" name="" value="数学">
+        <input type="button" name="" value="英语">
+        <div style="display: block">语文：113</div>
+        <div>数学：126</div>
+        <div>英语：35.5</div>
+    </div>
+    <div id="box1">
+        <input type="button" name="" value="语文" class="active">
+        <input type="button" name="" value="数学">
+        <input type="button" name="" value="英语">
+        <div style="display: block">语文：113</div>
+        <div>数学：126</div>
+        <div>英语：35.5</div>
+    </div>
+    <div id="box2">
+        <input type="button" name="" value="语文" class="active">
+        <input type="button" name="" value="数学">
+        <input type="button" name="" value="英语">
+        <div style="display: block">语文：113</div>
+        <div>数学：126</div>
+        <div>英语：35.5</div>
+    </div>
+    <script type="text/javascript">
+    function TabSwitch(id) {
+        this.oBox = document.getElementById(id);
+        this.aInput = this.oBox.getElementsByTagName('input');
+        this.aDiv = this.oBox.getElementsByTagName('div');
+        this.num = 0;
+    }
+    /* TabSwitch.prototype.init = function() {
+         //this:实例
+
+     }
+
+     TabSwitch.prototype.tab = function(obj) {
+         //this:实例
+
+     }*/
+    TabSwitch.prototype = {
+        init: function() {
+            var that = this;
+            for (var i = 0; i < this.aInput.length; i++) {
+                this.aInput[i].index = i;
+                this.aInput[i].onmouseover = function() {
+                    //this:按钮
+                    that.num = this.index;
+                    if(this.id=='box'){
+                    	that.tab()
+                    }else{
+                    	that.delay();
+                    }
+                };
+            }
+        },
+        tab: function() {
+            for (var i = 0; i < this.aInput.length; i++) {
+                this.aInput[i].className = '';
+                this.aDiv[i].style.display = 'none';
+            }
+            this.aInput[this.num].className = 'active';
+            this.aDiv[this.num].style.display = 'block';
+        },
+        autoplay: function() {
+        	var that=this;
+            setInterval(function() {
+            	if(that.num>=that.aInput.length-1){
+            		that.num=0
+            	}else{
+            		that.num++;
+            	}
+                /*for (var i = 0; i < that.aInput.length; i++) {
+                    that.aInput[i].className = '';
+                    that.aDiv[i].style.display = 'none';
+                }
+                that.aInput[that.num].className = 'active';
+                that.aDiv[that.num].style.display = 'block';*/
+                that.tab();
+            }, 2000);
+        },
+        delay:function(){
+        	var that=this;
+        	setTimeout(function(){
+        		that.tab();
+        	},5000)
+        }
+    }
+
+    var t1 = new TabSwitch('box');
+    var t2 = new TabSwitch('box1');
+    var t3 = new TabSwitch('box2');
+    t1.init();
+    t2.init();
+    t2.autoplay();
+    t3.init();
+
+    /*TabSwitch.prototype={
+    	init:function(){alert(1)},
+    	tab:function(){alert(2)}
+    }*/
+
+    /*Object.prototype.hehe=function(){//扩张系统的而方法
+    	alert(1);
+    }*/
+    /*Object.prototype={//obj下面这样定义方法会报错
+    	toString:function(){
+    		alert(2);
+    	},
+    	hehe:function(){
+    		alert(3);
+    	}
+    };
+    var t1=new Object();
+    t1.toString();*/
+
+    /*var num='abc';
+    num.hehe()*/
+
+
+    //面向对象注意点：
+    //1、原型下面方法给事件和定时器，this肯定要改变
+    //2、方法的里面变量只能给方法内部使用。
+    //3、尽量避免全局变量和全局函数。
+    </script>
+</body>
+
+</html>

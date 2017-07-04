@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p></p>
+	<script type="text/javascript">
+		var ajax=new XMLHttpRequest();
+		ajax.open('get','demo3.php',true);
+		ajax.send();//0,1,2,3,4（完成）
+		ajax.onreadystatechange=function(){
+			if(ajax.readyState==4){
+				var str=ajax.responseText;//获取后端传来的接口里面的内容
+				document.getElementsByTagName('p')[0].innerHTML=str;
+			}
+		}
+	</script>
+</body>
+</html>

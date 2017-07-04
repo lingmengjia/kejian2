@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul1">
+		
+	</ul>
+	<script type="text/javascript">
+		//ajax
+		var ajax=new XMLHttpRequest();
+		ajax.open('get','http://localhost/js1704/Day%2021/demo2.php',true);
+		ajax.send();//0,1,2,3,4（完成）
+		ajax.onreadystatechange=function(){
+			if(ajax.readyState==4){
+				var arr=JSON.parse(ajax.responseText);//字符串
+				var str='';
+				var oUl=document.getElementById('ul1');
+				for(var i=0;i<arr.length;i++){
+					str+='<li><a href="#">'+arr[i].title+'</a><span>'+arr[i].date+'</span></li>'
+				}
+				oUl.innerHTML=str;
+			}
+		}
+	</script>
+</body>
+</html>

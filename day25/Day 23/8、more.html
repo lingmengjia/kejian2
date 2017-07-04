@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		p{
+			border:1px solid red;
+			width:600px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="content">
+			<!-- <p>11111111111111111111111111111111111</p>
+			<p>11111111111111111111111111111111111</p>
+			<p>11111111111111111111111111111111111</p>
+			<p>11111111111111111111111111111111111</p>
+			<p>11111111111111111111111111111111111</p>
+			<p>11111111111111111111111111111111111</p> -->
+		</div>
+		<button>加载更多</button>
+	</div>
+	<script type="text/javascript" src="public.js"></script>
+	<script type="text/javascript">
+		function More(){
+			this.box=document.getElementById('box');
+			this.content=document.getElementById('content');
+			this.btn=document.getElementsByTagName('button')[0];
+			this.pcount=5;//点击默认加载条数；
+			this.index=0;//索引
+			this.num=0;//按钮点击的次数
+			this.init();
+		}
+		More.prototype.init=function(){
+			var that=this;
+			this.btn.onclick=function(){
+				that.num++;//按钮的点击次数
+				that.index=that.num*that.pcount;//索引
+				that.show(that.index,that.pcount);
+			}
+
+		}
+		//0-4  4-8   8-12
+		More.prototype.show=function(n,p){//n:索引   p:默认加载条数4
+			var that=this;
+			ajax({
+				url:'more.php',
+				success:function(data){
+					var arr=JSON.parse(data);
+					var html='';
+					if(arr.length-n<p){//如果剩下不足4，取剩下。
+						p=arr.length-n;
+					}
+					for(var i=n;i<p+n;i++){
+						html+='<p>'+arr[i].title+'</p>';
+					}
+
+					if(arr.length==p+n){
+						that.btn.style.display='none';
+					}
+					that.content.innerHTML+=html;//累加
+				}
+			})
+		}
+		var m1=new More();
+		m1.show(m1.index,m1.pcount);
+	</script>
+</body>
+</html>

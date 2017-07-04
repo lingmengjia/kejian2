@@ -1,0 +1,196 @@
+.clearfix:after {
+  content: '\20';
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1;
+  background: #f3f3f3;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  vertical-align: middle;
+}
+
+.header {
+  width: 1170px;
+  height: 94px;
+  line-height: 94px;
+  margin: 0 auto;
+}
+.header .logo {
+  margin: 0 0 0 100px;
+  float: left;
+}
+.header .logo li {
+  float: left;
+  margin: 0 20px 0 20px;
+}
+.header .logo a {
+  color: #333333;
+}
+.header .logo a:hover {
+  color: #53cac3;
+}
+.header .link {
+  float: right;
+}
+.header .link a {
+  color: #333333;
+  margin: 0 10px 0 10px;
+  padding: 0 0 0 20px;
+}
+.header .link .android {
+  background: url(../img/jiqiren.png) no-repeat 0 0;
+}
+.header .link .iphone {
+  background: url(../img/apple.png) no-repeat 0 0;
+}
+
+.banner {
+  width: 100%;
+  height: 399px;
+  background: url(../img/bg.png) center;
+}
+.banner .content {
+  width: 1170px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "microsoft yahei";
+}
+.banner .content h3 {
+  padding: 109px 0px 56px 0px;
+  color: #ffffff;
+  font-size: 38px;
+}
+.banner .content a {
+  color: #ffffff;
+  font-size: 21px;
+  line-height: 42px;
+  text-align: center;
+  display: inline-block;
+  width: 186px;
+  height: 42px;
+  background: #53cac3;
+  border: 1px solid #53cac3;
+  border-radius: 22px;
+}
+
+.main {
+  width: 1170px;
+  margin: 0 auto;
+}
+.main .main_top,
+.main .main_center,
+.main .main_bottom {
+  background: #ffffff;
+  padding: 42px 0px 54px 0px;
+}
+.main .data,
+.main .share,
+.main .news {
+  float: left;
+  padding: 0 53px 0px 52px;
+}
+.main .data p,
+.main .share p,
+.main .news p {
+  width: 284px;
+  line-height: 32px;
+}
+.main .share {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+.main .pic {
+  margin: 42px 0px 33px 0px;
+}
+.main .main_center {
+  margin: 10px 0px 10px 0px;
+  padding: 42px 53px 54px 52px;
+}
+.main .mc {
+  height: 156px;
+}
+.main .mc .left {
+  width: 284px;
+  margin: 0px 28px 0px 0px;
+  float: left;
+}
+.main .mc .left img {
+  width: 284px;
+}
+.main .mc .right {
+  float: left;
+}
+.main .mc .right p {
+  width: 740px;
+  line-height: 26px;
+  font-size: 12px;
+}
+.main .mc2 {
+  padding: 24px 0px 24px 0px;
+  margin: 24px 0px 24px 0px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.main .newlist {
+  float: left;
+}
+.main .newpic {
+  float: right;
+}
+.main li {
+  height: 84px;
+  border-bottom: 1px dashed #eee;
+  padding: 0px 0px 14px 0px;
+  margin: 0px 0px 14px 0px;
+}
+.main li .npic {
+  float: left;
+  margin: 0 18px 0px 0px;
+}
+.main li .ncontent {
+  float: left;
+}
+.main li p {
+  width: 490px;
+  line-height: 20px;
+}
+.main .main_bottom {
+  padding: 42px 53px 54px 52px;
+}
+
+/*# sourceMappingURL=index.css.map */

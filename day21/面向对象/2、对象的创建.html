@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//1、利用object创建对个对象
+		/*var obj=new Object();
+		obj.name='zhangsan';
+		obj.showName=function(){
+			alert(obj.name);
+		}
+
+		var obj1=new Object();
+		obj1.name='wangwu';
+		obj1.showName=function(){
+			alert(obj1.name);
+		}
+
+		var obj2=new Object();
+		obj2.name='zhaosi';
+		obj2.showName=function(){
+			alert(obj2.name);
+		}
+
+
+		obj.showName();
+		obj1.showName();
+		obj2.showName();*/
+		//object创建多个对象出现代码冗余问题。封装解决
+		
+		//函数封装：采用工厂模式
+		/*2、工厂模式是软件工程领域一种广为人知的设计模式，这种模式抽象了创建具体对象的过程。
+		工厂模式的实现方法非常简单，通过封装解决了创建多个相似对象的问题*/
+		/*function creatObject(name){
+			var obj=new Object();//创建对象
+			obj.name=name;
+			obj.showName=function(){
+				alert(obj.name);
+			}
+			return obj;//返回对象
+		}
+
+		var c1=creatObject('zhangsan')
+		var c2=creatObject('wangwu')
+		var c3=creatObject('zhaosi')
+		c1.showName();
+		c2.showName();
+		c3.showName();*/
+		//工厂模式的弊端：通过封装解决了创建多个相似对象的问题，但是却无从	识别对象的类型，因为全部都是Object，不像Date、Array等
+		//工厂模式也有问题，不适合面向对象开发。
+		//3、构造函数
+		function CreatObject(name){//CreatObject类似Array:构造函数。
+			//var obj=new Object();//创建对象
+			//var this=new Object();
+			this.name=name;//属性和方法被加入到 this引用的对象中。
+			this.showName=function(){
+				alert(this.name);
+			}
+			//return obj;//返回对象
+			//return this;//隐式返回已经存在，上面的返回无需要了。
+		}
+		//构造函数的this指向实例对象。c1,c2,c3
+		var c1=new CreatObject('zhangsan');//CreatObject构造函数
+		var c2=new CreatObject('wangwu')
+		var c3=new CreatObject('zhaosi')
+		c1.showName();
+		c2.showName();
+		c3.showName();
+		/*alert(c1.showName==c2.showName);
+		//new*/
+		//以 new 操作符调用构造函数的时候，函数内部发生以下变化：
+		//1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
+		//2、属性和方法被加入到 this 引用的对象中。
+		//3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。 
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

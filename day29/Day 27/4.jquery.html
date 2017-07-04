@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding:0px;
+			margin:0px;
+		}
+		div{
+			width: 200px;
+			height:200px;
+			border: 10px solid red;
+			padding: 50px;
+			margin:100px;
+			word-wrap:break-word;
+		}
+	</style>
+	<script src="jquery.js"></script>
+</head>
+<body>
+	
+	<!-- <div>div1</div>
+	<div>div2</div>
+	<div>div3</div> -->
+	<!-- <ul>
+		<li><strong>1111</strong></li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+	</ul> -->
+	<div>width: 200px;
+			height:200px;
+			border: 10px solid red;
+			padding: 50px;
+			margin:100px;</div>
+	<script>
+		//append:内部的后面
+		//$('div').append('<strong>123</strong>');//操作div
+		//$('<strong>').appendTo($('div'));//操作的strong
+
+		//$('div').prepend('<strong>123</strong>');
+
+		//$('div').wrapInner('<div class="wrapper"></div>');
+
+		//$('ul').empty();//empty：清空内部的元素
+		//$('ul').remove();//自己都被删除了。
+		// console.log($('div').width());//width
+		// console.log($('div').innerWidth());//width+padding
+		// console.log($('div').outerWidth());//width+padding+border
+		// console.log($('div').outerWidth(true));//width+padding+border+margin
+
+		alert(($('div').css('width')));
+	</script>
+</body>
+</html>

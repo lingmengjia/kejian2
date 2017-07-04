@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function CreatePerson(name){//首字母大写，区分普通函数和构造函数
+			this.name=name;
+			this.showName=function(){
+				alert(this.name);
+			}
+		}
+		CreatePerson('zhangsan').showName();//调用出错。
+		//构造函数需要new调用。生成实例对象，构造函数里面的this指向实例对象的.
+		
+		/*var p1=new CreatePerson('zhangsan');
+		p1.showName();
+		var p2=new CreatePerson('wangwu');
+		p2.showName();*/
+
+		//new CreatePerson('zhangsan').showName();
+
+		//alert(p1.showName==p2.showName);//false;
+		/*var arr=new Array(1,2,3,4);
+		arr.push();*/
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    function CreatePerson(name, sex, age) {
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+    }
+    /*CreatePerson.prototype.showName = function() {
+        alert(this.name);
+    }
+    CreatePerson.prototype.showSex = function() {
+        alert(this.sex);
+    }
+    CreatePerson.prototype.showinfo = function() {
+        alert(this.name + ',' + this.sex + ',' + this.age);
+    }*/
+    CreatePerson.prototype = {
+        showName: function() {
+            alert(this.name);
+        },
+        showSex: function() {
+            alert(this.sex);
+        },
+        showinfo: function() {
+            alert(this.name + ',' + this.sex + ',' + this.age);
+        }
+    }
+    var p1 = new CreatePerson('zhangsan', '男', 100);
+
+
+    function Student(name, sex, age, grade) {
+        CreatePerson.apply(this, arguments); //属性继承：构造函数的继承。
+        this.grade = grade; //自己的属性
+    }
+    
+    Student.prototype.studying = function() {
+        alert(this.grade);
+    }
+
+    //将CreatePerson下面的方法一一赋值给Student
+    /*for (var i in CreatePerson.prototype) {
+        Student.prototype[i]=CreatePerson.prototype[i];//方法的继承
+    }*/
+
+    Student.prototype =new CreatePerson();//新的继承方式，子类的构造函数发生变化
+	Student.prototype.constructor=Student
+
+    var s1 = new Student('lisi', '女', 200, 1704);
+    alert(s1.constructor);//
+    s1.showinfo();
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

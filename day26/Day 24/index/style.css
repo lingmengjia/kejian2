@@ -1,0 +1,156 @@
+@charset "UTF-8";
+ul {
+  list-style: none;
+  width: 300px;
+}
+
+/*变量的定义：普通的变量，特殊变量*/
+.box {
+  width: 200px;
+  height: 10px;
+  color: red;
+  border: 1px solid red;
+}
+
+a {
+  text-decoration: none;
+  color: #001c00;
+}
+
+.box-8 {
+  width: 800px;
+}
+
+.box-6 {
+  width: 600px;
+}
+
+.box-4 {
+  width: 400px;
+}
+
+.box-2 {
+  width: 200px;
+}
+
+.nav {
+  width: 100%;
+  height: 40px;
+}
+.nav ul {
+  list-style: none;
+}
+.nav ul li {
+  line-height: 60px;
+}
+.nav ul li a {
+  text-decoration: none;
+}
+.nav ul li a span {
+  color: red;
+}
+.nav ul li a span strong {
+  font-size: 12px;
+}
+.nav ul li a span strong em {
+  font-style: normal;
+}
+
+.box1 {
+  border-left-color: red;
+  border-left-width: 5px;
+  border-right-color: blue;
+  border-right-width: 8px;
+}
+
+.box123 {
+  border: dashed 6px blue;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 1000px;
+}
+
+#box {
+  border-left: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid orange;
+  width: 0px;
+  height: 0px;
+}
+
+.box5 {
+  width: 100px;
+  height: 10px;
+}
+
+.box5 p {
+  color: red;
+}
+
+.box5 {
+  border: 1px solid #ccc;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.box2 {
+  width: 200px;
+}
+
+.box3 {
+  font-size: 20px;
+}
+
+.hehe-1 {
+  width: 10px;
+}
+
+.hehe-2 {
+  width: 20px;
+}
+
+.hehe-3 {
+  width: 30px;
+}
+
+.hehe-4 {
+  width: 40px;
+}
+
+.hehe-5 {
+  width: 50px;
+}
+
+.hehe-6 {
+  width: 60px;
+}
+
+.hehe-7 {
+  width: 70px;
+}
+
+.hehe-8 {
+  width: 80px;
+}
+
+.hehe-9 {
+  width: 90px;
+}
+
+.main-3 {
+  width: 30px;
+}
+
+.main-4 {
+  width: 40px;
+}
+
+.box5 {
+  color: green;
+}
+
+/*# sourceMappingURL=style.css.map */

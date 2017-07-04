@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.11.3.js"></script>
+</head>
+<body>
+	<div class="div1 div2">1111111</div>
+	<div class="box">
+		<ul>
+			<li>111111</li>
+			<li>222222</li>
+			<li>333333</li>
+			<li>444444</li>
+			<li>555555</li>
+		</ul>
+	</div>
+	<script>
+
+		//children([expr])：取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合。
+
+		console.log$('.box').children();//子元素
+
+
+		//addClass(class|fn) 
+		//removeClass([class|fn]) 
+		//toggleClass(class|fn[,sw]) :切换类 
+
+		//$('div').addClass('div3');//增加类
+		//$('div').removeClass('div2');//删除类
+		/*$('div').click(function(){
+			$(this).toggleClass('div2');
+		});*/
+
+		//show([speed,[easing],[fn]]);//fast(200) normal(400) slow(600)  linear(匀速) swing(缓冲) 
+		//hide([speed,[easing],[fn]]);
+
+
+		//html([val|fn]):获取元素的内容，包括标签原生，同时解析元素。
+		//text([val|fn])：获取文本，忽略标签
+		//text输出所有元素的文本。html获取第一个。
+		//html和text设置都是设置全部的元素。
+		//val([val|fn|arr]) ：表单的值
+
+
+		/*alert($('li').html());
+		alert($('li').text());*/
+
+		//$('li').html('aaaaaaaaaaaa');//html设置全部
+		//$('li').text('aaaaaaaaaaaa');//html设置全部
+
+
+	</script>
+</body>
+</html>

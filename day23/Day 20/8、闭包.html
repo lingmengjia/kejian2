@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    for (var i = 0; i < 10; i++) {
+
+    }
+
+    function fn1(i) {
+        return i; //10
+    }
+
+    //alert(fn1(i));
+
+
+
+
+    function fn() {
+        var num = 5;
+        return function() {
+            return num++;
+        }
+    }
+    //alert(fn()());
+    // alert(fn()());
+    // alert(fn()());
+    // alert(fn()());
+    // alert(fn()());
+
+    var f = fn(); //函数内部的函数所引用的变量会被保存下来,闭包的弊端。会让垃圾回收机制失效。
+    /* alert(f());
+     alert(f());
+     alert(f());
+     alert(f());*/
+    function a() {
+        var b = 5;
+        return ++b;
+    }
+
+    //alert(a());
+    for (var i = 0; i < 5; i++) {
+        (function(i) {
+            setInterval(function() {
+                console.log(i);
+            }, 3000)
+        })(i)
+    }
+    </script>
+</head>
+
+<body>
+    <ul id="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <script type="text/javascript">
+    var aLi = document.getElementsByTagName('li');
+    /*for (var i = 0; i < aLi.length; i++) {
+        //i=0-5
+        (function(i) {
+            aLi[i].onclick = function() {
+                alert(aLi[i].innerHTML);
+            }
+        })(i);
+    }*/
+    /*for (var i = 0; i < 5; i++) {
+        (function(i) {
+            setTimeout(function() {
+                alert(i);
+            }, 1000)
+        })(i)
+    }*/
+    /* (function(){//避免冲突
+     	function fn(){
+     		alert(1);
+     	}
+     	fn();
+     })();
+
+     (function(){//避免冲突
+     	function fn(){
+     		alert(1);
+     	}
+     	fn();
+     })();*/
+
+    /*var peng={};
+    peng.shao={};
+    peng.shao.tool={//命名空间（namespace）：名称的不同避免冲突
+    	getId:function(id){
+    		return document.getElementById(id)
+    	}
+    };
+    //peng.shao.ui={};
+    alert(peng.shao.tool.getId('ul1'));*/
+
+    //面向对象。
+    </script>
+</body>
+
+</html>

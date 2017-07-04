@@ -1,0 +1,148 @@
+@charset "utf-8";
+@import "var";
+@import "public";
+.header {
+    width: $w;
+    height: $height;
+    line-height: $height;
+    margin: $center;
+    .logo {
+        @include m(0, 0, 0, 100px);
+        @include f();
+        li {
+            @include f();
+            @include m(0, 20px, 0, 20px);
+        }
+        a {
+            color: map-get($color, gray1);
+            &:hover {
+                color: map-get($color, cyan);
+            }
+        }
+    }
+    .link {
+        @include f(right);
+        a {
+            color: map-get($color, gray1);
+            @include m(0, 10px, 0, 10px);
+            @include p(0, 0, 0, 20px);
+        }
+        .android {
+            background: url(../img/jiqiren.png) no-repeat 0 0;
+        }
+        .iphone {
+            background: url(../img/apple.png) no-repeat 0 0;
+        }
+    }
+}
+
+.banner {
+    width: $width;
+    height: 399px;
+    background: url(../img/bg.png) center;
+    .content {
+        width: $w;
+        margin: $center;
+        text-align: center;
+        font-family: $family;
+        h3 {
+            @include p(109px, 0px, 56px, 0px);
+            color: map-get($color, white);
+            font-size: $fsize+24;
+        }
+        a {
+            color: map-get($color, white);
+            font-size: $fsize+7;
+            line-height: 42px;
+            text-align: center;
+            display: inline-block;
+            @include bd(186px, 42px, map-get($color, cyan), map-get($color, cyan), 22px);
+        }
+    }
+}
+
+.main {
+    width: $w;
+    margin: $center;
+    .main_top,
+    .main_center,
+    .main_bottom {
+        background: map-get($color, white);
+        @include p(42px, 0px, 54px, 0px);
+    }
+    .data,
+    .share,
+    .news {
+        @include f(left);
+        @include p(0, 53px, 0px, 52px);
+        p {
+            width: 284px;
+            line-height: 32px;
+        }
+    }
+    .share {
+        @include bd2(left, #eee);
+        @include bd2(right, #eee);
+    }
+    .pic {
+        @include m(42px, 0px, 33px, 0px);
+    }
+    .main_center {
+        @include m(10px, 0px, 10px, 0px);
+        @include p(42px, 53px, 54px, 52px);
+
+    }
+    .mc {
+    	height: 156px;
+        .left {
+            width: 284px;
+            @include m(0px, 28px, 0px, 0px);
+            @include f(left);
+            img{
+            	width: 284px;
+            }
+        }
+        .right {
+            @include f(left);
+            p {
+				width: 740px;
+				line-height: 26px;
+				font-size: $fsize - 2;
+            }
+        }
+    }
+    .mc2 {
+    	@include p(24px, 0px, 24px, 0px);
+    	@include m(24px, 0px, 24px, 0px);
+    	@include bd2(top, #eee);
+        @include bd2(bottom, #eee);
+    }
+    .newlist{
+		@include f(left);
+    }
+    .newpic{
+    	@include f(right);
+    }
+    li{
+    	height: 84px;
+    	.npic{
+    		@include f(left);
+    		@include m(0, 18px, 0px, 0px);
+    	}
+    	.ncontent{
+    		@include f(left);
+    	}
+    	p{
+    		width: 490px;
+    		line-height: 20px;
+    	}
+    	@include bd2(bottom, #eee,dashed);
+    	@include p(0px, 0px, 14px, 0px);
+    	@include m(0px, 0px, 14px, 0px);
+    }
+    .main_bottom{
+    	 @include p(42px, 53px, 54px, 52px);
+    }
+}
+
+.footer {}

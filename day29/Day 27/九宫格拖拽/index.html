@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    * {padding: 0; margin: 0;}
+  	#ul1{width: 660px;position: relative;margin:10px auto;}
+  	li{width: 200px;height:150px;margin:10px;float: left;list-style: none;}
+    </style>
+    <script type="text/javascript">
+    	window.onload=function(){
+    		var aLi=document.getElementsByTagName('li');
+    		var index=2;
+    		//1、将浮动布局改定位布局
+    		var arr=[];
+    		for(var i=0;i<aLi.length;i++){
+    			arr.push([aLi[i].offsetLeft,aLi[i].offsetTop]);
+    		}
+
+    		for(var i=0;i<aLi.length;i++){
+    			aLi[i].style.position='absolute';
+    			aLi[i].style.left=arr[i][0]+'px';
+    			aLi[i].style.top=arr[i][1]+'px';
+    			aLi[i].style.margin=0;
+    		}
+    		//2、循环实现拖拽
+    		for(var i=0;i<aLi.length;i++){
+    			aLi[i].index=i;//给每一个li添加索引。
+    			drag(aLi[i]);
+    		}
+    		function drag(obj){
+    			var disx=0;
+    			var disy=0;
+    			obj.onmousedown=function(ev){
+    				obj.style.zIndex=index++;
+    				var ev=ev||window.event;
+    				disx=ev.clientX-obj.offsetLeft;
+    				disy=ev.clientY-obj.offsetTop;
+    				document.onmousemove=function(ev){
+    					var ev=ev||window.event;
+    					obj.style.left=ev.clientX-disx+'px';
+    					obj.style.top=ev.clientY-disy+'px';
+
+    					//6、让所有的边框都取消，然后让当前的显示。
+    					for(var i=0;i<aLi.length;i++){
+    						aLi[i].style.border='';
+    					}
+    					var nL=nearLi(obj);//调用函数，求最近的li 
+    					//有可能一个都没有碰上，移到旁边。所以判断当前nL是否存在，存在添加
+    					if(nL){
+    						nL.style.border='2px solid red';
+    					}
+    					
+
+    					//4、调用碰撞检测函数
+    					/*for(var i=0;i<aLi.length;i++){
+    						if(pz(obj,aLi[i]) && obj!=aLi[i]){//当前的图片和其他所有的图片进行碰撞检测
+    							//结果是自己也添加上红色边框了。因为aLi[i]也包括自己，添加 &&obj!=aLi[i]
+    							aLi[i].style.border='2px solid red';
+    						}else{
+								aLi[i].style.border=''
+    						}
+    					}*/
+
+    				}
+    				document.onmouseup=function(){
+    					document.onmousemove=null;
+    					document.onmouseup=null;
+    					//最后一步，先给每个li添加索引。
+    					
+    					var nL=nearLi(obj);
+    					var temp=0;
+
+    					//最最最后一步，如果没有碰到其他li，回到原来的位置。
+    					if(nL){
+    						nL.style.left=arr[obj.index][0]+'px';
+	    					nL.style.top=arr[obj.index][1]+'px';
+
+	    					obj.style.left=arr[nL.index][0]+'px';
+	    					obj.style.top=arr[nL.index][1]+'px';
+
+	    					nL.style.border='';
+	    					//最最后一步，索引的切换
+	    					temp=obj.index;
+	    					obj.index=nL.index;
+	    					nL.index=temp;
+    					}else{//碰不到回到自身的位置。
+    						obj.style.left=arr[obj.index][0]+'px';
+	    					obj.style.top=arr[obj.index][1]+'px';
+    					}
+    					
+
+
+    				}
+    				return false;
+    			}
+    		}
+    		//5、封装函数找最近的li  7、完成此方法
+    		function nearLi(obj){
+    			var value=9999;
+    			var index=-1;
+
+    			for(var i=0;i<aLi.length;i++){
+    				if(pz(obj,aLi[i]) && obj!=aLi[i]){
+    					var c=jl(obj,aLi[i]);//拖拽的元素和碰撞的每个元素。
+    					//c:斜边
+    					if(c<value){//获取最近li的值和位置。
+    						value=c;
+    						index=i;
+    					}
+    				}
+    			}
+    			if(index!=-1){//表示找到最新的li元素。
+    				return aLi[index];
+    			}else{
+    				return false;//与每一张图片都没有碰上
+    			}
+    		}
+
+    		//8、封装求最小距离的方法，勾股定理
+    		function jl(obj1,obj2){
+    			var a=obj1.offsetLeft-obj2.offsetLeft;
+    			var b=obj1.offsetTop-obj2.offsetTop;
+    			return Math.sqrt(a*a+b*b);
+    		}
+
+    		//3、碰撞检测函数封装，碰上的元素添加边框
+    		function pz(obj1,obj2){
+    			var L1=obj1.offsetLeft;
+    			var R1=obj1.offsetLeft+obj1.offsetWidth;
+    			var T1=obj1.offsetTop;
+    			var B1=obj1.offsetTop+obj1.offsetHeight;
+
+    			var L2=obj2.offsetLeft;
+    			var R2=obj2.offsetLeft+obj2.offsetWidth;
+    			var T2=obj2.offsetTop;
+    			var B2=obj2.offsetTop+obj2.offsetHeight;
+
+    			if(R1<L2 || L1>R2 || B1<T2 || T1>B2){
+    				return false;
+    			}else{
+    				return true;
+    			}
+    		}
+
+    	}
+    </script>
+</head>
+
+<body>
+    <ul id="ul1">
+    	<li><img src="img/0.jpg" width="200" height="150"></li>
+    	<li><img src="img/1.jpg" width="200" height="150"></li>
+    	<li><img src="img/2.jpg" width="200" height="150"></li>
+    	<li><img src="img/3.jpg" width="200" height="150"></li>
+    	<li><img src="img/4.jpg" width="200" height="150"></li>
+    	<li><img src="img/5.jpg" width="200" height="150"></li>
+    	<li><img src="img/6.jpg" width="200" height="150"></li>
+    	<li><img src="img/7.jpg" width="200" height="150"></li>
+    	<li><img src="img/8.jpg" width="200" height="150"></li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product>
+	<name>我是一个商品</name>
+	<price>100</price>
+	<content>你猜我是不是一个商品</content>
+</product>

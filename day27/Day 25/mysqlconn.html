@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="public.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript">
+		ajax({
+			url:'http://localhost/js1704/Day%2025/mysqlconn.php',
+			success:function(data){
+				var obj=JSON.parse(data);
+				var arr1=obj.user;
+				var arr2=obj.news;
+
+				var html='<table border=1>';
+
+				for(var i=0;i<arr1.length;i++){
+					html+='<tr>';
+
+					for(var j in arr1[i]){
+						html+='<td>'+arr1[i][j]+'</td>';
+					}
+
+
+					html+='</tr>';
+				}
+
+
+				html+='</table>';
+				document.body.innerHTML+=html;
+
+
+
+
+
+				var html1='<ul>';
+				for(var i=0;i<arr2.length;i++){
+					for(var j in arr2[i]){
+						html1+='<li>'+arr2[i][j]+'</li>';
+					}
+				}
+				html1+='</ul>';
+				document.body.innerHTML+=html1;
+
+			}
+		});
+
+
+	</script>
+</body>
+</html>

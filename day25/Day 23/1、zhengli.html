@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    //面向对象(构造函数+原型)
+
+    /*function Fn(){
+    	this.a=10;
+    }
+    Fn.prototype={
+    	a:20,
+    	show:function(){
+    		alert(this.a);
+    	}
+    }
+    var f1=new Fn();
+    f1.show();*/
+
+    //闭包
+    //三种项目中js写法
+    //1、闭包
+    //轮播图
+    /*(function(){
+
+    })();*/
+    //2、命名空间--对象
+
+    //3、面向对象
+
+    //ajax:异步js和xml    post/get  [put/delete]
+
+    function tostring(obj) {
+        var arr = [];
+        for (var i in obj) {
+            arr.push(i + '=' + obj[i]);
+        }
+
+        return arr.join('&');
+    }
+
+    //前后端联调
+    function ajax(type, url, data, success, error) {
+
+        var ajax = null;
+        try {
+            ajax = new XMLHttpRequest();
+        } catch (e) {
+            ajax = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        /*alert(ajax.readyState);//初始化*/
+        if (type == 'get') {
+            url += '?' + data;
+        }
+        ajax.open(type, url, true);
+        /*alert(ajax.readyState);//1*/
+        if (type == 'get') {
+            ajax.send();
+        } else {
+            ajax.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+            ajax.send(data);
+        }
+
+        //alert(ajax.readyState);
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState == 4) {
+            	if(ajax.status == 200){
+            		success && success(ajax.responseText); //如果函数存在，调用传数据
+            	}else{//接口路径错误
+            		error && error(ajax.status);
+            	}
+            }
+        }
+    }
+
+
+
+    ajax('get', 'demo.php','name=zhangsan', function(data) {
+        //alert(data);
+    }, function(e) {
+        console.log(e);
+    });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

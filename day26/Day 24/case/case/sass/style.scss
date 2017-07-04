@@ -1,0 +1,96 @@
+@import "public";
+#around {
+    width: 1226px;
+    margin: $center;
+    font-family: $font;
+    .box-title {
+        height: $h;
+        position: relative;
+        h2 {
+            font-size: $fs+12px;
+            font-weight: $fw;
+            line-height: $h;
+            color: #333;
+        }
+    }
+    .box-nav {
+        position: absolute;
+        right: $fs+4;
+        top: $zero;
+        font-size: $fs+6px;
+        ul {
+            @include pg(16px, 0, 0, 0);
+        }
+        li {
+            display: $ib;
+            @include mg(0, 0, 0, 30px);
+            cursor: pointer;
+            @include pg(0, 0, 2px, 0);
+        }
+        li.tab-active {
+            color: #ff6700;
+            @include bd(bottom, 2px, solid, #ff6700);
+        }
+    }
+    .cb-left {
+        width: $cwidth;
+        float: $fl;
+        li {
+            @include mg(0, 0, 14px, 0);
+            img {
+                width: $cwidth;
+                height: $width+150;
+            }
+        }
+    }
+    .cb-right {
+        float: $fl;
+        width: 992px;
+        li {
+            float: $fl;
+            width: $cwidth;
+            @include mg(0, 14px, 14px, 0);
+            background: #fff;
+            height: $cwidth+12;
+            @include pg(34px, 0, 20px, 0);
+            div {
+                width: $width;
+                height: $width;
+                @include mg(0, auto, 18px, auto);
+                img {
+                    width: $width;
+                    height: $width;
+                }
+            }
+        }
+        h3 {
+            @include mg(0, 10px, 0, 10px);
+            font-size: $fs+4;
+            font-weight: $fw*2;
+            text-align: $mid;
+            a {
+                display: $b;
+                @include ell;
+                color: #333;
+            }
+        }
+        .price {
+            @include mg(0, 10px, 10px, 10px);
+            text-align: $mid;
+            color: $cgray;
+            span {
+                font-size: $fs+4px;
+                @include mg(0, 10px, 10px, 10px);
+                text-align: $mid;
+                color: $cgray;
+            }
+        }
+        .rank {
+            @include mg(0, 10px, 0, 10px);
+            font-size: $fs+2;
+            text-align: $mid;
+            @include ell;
+            color: #b0b0b0;
+        }
+    }
+}

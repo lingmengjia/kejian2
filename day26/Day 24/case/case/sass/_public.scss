@@ -1,0 +1,23 @@
+@charset "utf-8";
+@import "var";
+* {
+    padding: $zero;
+    margin: $zero;
+}
+
+body {
+    background: $gray;
+}
+
+ul {
+    list-style: $no;
+}
+
+img {
+    display: $b;
+    border: $zero;
+}
+
+a {
+    text-decoration: $no;
+}

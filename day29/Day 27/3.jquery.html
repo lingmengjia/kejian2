@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div {
+        width: 200px;
+        height: 300px;
+        background: red;
+    }
+    </style>
+    <script src="jquery.js"></script>
+    <script src="jquery.color.js"></script>
+</head>
+
+<body>
+    <input type="button" value="运动">
+    <div>
+        <ul>
+            <li>1111</li>
+        </ul>
+        <p>22222</p>
+    </div>
+    <script>
+    /*$('input').click(function(){
+    			$('div').slideToggle(1000);
+    		});*/
+
+    /*$('input').click(function(){
+    	//$('div').fadeToggle(1000);
+    	$('div').fadeTo(3000,0.1);
+    });*/
+
+    /*$('div').hover(function(){
+    	console.log('鼠标移入');
+    },function(){
+    	console.log('鼠标移出');
+    })*/
+
+    /*$('div').on('click mouseover',null,'123456',function(ev){
+    	alert(1);
+    	console.log(ev.data);
+    });*/
+
+    /*$('div').on('click mouseover','li',{'name':'zhangsan'},function(ev){
+    	alert(1);
+    	console.log(ev.data.name);//字符串和对象
+    });
+
+    $('div').off('click');*/ //取消对应的事件
+
+
+    /*$('div').click(function(){
+    	alert(123);
+    }).trigger('click');*/
+
+    $('div').on('hehe', function() {
+        alert(123);
+    }).trigger('hehe'); //触发自定义事件。
+
+    //主动触发。
+    </script>
+</body>
+
+</html>

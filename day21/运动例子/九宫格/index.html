@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    ul {
+        width: 510px;
+        height: 360px;
+        margin: 20px auto;
+        border: 1px solid orange;
+        list-style: none;
+    }
+    
+    li {
+        float: left;
+        margin: 10px;
+    }
+    
+    li img {
+        display: block;
+    }
+    </style>
+</head>
+
+<body>
+    <input type="button" name="" value="随机">
+    <ul id="box">
+        <li><img src="img/0.jpg" width="150" height="100"></li>
+        <li><img src="img/1.jpg" width="150" height="100"></li>
+        <li><img src="img/2.jpg" width="150" height="100"></li>
+        <li><img src="img/3.jpg" width="150" height="100"></li>
+        <li><img src="img/4.jpg" width="150" height="100"></li>
+        <li><img src="img/5.jpg" width="150" height="100"></li>
+        <li><img src="img/6.jpg" width="150" height="100"></li>
+        <li><img src="img/7.jpg" width="150" height="100"></li>
+        <li><img src="img/8.jpg" width="150" height="100"></li>
+    </ul>
+    <script type="text/javascript">
+    function getStyle(obj, attr) {
+        if (obj.currentStyle) {
+            return obj.currentStyle[attr]; //ie8
+        } else {
+            return getComputedStyle(obj)[attr]; //标准
+        }
+    }
+
+    function bufferMove(obj, json, fn) {
+        clearInterval(obj.timer); //obj.timer:每个元素都有一个自己的定时器
+        obj.timer = setInterval(function() {
+            var bstop = true; //所有的属性都已经到了目标点
+            for (var attr in json) {
+                //取当前值 current
+                var current = 0;
+                if (attr == 'opacity') {
+                    current = Math.round(getStyle(obj, attr) * 100);
+                } else {
+                    current = parseInt(getStyle(obj, attr));
+                }
+                //求速度
+                var speed = (json[attr] - current) / 10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if (current != json[attr]) {
+                    bstop = false;
+                    if (attr == 'opacity') {
+                        obj.style.opacity = (current + speed) / 5;
+                        obj.style.filter = 'alpha(opacity=' + (current + speed) + ')';
+                    } else {
+                        obj.style[attr] = current + speed + 'px';
+                    }
+                }
+            }
+            if (bstop) {
+                clearInterval(obj.timer);
+                fn && fn();
+            }
+        }, 10);
+    }
+    //1、将浮动的布局改成定位布局。
+    var aLi = document.getElementsByTagName('li');
+    var zindex = 1;
+    var arr = []; //存放li的初始位置。
+    for (var i = 0; i < aLi.length; i++) {
+        arr.push([aLi[i].offsetLeft, aLi[i].offsetTop]);
+    }
+    for (var i = 0; i < aLi.length; i++) { //赋值
+        aLi[i].style.position = 'absolute';
+        aLi[i].style.left = arr[i][0] + 'px';
+        aLi[i].style.top = arr[i][1] + 'px';
+        aLi[i].style.margin = 0;
+    }
+
+
+    //2、让li可以拖拽
+    for (var i = 0; i < aLi.length; i++) {
+        //给每个li添加自定义索引
+        aLi[i].index = i;
+        drag(aLi[i]);
+    }
+
+    function drag(obj) { //拖拽的封装。
+        var shortx = 0;
+        var shorty = 0;
+        var bstop = true;
+        obj.onmousedown = function(ev) {
+            obj.style.zIndex = zindex++; //让每一次li的盒子在最上面。
+            var ev = ev || window.event;
+            shortx = ev.clientX - obj.offsetLeft;
+            shorty = ev.clientY - obj.offsetTop;
+
+            document.onmousemove = function(ev) {
+                var ev = ev || window.event;
+                obj.style.left = ev.clientX - shortx + 'px';
+                obj.style.top = ev.clientY - shorty + 'px';
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].style.border = '';
+                }
+                //6、返回最近的li元素
+                var n = nearest(obj); //返回最近的li元素
+                if (n) {
+                    n.style.border = '1px solid red';
+                }
+
+            }
+            document.onmouseup = function() {
+                if (bstop) {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    var nbox = nearest(obj);
+                    if (nbox) {
+                        /*nbox.style.left = arr[obj.index][0] + 'px';
+                        nbox.style.top = arr[obj.index][1] + 'px';
+                        obj.style.left = arr[nbox.index][0] + 'px';
+                        obj.style.top = arr[nbox.index][1] + 'px';*/
+                        bufferMove(nbox, {
+                            left: arr[obj.index][0],
+                            top: arr[obj.index][1]
+                        }, function() {
+                            bstop = true;
+                        });
+                        bufferMove(obj, {
+                            left: arr[nbox.index][0],
+                            top: arr[nbox.index][1]
+                        }, function() {
+                            bstop = true;
+                        });
+                        nbox.style.border = '';
+                        var temp = obj.index;
+                        obj.index = nbox.index;
+                        nbox.index = temp;
+                    } else {
+                        /*obj.style.left = arr[obj.index][0] + 'px';
+                        obj.style.top = arr[obj.index][1] + 'px';*/
+                        bufferMove(obj, {
+                            left: arr[obj.index][0],
+                            top: arr[obj.index][1]
+                        });
+                    }
+                }
+
+            }
+            return false;
+        }
+    }
+    //3、检查碰撞
+    function hit(obj1, obj2) {
+        if (obj1.offsetLeft + obj1.offsetWidth < obj2.offsetLeft || obj1.offsetLeft > obj2.offsetLeft + obj2.offsetWidth || obj1.offsetTop + obj1.offsetHeight < obj2.offsetTop || obj1.offsetTop > obj2.offsetTop + obj2.offsetHeight) {
+            return false; //没碰上
+        } else {
+            return true; //碰上了
+        }
+    }
+
+    //4、封装勾股定理
+    function gg(obj1, obj2) {
+        /*return Math.sqrt(Math.pow(obj1.offsetLeft - obj2.offsetLeft, 2) + Math.pow(obj1.offsetTop - obj2.offsetTop, 2))*/
+        var a = obj1.offsetLeft - obj2.offsetLeft;
+        var b = obj1.offsetTop - obj2.offsetTop;
+        return Math.sqrt(a * a + b * b);
+    }
+
+    //5、求距离最近的li
+    function nearest(obj) {
+        var minindex = -1; //假设的索引
+        var minvalue = 10000; //假设的值
+        for (var i = 0; i < aLi.length; i++) {
+            if (hit(obj, aLi[i]) && obj != aLi[i]) { //碰上并且不等自己。
+                var c = gg(obj, aLi[i]); //勾股定理的值。
+                if (c < minvalue) {
+                    minvalue = c;
+                    minindex = i;
+                }
+            }
+        }
+        //如果index不等于-1表示已经找到了对应li
+        if (minindex != -1) {
+            return aLi[minindex];
+        } else {
+            return false; //没有找到对应的li
+        }
+    }
+
+    var oInput = document.getElementsByTagName('input')[0];
+    oInput.onclick = function() {
+        var randomarr = [0, 1, 2, 3, 4, 5, 6, 7, 8]; //图片的下标
+        randomarr.sort(function(a, b) { //数字乱排序
+            return Math.random() > 0.5 ? 1 : -1;
+        });
+        for (var i = 0; i < arr.length; i++) { //赋值
+            aLi[i].style.left = arr[randomarr[i]][0] + 'px';
+            aLi[i].style.top = arr[randomarr[i]][1] + 'px';
+            aLi[i].index = randomarr[i]; //重置索引
+        }
+
+    }
+    </script>
+</body>
+
+</html>

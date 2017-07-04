@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function Fn(){
+			this.num=10;
+		}
+
+		function Fn1(){
+			this.num=10;
+		}
+		Fn.prototype.num1=30;
+		Object.prototype.num2=20;
+
+		var f1=new Fn()
+		var f2=new Fn1()
+		alert(Fn.prototype.isPrototypeOf (f2));//判断一个实例对象是否指向了该构造函数的原型对象
+		//alert(f1.num2);
+
+		//alert(f1.hasOwnProperty('num'));
+
+		//alert('num1' in f1)
+		
+		//alert(f1.constructor);
+		
+		//alert(f2 instanceof Object);
+
+
+		/*var arr=[];
+		alert(typeof arr);//object
+		alert(arr instanceof Array);
+		alert(arr instanceof Object);*/
+
+		/*alert(Object.prototype.toString.call('abc'));//[object String]
+		alert(Object.prototype.toString.call(1111));//[object Number]
+		alert(Object.prototype.toString.call([]));
+		alert(Object.prototype.toString.call({}));
+		alert(Object.prototype.toString.call(/a/));
+		alert(Object.prototype.toString.call(null));
+		alert(Object.prototype.toString.call(true));
+		alert(Object.prototype.toString.call(new Date));*/
+		//var a=new Date()
+		//alert(Object.prototype.toString.call(a).slice(8,-1));//number
+		
+		var arr=['a'];
+		/*Array.prototype.push=function(){
+
+		}
+		Array.prototype.norepeat=function(){//扩展系统的方法
+			for(var i=0;i<arguments.length;i++){
+				arr[this.length]=arguments[i];
+			}
+			return this.length;
+		}
+		arr.norepeat(1,2,3);
+		alert(arr);*/
+
+	</script>
+</head>
+<body>
+	<ul>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+	</ul>
+	<script type="text/javascript">
+		/*var aLi=document.getElementsByTagName('li');
+		var arrayli=[].slice.call(aLi);//类数组转真正数组
+		var arrayli1=Array.from(aLi);
+		arrayli.push(12345);
+		arrayli1.push(45678);
+		alert(arrayli);
+		alert(arrayli1);*/
+	</script>
+</body>
+</html>

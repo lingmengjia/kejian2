@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		*{padding:0px;margin:0px;}
+		html{
+			height: 100%;
+		}
+		body{
+			height: 100%;
+			background: #000;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src='public.js'></script>
+	<script type="text/javascript">
+		function Fireworks(x,y){
+			this.x=x;
+			this.y=y;
+			this.clientheight=document.documentElement.clientHeight;
+			var that=this;
+			this.createBox=function(){//创建一个小方块放到body底部
+				this.box=document.createElement('div');
+				this.box.style.cssText='width:5px;height:5px;background:#fff;position:absolute;left:'+this.x+'px;top:'+this.clientheight+'px;';
+				document.body.appendChild(this.box);
+				this.move();//创建完成调用
+			}
+			this.move=function(){//让盒子移动到鼠标的位置
+				startMove(this.box,{top:this.y},function(){
+					document.body.removeChild(that.box);//到了目标点移除
+					that.fragment();
+				});
+			}
+			this.fragment=function(){//随机创建烟花碎片
+				for(var i=0;i<getrandom(30,60);i++){
+					this.cbox=document.createElement('div');
+					this.cbox.style.cssText='width:5px;height:5px;background:rgb('+getrandom(0,255)+','+getrandom(0,255)+','+getrandom(0,255)+');position:absolute;left:'+this.x+'px;top:'+this.y+'px;';
+					document.body.appendChild(this.cbox);
+					this.boom(this.cbox);
+				}
+			}
+			this.boom=function(obj){//一个烟花随机移动
+				var speedx=parseInt((Math.random()>0.5?'+':'-')+getrandom(1,15));//随机正负速度
+				var speedy=parseInt((Math.random()>0.5?'+':'-')+getrandom(1,15));
+				var initx=this.x;//初始速度
+				var inity=this.y;
+				var timer=setInterval(function(){
+					console.log('ee');
+					initx+=speedx;
+					inity+=speedy++;//重力加速度
+					obj.style.left=initx+'px';
+					obj.style.top=inity+'px';
+					if(inity>=that.clientheight){//碎片运动到body底部，移除碎片
+						clearInterval(timer);
+						document.body.removeChild(obj);
+					}
+				},30);
+			}
+		}
+
+		document.onclick=function(ev){
+			var ev=ev||window.event;
+			new Fireworks(ev.clientX,ev.clientY).createBox();
+		}
+	</script>
+</body>
+</html>

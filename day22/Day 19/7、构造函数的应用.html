@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;margin:0px;
+			}
+			#banner{
+				width: 790px;height: 340px; margin: 50px auto;border: 1px solid #000;
+				position: relative;
+			}
+			ul,ol{
+				list-style: none;
+			}
+			#banner ul li{
+				position: absolute;left:0px;top:0px;
+				opacity: 0;
+				transition: all 0.5s;
+			}
+			#banner ol{
+				position: absolute;
+				width: 284px;
+				height: 30px;
+				left:50%;
+				margin-left: -142px;
+				bottom: 20px;
+			}
+			#banner ol li{
+				float: left;
+				width: 30px;height: 30px;border-radius: 50%;background: #abcdef;
+				text-indent: -99999px;
+				margin-right: 5px;
+
+			}
+			#left,#right{
+				position: absolute;
+				font-size: 100px;
+				color:#000;
+				text-decoration: none;
+				top:50%;
+				margin-top: -70px;
+				display: none;
+			}
+			#left{
+				left:20px;
+			}
+			#right{
+				right:20px;
+			}
+			#banner ol li.active{
+				background: red;
+			}
+			#banner li img{
+				width: 790px;height: 340px;
+			}
+		</style>
+		<script type="text/javascript">
+		</script>
+	</head>
+	<body>
+		<div id="banner">
+			<ul>
+				<li style="opacity: 1"><img src="img/1.jpg"></li>
+				<li><img src="img/2.jpg"></li>
+				<li><img src="img/3.webp"></li>
+				<li><img src="img/4.webp"></li>
+				<li><img src="img/1.jpg"></li>
+				<li><img src="img/2.jpg"></li>
+				<li><img src="img/3.webp"></li>
+				<li><img src="img/4.webp"></li>
+			</ul>
+			<ol>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+			</ol>
+			<a href="javascript:;" id="left">&lt;</a>
+			<a href="javascript:;" id="right">&gt;</a>
+		</div>
+		<script type="text/javascript">
+			function Lunbo(){
+				this.oBanner=document.getElementById('banner');
+				this.oUl=this.oBanner.getElementsByTagName('ul')[0];
+				this.oOl=this.oBanner.getElementsByTagName('ol')[0];
+				this.ulLi=this.oUl.getElementsByTagName('li');//图片的li
+				this.olLi=this.oOl.getElementsByTagName('li');//按钮的li
+				this.left=document.getElementById('left');
+				this.right=document.getElementById('right');
+				this.num=0;
+				this.timer=null;
+				var that=this;
+				this.init=function(){//初始化的方法。
+					//this:实例对象
+					for(var i=0;i<this.ulLi.length;i++){
+						this.olLi[i].index=i;
+						this.olLi[i].onclick=function(){
+							//this:当前的按钮
+							that.num=this.index;
+							that.tab(this);//切换的方法
+						};
+					}
+					this.oBanner.onmouseover=function(){
+						that.over();
+						clearInterval(that.timer);
+					};
+					this.oBanner.onmouseout=function(){
+						that.out();
+						that.timer=setInterval(function(){
+							that.rightclick();
+						},2000);
+					};
+					this.left.onclick=this.leftclick;
+					this.right.onclick=this.rightclick;
+					this.timer=setInterval(function(){
+						that.rightclick();
+					},2000);
+				}
+
+				this.tab=function(obj){
+					//this:实例对象
+					for(var i=0;i<this.ulLi.length;i++){
+						this.olLi[i].className='';//清除所有的类
+						this.ulLi[i].style.opacity=0;
+					}
+					this.olLi[this.num].className='active';
+					this.ulLi[this.num].style.opacity=1;
+				}
+
+				this.over=function(){
+					that.left.style.display='block';
+					that.right.style.display='block';
+				}
+				this.out=function(){
+					that.left.style.display='none';
+					that.right.style.display='none';
+				}
+				this.leftclick=function(){
+					if(that.num<=0){
+						that.num=that.ulLi.length-1;
+					}else{
+						that.num--;
+					}
+					that.tab();	
+				}
+				this.rightclick=function(){
+					//this:right按钮
+					if(that.num>=that.ulLi.length-1){
+						that.num=0;
+					}else{
+						that.num++;
+					}
+					that.tab();
+				}
+			}
+
+			new Lunbo().init();
+		</script>
+	</body>
+</html>

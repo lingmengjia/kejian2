@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;height:100px;background: red;position: absolute;left:100px;top:100px;
+		}
+	</style>
+	<script src="jquery.js"></script>
+	<script src="jquery.color.js"></script>
+</head>
+<body>
+	<div></div>
+	<button>stop()</button>
+	<button>stop(true,false)</button>
+	<button>stop(false,true)</button>
+	<button>stop(true,true)</button>
+	<button>finish</button>
+	<script>
+		/*$('div').animate({
+			width:300,
+			height:300,
+			left:200,
+			top:200,
+			backgroundColor:'blue'
+		},3000,function(){
+			alert('ok')
+		})*/
+		//delay(5000):延迟动画
+		//jQuery.fx.off=true;//关闭动画
+		jQuery.fx.interval=1000;//设置动画帧。
+		$('div').animate({width:400}, 3000).animate({height:400}, 3000).animate({left:800}, 3000).animate({top:400}, 3000);
+
+		$('button').eq(0).click(function(){
+			$('div').stop();//停止当前队列，继续下个队列
+		});
+
+		$('button').eq(1).click(function(){
+			$('div').stop(true,false);//停止动画队列
+		});
+
+		$('button').eq(2).click(function(){
+			$('div').stop(false,true);//跳转到本次动画到结束处
+		});
+
+		$('button').eq(3).click(function(){
+			$('div').stop(true,true);//停止动画队列，跳转到结束处
+		});
+
+		$('button').eq(4).click(function(){
+			$('div').finish();//立即停止当前正在运行的动画和所有排队的动画，跳转到结束处
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript" src="public.js"></script>
+<script type="text/javascript">
+	function Drag(){
+		this.disx=0;
+		this.disy=0;
+	}
+	Drag.prototype.creatediv=function(){
+		this.cdiv=document.createElement('div');
+		this.cdiv.style.cssText='width:100px;height:100px;background:rgb('+getrandom(0,255)+','+getrandom(0,255)+','+getrandom(0,255)+');position:absolute;left:'+getrandom(0,document.documentElement.clientWidth-100)+'px;top:'+getrandom(0,document.documentElement.clientHeight-100)+'px;';
+		document.body.appendChild(this.cdiv);
+		this.init(this.cdiv);
+	}
+	Drag.prototype.init=function(obj){
+		var that=this;
+		var oLeft=obj.offsetLeft;
+		obj.onmousedown=function(ev){
+			//this:元素对象
+			var ev=ev||window.event;
+			that.disx=ev.offsetX;
+			that.disy=ev.offsetY;
+			document.onmousemove=function(ev){
+				var ev=ev||window.event;
+				if(oLeft>720){
+					that.move(ev,obj);
+				}else{
+					that.move1(ev,obj);
+				}
+				
+			};
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+			}
+			return false;
+		}
+	}
+	Drag.prototype.move=function(ev,obj){
+		var l=ev.clientX-this.disx;
+		var t=ev.clientY-this.disy;
+		obj.style.left=l+'px';
+		obj.style.top=t+'px';
+	}
+
+	Drag.prototype.move1=function(ev,obj){
+		var l=ev.clientX-this.disx;
+		var t=ev.clientY-this.disy;
+		if(l<0){
+			l=0;
+		}
+		obj.style.left=l+'px';
+		obj.style.top=t+'px';
+	}
+	document.onmousedown=function(ev){
+		var ev=ev||window.event;
+		if(ev.button==2){
+			var d1=new Drag().creatediv();
+			
+		}
+		
+	}
+
+	document.oncontextmenu=function(){
+		return false;
+	}
+	
+</script>
+</body>
+</html>

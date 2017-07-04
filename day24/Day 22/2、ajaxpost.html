@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+    div {
+        width: 100%;
+        height: 200px;
+        background: blue;
+    }
+    </style>
+</head>
+
+<body>
+    <input type="text"><span></span>
+    <!-- <form action="2、ajaxpost_submit" method="get"  enctype="application/x-www-form-urlencoded">
+    	2、ajaxpost_submit
+    	get
+    </form> -->
+    <script type="text/javascript">
+    var oInput = document.getElementsByTagName('input')[0];
+    var oSpan = document.getElementsByTagName('span')[0];
+    oInput.onblur = function() {
+        var ajax = null;
+        try {
+            ajax = new XMLHttpRequest();
+        } catch (e) {
+            ajax = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+
+
+        //数据传输：get：跟在地址栏的后面,如果是多个的话&符号拼接的。
+        //http://localhost:8088/js1704/Day%2022/php.php?name=' + oInput.value
+
+        //name=zhangsan&age=100&sex=男
+         var obj = {
+	        name: 'zhangsan',
+	        age: 100,
+	        sex: '男'
+	    };
+        ajax.open('post', 'http://localhost:8088/js1704/Day%2022/php.php', true);
+
+        ajax.setRequestHeader('content-type','application/x-www-form-urlencoded');//post请求设置请求头
+        ajax.send('name=zhangsan');//post的数据设置到send里面，格式和get一致
+
+
+
+        ajax.onreadystatechange = function() {
+
+            if (ajax.readyState == 4) {
+                if (ajax.status == 200) {
+
+                    var str = ajax.responseText;
+                    if (str) {
+                        oSpan.innerHTML = '用户名已经存在';
+                    } else {
+                        oSpan.innerHTML = '√';
+                    }
+                }
+            }
+        }
+
+    }
+
+   
+
+    function tostring(obj) {
+        var arr = [];
+        for (var i in obj) {
+            arr.push(i + '=' + obj[i]);
+        }
+
+        return arr.join('&');
+    }
+    //alert(tostring(obj));
+    //NEWWORK：对调试很重要
+    </script>
+</body>
+
+</html>

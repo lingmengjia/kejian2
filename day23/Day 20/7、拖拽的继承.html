@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+    #div1,
+    #div2 {
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+    
+    #div2 {
+        background: blue;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+    </div>
+    <div id="div2">
+    </div>
+    <script type="text/javascript">
+    function Drag(id) {
+        this.shortx = 0;
+        this.shorty = 0;
+        this.oDiv = document.getElementById(id);
+    }
+    Drag.prototype.init = function() {
+        var that = this;
+        this.oDiv.onmousedown = function(ev) {
+            var ev = ev || window.event;
+            that.shortx = ev.offsetX;
+            that.shorty = ev.offsetY;
+            document.onmousemove = function(ev) {
+                var ev = ev || window.event;
+                that.move(ev);
+            };
+            document.onmouseup = function() {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+            return false;
+        }
+    }
+    Drag.prototype.move = function(ev) {
+        this.oDiv.style.left = ev.clientX - this.shortx + 'px';
+        this.oDiv.style.top = ev.clientY - this.shorty + 'px';
+    }
+
+    function Limitdrag() {
+        Drag.apply(this, arguments);
+    }
+
+    Limitdrag.prototype = new Drag();
+    Limitdrag.prototype.constructor = Limitdrag;
+
+    Limitdrag.prototype.move = function(ev) {//继承的方法移到方法继承的下面。
+        var l = ev.clientX - this.shortx;
+        if (l < 0) {
+            l = 0;
+        }
+        this.oDiv.style.left = l + 'px';
+        this.oDiv.style.top = ev.clientY - this.shorty + 'px';
+    }
+    new Drag('div1').init();
+
+    var l1 = new Limitdrag('div2');
+    l1.init();
+    </script>
+</body>
+
+</html>

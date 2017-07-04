@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+    	$(function(){
+           // alert($('a[title!=hi]').size());
+    	});
+    </script>
+</head>
+
+<body>
+    <!-- <a href="##" title="hello" target="">11111</a>
+    <a href="##" title="hi" target="">11111</a>
+    <a href="##" title="hehe" target="">11111</a>
+    <a href="##" title="haho" target="">11111</a> -->
+
+    <!-- <input type="checkbox" name="" class="all">全选<br>
+    <input type="checkbox" name=""><br>
+    <input type="checkbox" name="" abc="efg"><br>
+    <input type="checkbox" name=""><br>
+    <input type="checkbox" name=""><br>
+    <input type="checkbox" name=""> -->
+    <ul>
+      <li>list item 1</li>
+      <li>list item 2
+        <ul>
+          <li>list item 2-a</li>
+          <li>list item 2-b</li>
+        </ul>
+      </li>
+      <li>list item 3</li>
+      <li>list item 4</li>
+    </ul>
+    <script type="text/javascript">
+        //alert($('input').eq(2).prop('checked',true));//获取表单的属性值(布尔值)
+        //attr():获取默认和自定义的属性。   prop():获取属性,一般情况下操作表单的属性(布尔值)，不能获取自定义的属性。
+        /*alert($('input').eq(2).attr('type'));
+        alert($('input').eq(2).prop('type'));
+        alert($('input').eq(2).attr('abc'));
+        alert($('input').eq(2).prop('abc'));*/
+
+       //alert($('input').not('.all').length);//5
+
+      /* $('.all').click(function(){
+            if($(this).prop('checked')){//获取all元素的checked值。
+                $('input').prop('checked',true);
+            }else{
+                $('input').prop('checked',false);
+            }
+       });
+
+       var $l=$('input').not('.all').length;
+       $('input').not('.all').click(function(){
+            if($('input:checked').not('.all').length==$l){
+                $('.all').prop('checked',true);
+            }else{
+                $('.all').prop('checked',false);
+            }
+       });*/
+       $('li').has('ul').css('background-color', 'red');
+    </script>
+</body>
+</html>

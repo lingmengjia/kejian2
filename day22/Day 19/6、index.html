@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    body {
+        width: 100%;
+        height: 100%;
+        background: url(bg.jpg) no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+    
+    img {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+    }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript" src="public.js"></script>
+    <script type="text/javascript">
+    function Fire() {
+        //var oBody=document.getElementsByTagName('body')[0];//函数的局部变量，对函数内部有效。
+        this.oBody = document.getElementsByTagName('body')[0]; //构造函数的属性，Fire实例化对象任何地方都可以使用的。
+
+    }
+    Fire.prototype.createFire = function() {
+        this.img = document.createElement('img');
+        this.img.src = '1.jpg';
+        this.img.style.left = getrandom(0, document.documentElement.clientWidth - this.img.offsetWidth) + 'px';
+        this.img.style.top = getrandom(0, document.documentElement.clientHeight - this.img.offsetHeight) + 'px';
+        this.oBody.appendChild(this.img);
+        return this;
+    }
+    Fire.prototype.move = function() {
+        var that = this;
+        startMove(this.img, {
+            left: getrandom(0, document.documentElement.clientWidth - this.img.offsetWidth),
+            top: getrandom(0, document.documentElement.clientHeight - this.img.offsetHeight)
+        }, function() {
+            that.move();
+        });
+    }
+    for (var i = 0; i < getrandom(100, 200); i++) {
+        new Fire().createFire().move();
+    }
+    </script>
+</body>
+
+</html>

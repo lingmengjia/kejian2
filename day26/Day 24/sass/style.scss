@@ -1,0 +1,156 @@
+@charset "utf-8";
+@import "var";
+/*变量的定义：普通的变量，特殊变量*/
+$w:100px;
+$h:10;
+$c:red;
+$n:none;
+$b:1px solid red;
+$t:text-decoration;
+$p:position;
+$color:(r:red,o:orange,y:yellow,g:green);
+
+.box{
+	width:$w+100;//支持加减乘除 
+	height:$h+px;
+	color:$c;
+	border:$b;
+}
+a{
+	#{$t}:$n;//特殊变量:普通的字符串
+	color:map-get($color,g)-100;
+}
+
+$i:8;
+@while $i>0 {
+	.box-#{$i}{//特殊变量
+		width:$i*100px;
+	}
+	$i:$i - 2;
+}
+//嵌套
+.nav{
+	width:$h*10%;
+	height:$w - 60;
+	ul{
+		list-style: $n;
+		li{
+		line-height: 60px;
+		a{
+			#{$t}:$n;
+			span{
+				color:red;
+				strong{
+					font-size:12px;
+					em{
+						font-style:normal;
+					}
+				}
+			}
+		}
+	}
+	}
+	
+}
+
+.box1{
+	border:{
+		left:{
+			color:red;
+			width:5px;
+		}
+		right:{
+			color:blue;
+			width:8px;
+		}
+	}
+}
+
+
+
+//混合mixin(多惨混合)
+@mixin bd($w:1px,$s:solid,$c:#ccc){
+	border:$w $s $c;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
+.box123{
+	@include bd(dashed,6px,blue);
+	width:1000px;
+}
+
+#box{
+	border:{
+		left:10px solid transparent;
+		top:10px solid transparent;
+		right:10px solid transparent;
+		bottom:10px solid orange;
+	}
+	width:0px;height:0px;
+}
+
+//继承
+%box4{//%:被继承取消 (占位符)
+	width:$w;
+	height:$h+px;
+}
+
+%box4 p{//继承子选择器
+	color:$c;
+}
+.box5{
+	@include bd();
+	@extend %box4;//继承
+	font-size:12px;
+}
+
+//if
+
+$num:1;
+@if $num>5 {
+	.box1{
+		width:100px;
+	}
+}@else{
+	.box2{
+		width:200px;
+	}
+}
+
+
+@function fn($f:10){
+	@return $f;
+}
+
+
+.box3{
+	font-size:fn(20)+px;
+}
+
+@for $i from 1 to 10 {
+	.hehe-#{$i}{
+		width:$i*10+px;
+	}
+}
+
+
+@for $i from 3 through 4 {//包括4
+	.main-#{$i}{
+		width:$i*10+px;
+	}
+}
+
+$color:(r:red,o:orange,y:yellow,g:green);
+@if map-has-key($color,f){
+	.box5{
+		color:map-get($color,o);
+	}
+}@else{
+	.box5{
+		color:map-get($color,g);
+	}
+}
+
+
